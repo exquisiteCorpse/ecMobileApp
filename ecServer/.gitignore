@@ -1,7 +1,7 @@
 node_modules
 public/bundle.js
 public/bundle.js.map
-public/corpses
+public/corpses/*
 .idea
 secrets.js
 .DS_Store
