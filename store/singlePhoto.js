@@ -4,13 +4,17 @@
 import axios from 'axios'
 
 /* -----------------    ACTION TYPES     ------------------ */
-
 const GET_PHOTO = 'GET_PHOTO'
+const PUT_PHOTO = 'PUT_PHOTO'
 
 /* ------------   ACTION CREATORS     ------------------ */
 
-export const getPhoto = (photo) => {
-  return { type: GET_PHOTO, photo }
+export const putPhoto = (photo) => {
+  return { type: PUT_PHOTO, photo }
+}
+
+export const getPhoto = () => {
+  return { type: GET_PHOTO }
 }
 
 /* ------------       THUNK CREATORS     ------------------ */
@@ -19,8 +23,10 @@ export const getPhoto = (photo) => {
 
 export default function (state = {}, action) {
   switch (action.type) {
-    case GET_PHOTO:
+    case PUT_PHOTO:
       return action.photo
+    case GET_PHOTO:
+      return state
     default:
       return state
   }
