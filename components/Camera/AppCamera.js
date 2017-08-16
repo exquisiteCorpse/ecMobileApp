@@ -1,38 +1,45 @@
 import React, { Component } from 'react'
 import { AppRegistry, StyleSheet, Text, View } from 'react-native'
-import store, { getPhoto } from '../../store'
+import { putPhoto } from '../../store'
 import Camera from 'react-native-camera'
+import {connect} from 'react-redux'
 
-export default class AppCamera extends Component {
+class AppCamera extends Component {
   render () {
+    let camera
     return (
       <View style={styles.container}>
         <Camera
           ref={(cam) => {
-            this.camera = cam
+            camera = cam
           }}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}
         >
-          <Text style={styles.capture} onPress={this.takePicture.bind(this)} >[capture]</Text>
+          <Text style={styles.capture} onPress={() => this.props.takePicture(camera)} >[capture]</Text>
         </Camera>
       </View>
     )
-  }
-
-  takePicture () {
-    this.camera.capture()
-      .then((data) => {
-        store.dispatch(getPhoto(data))
-        this.props.navigation.navigate('NewCorpseScreen')
-      })
-      .catch(err => console.error(err))
   }
 }
 
 AppCamera.navigationOptions = ({ navigation }) => ({
   title: 'Camera'
 })
+
+const mapStateToProps = null
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  takePicture (camera) {
+    camera.capture()
+      .then((data) => {
+        dispatch(putPhoto(data))
+        ownProps.navigation.navigate('NewCorpseScreen')
+      })
+      .catch(err => console.error(err))
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppCamera)
 
 const styles = StyleSheet.create({
   capture: {
