@@ -3,6 +3,7 @@ package com.ecmobileapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.rnfs.RNFSPackage;
 import com.github.yamill.orientation.OrientationPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -43,6 +44,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNFSPackage(),
             new OrientationPackage(),
             new FBSDKPackage(mCallbackManager),
             new VectorIconsPackage(),

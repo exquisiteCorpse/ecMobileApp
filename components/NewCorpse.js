@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { View, Image, Text, Button, StyleSheet, Dimensions } from 'react-native'
-import { connect } from 'react-redux'
-import { getPhoto } from '../store'
+import {connect} from 'react-redux'
+import { getPhoto, postNewPhoto } from '../store'
 import Orientation from 'react-native-orientation'
 
 class NewCorpse extends Component {
   componentDidMount () {
     this.props.fetchPhoto()
+    console.log(this.props)
   }
 
   componentWillUnmount () {
@@ -24,6 +25,7 @@ class NewCorpse extends Component {
           source={{ uri: this.props.singlePhoto.path }}
           resizeMode={'contain'}
         />
+        {/* <Text onPress={() => this.props.postPhoto(this.props.singlePhoto)} >[send]</Text> */}
         <View
           style={{height: '35%'}}>
           <View style={{flexGrow: 1}} />
@@ -67,9 +69,12 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchPhoto: () => {
     dispatch(getPhoto())
+  },
+  postPhoto: (photoData) => {
+    dispatch(postNewPhoto(photoData))
   }
 })
 
