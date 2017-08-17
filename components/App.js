@@ -1,34 +1,48 @@
 import React, { Component } from 'react'
-import { AppRegistry, StyleSheet, View, Text, TouchableOpacity } from 'react-native'
+import {
+  AppRegistry,
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  Linking,
+  Platform, } from 'react-native'
 import FBSDK, { LoginManager } from 'react-native-fbsdk'
+import Login, { _fbAuth } from './Button/LoginButton'
 
 export default class App extends Component {
+  state = {
+    user: undefined, // user has not logged in yet
+  };
 
-  _fbAuth () {
-    LoginManager.logInWithReadPermissions(['public_profile']).then((result) => {
-      if (result.isCancelled) console.log('Login was cancelled')
-      else console.log('Login was a success ' + result.grantedPermissions.toString())
-    }, (error) => {
-      console.log('An error occured: ' + error)
-    })
-  }
+  // Set up Linking
+  componentDidMount() {
+    // Add event listener to handle OAuthLogin:// URLs
+    Linking.addEventListener('url', this.handleOpenURL);
+    // Launched from an external URL
+    Linking.getInitialURL().then((url) => {
+      if (url) {
+        this.handleOpenURL({ url });
+      }
+    });
+  };
 
+  componentWillUnmount() {
+    // Remove event listener
+    Linking.removeEventListener('url', this.handleOpenURL);
+  };
   render () {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
           Welcome to Exquisite Corpse!</Text>
-        <TouchableOpacity onPress={this._fbAuth}>
-          <Text>Facebook Login</Text>
-        </TouchableOpacity>
+        <Login onPress={ this._fbAuth} />
       </View>
     )
   }
 }
 
-App.navigationOptions = ({ navigation }) => ({
-  title: 'Welcome'
-})
+
 
 const styles = StyleSheet.create({
   container: {
