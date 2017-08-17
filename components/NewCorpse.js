@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-import { View, Image } from 'react-native'
+import { View, Text, Image, TouchableOpacity} from 'react-native'
 import {connect} from 'react-redux'
-import { getPhoto } from '../store'
+import { getPhoto, postNewPhoto } from '../store'
+
+// uri is link to asset-library://
 
 class NewCorpse extends Component {
   componentDidMount () {
     this.props.fetchPhoto()
+    console.log(this.props)
   }
   render () {
     return (
@@ -14,6 +17,7 @@ class NewCorpse extends Component {
           style={{width: 400, height: 300}}
           source={{uri: this.props.singlePhoto.path}}
         />
+        <Text onPress={() => this.props.postPhoto(this.props.singlePhoto)} >[send]</Text>
       </View>
     )
   }
@@ -29,9 +33,12 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchPhoto: () => {
     dispatch(getPhoto())
+  },
+  postPhoto: (photoData) => {
+    dispatch(postNewPhoto(photoData))
   }
 })
 
