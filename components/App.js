@@ -9,6 +9,7 @@ import {
   Platform, } from 'react-native'
 import FBSDK, { LoginManager } from 'react-native-fbsdk'
 import Login, { _fbAuth } from './Button/LoginButton'
+import Orientation from 'react-native-orientation'
 
 export default class App extends Component {
   state = {
@@ -24,8 +25,10 @@ export default class App extends Component {
       if (url) {
         this.handleOpenURL({ url });
       }
-    });
-  };
+
+    })
+    Orientation.unlockAllOrientations()
+  }
 
   componentWillUnmount() {
     // Remove event listener

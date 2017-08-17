@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { View, Image } from 'react-native'
-import {connect} from 'react-redux'
+import { View, Image, Text, Button, StyleSheet, Dimensions } from 'react-native'
+import { connect } from 'react-redux'
 import { getPhoto } from '../store'
 import Orientation from 'react-native-orientation'
 
@@ -11,21 +11,56 @@ class NewCorpse extends Component {
     // this works to unlock landscape, but if you hit back button to camera the orientation does not re-lock
   }
 
+  componentWillUnmount () {
+    // remove lock
+    Orientation.unlockAllOrientations()
+  }
+
   render () {
+    const navigate = this.props.navigation.navigate
+
     return (
-      <View>
+      <View style={{display: 'flex'}}>
         <Image
-          style={{width: 400, height: 300}}
-          source={{uri: this.props.singlePhoto.path}}
+          style={{height: '65%', width: '100%'}}
+          source={{ uri: this.props.singlePhoto.path }}
+          resizeMode={'contain'}
         />
-        <Text>Approve?</Text><Text>Re-take</Text>
+        <View
+          style={{height: '35%'}}>
+          <View style={{flexGrow: 1}} />
+          <Button
+            title='Approve'
+            color='#228b22'
+            onPress={() => {
+              navigate('SendToFriendsScreen')
+            }}
+          />
+          <Button
+            title='Re-take'
+            color="#ff0000"
+            onPress={() => {
+              navigate('AppCameraScreen')
+            }}
+          />
+        </View>
+
       </View>
     )
   }
 }
+//  style={{width: '100%', height: '75%'}}
+// NewCorpse.navigationOptions = ({ navigation }) => ({
+//   title: 'Camera'
+// })
 
-NewCorpse.navigationOptions = ({ navigation }) => ({
-  title: 'New Corpse'
+const deviceWidth = Dimensions.get('window').width
+
+const styles = StyleSheet.create({
+  image: {
+    width: deviceWidth,
+    height: '35%'
+  }
 })
 
 const mapStateToProps = (state) => {
@@ -41,3 +76,4 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewCorpse)
+

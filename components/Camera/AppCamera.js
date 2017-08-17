@@ -11,10 +11,10 @@ class AppCamera extends Component {
     Orientation.lockToLandscape()
   }
 
-  componentWillUnmount () {
-    // remove lock
-    Orientation.unlockAllOrientations()
-  }
+  // componentWillUnmount () {
+  //   // remove lock
+  //   Orientation.unlockAllOrientations()
+  // }
 
   render () {
     let camera
