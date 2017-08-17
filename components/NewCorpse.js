@@ -7,6 +7,7 @@ class NewCorpse extends Component {
   componentDidMount () {
     this.props.fetchPhoto()
   }
+
   render () {
     return (
       <View>
@@ -14,6 +15,7 @@ class NewCorpse extends Component {
           style={{width: 400, height: 300}}
           source={{uri: this.props.singlePhoto.path}}
         />
+        <Text>Approve?</Text><Text>Re-take</Text>
       </View>
     )
   }
