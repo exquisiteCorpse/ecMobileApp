@@ -48,6 +48,7 @@
 		7B89C98F057F48919C6A2A9F /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13781682C2CA4D749F7298BF /* SimpleLineIcons.ttf */; };
 		D127715EB9094D89890028A9 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4070835075BC43A6B4B394BE /* Zocial.ttf */; };
 		BC2B9DEE550A4CDE9B754FD7 /* libRNFS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33CD01CF307244DE9FA16857 /* libRNFS.a */; };
+		B970AD3244024CBD82C7683A /* libRCTOrientation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB8E5E33016041D099CBDEA8 /* libRCTOrientation.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -289,6 +290,8 @@
 		4070835075BC43A6B4B394BE /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		458959C93B154378B62C4EE9 /* RNFS.xcodeproj */ = {isa = PBXFileReference; name = "RNFS.xcodeproj"; path = "../node_modules/react-native-fs/RNFS.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		33CD01CF307244DE9FA16857 /* libRNFS.a */ = {isa = PBXFileReference; name = "libRNFS.a"; path = "libRNFS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		3BE4A5B98B08422C9D2DA7D7 /* RCTOrientation.xcodeproj */ = {isa = PBXFileReference; name = "RCTOrientation.xcodeproj"; path = "../node_modules/react-native-orientation/iOS/RCTOrientation.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		FB8E5E33016041D099CBDEA8 /* libRCTOrientation.a */ = {isa = PBXFileReference; name = "libRCTOrientation.a"; path = "libRCTOrientation.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +321,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				144913B2FDDC4D17A0BC09A1 /* libRNVectorIcons.a in Frameworks */,
 				BC2B9DEE550A4CDE9B754FD7 /* libRNFS.a in Frameworks */,
+				B970AD3244024CBD82C7683A /* libRCTOrientation.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +491,7 @@
 				927C6A89BF2B462497B024EA /* RCTCamera.xcodeproj */,
 				86850570C6AB45C2824A1968 /* RNVectorIcons.xcodeproj */,
 				458959C93B154378B62C4EE9 /* RNFS.xcodeproj */,
+				3BE4A5B98B08422C9D2DA7D7 /* RCTOrientation.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1060,6 +1065,7 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
+					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
 				);
 				INFOPLIST_FILE = ecMobileAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1089,6 +1095,7 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
+					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
 				);
 				INFOPLIST_FILE = ecMobileAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1121,6 +1128,7 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
+					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
 				);
 				INFOPLIST_FILE = ecMobileApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1147,6 +1155,7 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
+					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
 				);
 				INFOPLIST_FILE = ecMobileApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1178,6 +1187,7 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
+					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
 				);
 				INFOPLIST_FILE = "ecMobileApp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1216,6 +1226,7 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
+					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
 				);
 				INFOPLIST_FILE = "ecMobileApp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

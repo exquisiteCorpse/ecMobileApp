@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import com.rnfs.RNFSPackage;
+import com.github.yamill.orientation.OrientationPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
@@ -44,6 +45,7 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new RNFSPackage(),
+            new OrientationPackage(),
             new FBSDKPackage(mCallbackManager),
             new VectorIconsPackage(),
             new RCTCameraPackage()

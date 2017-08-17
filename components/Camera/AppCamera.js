@@ -3,8 +3,14 @@ import { AppRegistry, StyleSheet, Text, View } from 'react-native'
 import { putPhoto } from '../../store'
 import Camera from 'react-native-camera'
 import {connect} from 'react-redux'
+import Orientation from 'react-native-orientation'
 
 class AppCamera extends Component {
+
+  componentDidMount () {
+    Orientation.lockToLandscape()
+  }
+
   render () {
     let camera
     return (
