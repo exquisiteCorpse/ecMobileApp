@@ -7,6 +7,7 @@ import UserHome from './components/User/UserHome'
 import UserEdges from './components/User/UserEdges'
 import { Icon } from 'react-native-elements'
 import NewCorpse from './components/NewCorpse'
+import SendToFriends from './components/Camera/SendToFriends'
 import {Provider} from 'react-redux'
 import store from './store'
 
@@ -35,12 +36,17 @@ const WelcomeStack = StackNavigator({
 const AddNewCorpseStack = StackNavigator({
   AppCameraScreen: {
     screen: AppCamera,
-    navigationOptions: ({ navigation }) => ({
-      headerLeft: <DrawerIcon {...navigation} />
-    })
+    navigationOptions: { header: null }
+    // navigationOptions: ({ navigation }) => ({
+    //   headerLeft: <DrawerIcon {...navigation} />
+    // })
   },
   NewCorpseScreen: {
-    screen: NewCorpse
+    screen: NewCorpse,
+    navigationOptions: { header: null }
+  },
+  SendToFriendsScreen: {
+    screen: SendToFriends
   }
 })
 

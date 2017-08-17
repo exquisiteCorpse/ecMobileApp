@@ -29,7 +29,7 @@ build/
 .gradle
 local.properties
 *.iml
-
+*.DS_Store
 # node.js
 #
 node_modules/
