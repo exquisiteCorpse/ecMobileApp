@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchFriends } from '../../store'
+import { fetchFriends, getPhoto, postNewPhoto, makeNewCorpe, makeNewAssign } from '../../store'
 import { StyleSheet, Text, ScrollView, View, Image, TouchableOpacity } from 'react-native'
 import styles from '../Style/FriendsListStyles'
 
 class UserFriends extends Component {
   componentDidMount () {
+    this.props.fetchPhoto()
     this.props.fetchFriendsData()
   }
   render () {
-    const friends = this.props.friends
-    const singlePhoto = this.props.singlePhoto
+    const { friends } = this.props
+    const { singlePhoto } = this.props
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -18,7 +19,7 @@ class UserFriends extends Component {
             return (
               <TouchableOpacity
                 key={friend.id}
-                onPress={() => this.props.sendEdge(friend.id, singlePhoto)}>
+                onPress={() => this.props.postPhoto(singlePhoto, friend.id)}>
                 <Text>
                   {friend.username} | {friend.email}
                 </Text>
@@ -32,16 +33,48 @@ class UserFriends extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    friends: state.friends
+    friends: state.friends,
+    singlePhoto: state.singlePhoto
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchFriendsData: () => {
     dispatch(fetchFriends())
   },
-  sendEdge (userId) {
-    console.log(userId)
+  fetchPhoto: () => {
+    dispatch(getPhoto())
+  },
+  postPhoto: (photoData, assigneeId) => {
+    const userId = 1
+    const corpse = {
+      userId: userId,
+      title: 'Testing'
+    }
+    dispatch(makeNewCorpe(corpse))
+      .then((corpseId) => {
+        const body = {
+          cell: 'top',
+          corpseId: corpseId,
+          userId: userId
+        }
+        dispatch(postNewPhoto(photoData, body))
+          .then((photo) => {
+            let cell = 'middle'
+            if (photo.cell === 'middle') {
+              cell = 'bottom'
+            }
+            const assign = {
+              cell: cell,
+              photoId: photo.id,
+              assignorId: userId,
+              assigneeId: assigneeId,
+              corpseId: corpseId
+            }
+            dispatch(makeNewAssign(assign))
+          })
+      })
+    ownProps.navigate('ConfirmationScreen')
   }
 })
 
