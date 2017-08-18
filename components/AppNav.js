@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import { Platform } from 'react-native'
 import AppCamera from './Camera/AppCamera'
 import EdgeCamera from './Camera/EdgeCamera'
+import NewCorpse from './Camera/NewCorpse'
+import SendToFriends from './Camera/SendToFriends'
+import Confirmation from './Camera/Confirmation'
 import UserHome from './User/UserHome'
 import UserEdges from './User/UserEdges'
 import { Icon } from 'react-native-elements'
-import NewCorpse from './Camera/NewCorpse'
-import SendToFriends from './Camera/SendToFriends'
 import { StackNavigator, DrawerNavigator } from 'react-navigation'
 import App from './App'
 
@@ -36,17 +37,20 @@ const AddNewCorpseStack = StackNavigator({
   AppCameraScreen: {
     screen: AppCamera,
     navigationOptions: { header: null }
-    // navigationOptions: ({ navigation }) => ({
-    //   headerLeft: <DrawerIcon {...navigation} />
-    // })
   },
   NewCorpseScreen: {
     screen: NewCorpse,
     navigationOptions: { header: null }
   },
   SendToFriendsScreen: {
-    screen: SendToFriends
+    screen: SendToFriends,
+    navigationOptions: { header: null }
+  },
+  ConfirmationScreen: {
+    screen: Confirmation,
+    navigationOptions: { header: null }
   }
+
 })
 
 const AllCorpsesStack = StackNavigator({

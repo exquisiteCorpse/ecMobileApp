@@ -48,10 +48,7 @@ class NewCorpse extends Component {
     )
   }
 }
-//  style={{width: '100%', height: '75%'}}
-// NewCorpse.navigationOptions = ({ navigation }) => ({
-//   title: 'Camera'
-// })
+
 
 const deviceWidth = Dimensions.get('window').width
 

@@ -10,6 +10,7 @@ import {
 import FBSDK, { LoginManager } from 'react-native-fbsdk'
 import Login, { _fbAuth } from './Button/LoginButton'
 import Orientation from 'react-native-orientation'
+import styles from './Style/AppWelcomeStyles'
 
 export default class App extends Component {
   state = {
@@ -50,14 +51,3 @@ App.navigationOptions = ({ navigation }) => ({
  })
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  welcome: {
-    fontSize: 20,
-    fontWeight: 'bold'
-  }
-})

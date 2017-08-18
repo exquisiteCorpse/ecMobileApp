@@ -23,12 +23,15 @@ class SendToFriends extends Component {
           <Button
             title='send'
             color='#228b22'
-            onPress={() => this.props.postPhoto(this.props.singlePhoto)}
+            onPress={() => {
+              this.props.postPhoto(this.props.singlePhoto)
+              this.props.navigation.navigate('ConfirmationScreen')
+            }}
           />
         </View>
         <View style={styles.container}>
           <Text style={{ fontSize: 20 }}>Choose Wisely...</Text>
-          <UserFriends />
+          <UserFriends singlePhoto={this.props.singlePhoto} />
         </View>
       </View>
     )
@@ -41,7 +44,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchPhoto: () => {
     dispatch(getPhoto())
   },
@@ -75,6 +78,7 @@ const mapDispatchToProps = (dispatch) => ({
             dispatch(makeNewAssign(assign))
           })
       })
+
   }
 })
 
