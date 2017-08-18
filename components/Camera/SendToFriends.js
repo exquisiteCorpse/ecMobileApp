@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Image, Text, Button } from 'react-native'
 import {connect} from 'react-redux'
-import { getPhoto } from '../../store'
+import { getPhoto, postNewPhoto, makeNewCorpe, makeNewAssign } from '../../store'
 import Orientation from 'react-native-orientation'
 import UserFriends from '../User/UserFriends'
 import styles from '../Style/FriendsListStyles'
@@ -13,10 +13,25 @@ class SendToFriends extends Component {
 
   render () {
     return (
-      <View style={styles.container}>
-        <Text style={{fontSize: 20}}>Choose Wisely...</Text>
-        <UserFriends />
-      </View>
+      <View style={{display: 'flex'}}>
+        <Image
+          style={{height: '65%', width: '100%'}}
+          source={{ uri: this.props.singlePhoto.path }}
+          resizeMode={'contain'}
+        />
+        <View
+          style={{height: '35%'}}>
+          <Button
+            title='send'
+            color='#228b22'
+            onPress={() => this.props.postPhoto(this.props.singlePhoto)}
+          />
+         </View>
+         <View style={styles.container}>
+            <Text style={{fontSize: 20}}>Choose Wisely...</Text>
+            <UserFriends />
+         </View>
+       </View>
     )
   }
 }
@@ -30,6 +45,37 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   fetchPhoto: () => {
     dispatch(getPhoto())
+  },
+  postPhoto: (photoData) => {
+    const userId = 1
+    const corpse = {
+      userId: userId,
+      title: 'Testing'
+    }
+    dispatch(makeNewCorpe(corpse))
+      .then((corpseId) => {
+        const body = {
+          cell: 'top',
+          corpseId: corpseId,
+          userId: userId
+        }
+        dispatch(postNewPhoto(photoData, body))
+          .then((photo) => {
+            console.log(photo.id)
+            let cell = 'middle'
+            if (photo.cell === 'middle') {
+              cell = 'bottom'
+            }
+            const assign = {
+              cell: cell,
+              photoId: photo.id,
+              assignorId: userId,
+              assigneeId: userId,
+              corpseId: corpseId
+            }
+            dispatch(makeNewAssign(assign))
+          })
+      })
   }
 })
 

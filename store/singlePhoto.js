@@ -1,6 +1,6 @@
 
 /* -----------------    IMPORTS     ------------------ */
-
+import { apiUrl } from './url'
 import axios from 'axios'
 import * as fs from 'react-native-fs'
 /* -----------------    ACTION TYPES     ------------------ */
@@ -22,22 +22,16 @@ const postPhoto = (photo) => {
 }
 /* ------------       THUNK CREATORS     ------------------ */
 
-export const postNewPhoto = (photo) => {
-
+export const postNewPhoto = (photo, body) => {
   return (dispatch) => {
-    const body = {
-      cell: 'top',
-      corpseId: 1,
-      userId: 1
-    }
-    fs.readFile(photo.path, 'base64')
+    return fs.readFile(photo.path, 'base64')
       .then((data) => {
         body.encodedPhoto = data
-        return axios.post('http://10.0.1.43:8080/api/photos', body)
+        return axios.post(`${apiUrl}/photos`, body)
       })
       .then((res) => {
         dispatch(postPhoto(res.data))
-        console.log(res.data)
+        return res.data
       })
       .catch(err => console.log(err))
   }
