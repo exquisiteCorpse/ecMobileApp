@@ -3,7 +3,8 @@ import { View, Image, Text, Button } from 'react-native'
 import {connect} from 'react-redux'
 import { getPhoto, postNewPhoto, makeNewCorpe, makeNewAssign } from '../../store'
 import Orientation from 'react-native-orientation'
-
+import UserFriends from '../User/UserFriends'
+import styles from '../Style/FriendsListStyles'
 class SendToFriends extends Component {
   componentDidMount () {
     this.props.fetchPhoto()
@@ -20,15 +21,17 @@ class SendToFriends extends Component {
         />
         <View
           style={{height: '35%'}}>
-          <View style={{flexGrow: 1}} />
           <Button
             title='send'
             color='#228b22'
             onPress={() => this.props.postPhoto(this.props.singlePhoto)}
           />
-        </View>
-
-      </View>
+         </View>
+         <View style={styles.container}>
+            <Text style={{fontSize: 20}}>Choose Wisely...</Text>
+            <UserFriends />
+         </View>
+       </View>
     )
   }
 }
