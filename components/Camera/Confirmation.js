@@ -3,9 +3,8 @@ import { View, Image, Text, Button } from 'react-native'
 import { connect } from 'react-redux'
 import styles from '../Style/AppWelcomeStyles'
 
-
 class Confirmation extends React.Component {
-  componentDidMount() {
+  componentDidMount () {
 
   }
 

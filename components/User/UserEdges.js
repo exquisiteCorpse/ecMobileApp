@@ -18,12 +18,6 @@ class UserEdges extends Component {
 
     return (
       <View style={styles.container}>
-        <View>
-          <Image
-            style={styles.corpseEdge}
-            source={{uri: 'https://s3.amazonaws.com/exquisitecorpse-s3-001/3-1-top-edge.jpeg/3-1-top-edge.jpeg'}}
-          />
-        </View>
         <ScrollView>
           {
             assignments
@@ -78,8 +72,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   corpseEdge: {
-    margin: 15,
     height: 120,
-    width: 360
+    width: 360,
+    justifyContent: 'center'
   }
 })
