@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchFriends } from '../../store'
-import { StyleSheet, Text, ScrollView, View, Image } from 'react-native'
+import { StyleSheet, Text, ScrollView, View, Image, TouchableOpacity } from 'react-native'
 import styles from '../Style/FriendsListStyles'
 
 class UserFriends extends Component {
@@ -10,13 +10,18 @@ class UserFriends extends Component {
   }
   render () {
     const friends = this.props.friends
-
-    console.log('**************', styles)
     return (
       <ScrollView>
         <View style={styles.container}>
           { friends && friends.map(friend => {
-            return (<Text key={friend.id}>{friend.username} | {friend.email}</Text>)
+            return (
+              <TouchableOpacity
+                key={friend.id}
+                onPress={() => this.props.sendEdge(friend.id)}>
+                <Text>
+                  {friend.username} | {friend.email}
+                </Text>
+              </TouchableOpacity>)
           })}
         </View>
       </ScrollView>
@@ -33,6 +38,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   fetchFriendsData: () => {
     dispatch(fetchFriends())
+  },
+  sendEdge (userId) {
+    console.log(userId)
   }
 })
 
