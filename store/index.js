@@ -6,14 +6,17 @@ import likes from './likes'
 import corpses from './corpses'
 import friends from './friends'
 import assignEdge from './assignEdge'
-
+import assignments from './assignments'
+import photos from './photos'
 
 const reducer = combineReducers({
   singlePhoto,
   likes,
   corpses,
   friends,
-  assignEdge
+  assignEdge,
+  assignments,
+  photos
 })
 
 const middleware = applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
@@ -26,3 +29,5 @@ export * from './likes'
 export * from './corpses'
 export * from './friends'
 export * from './assignEdge'
+export * from './assignments'
+export * from './photos'
