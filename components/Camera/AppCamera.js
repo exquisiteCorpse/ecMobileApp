@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AppRegistry, StyleSheet, Text, View } from 'react-native'
+import { AppRegistry, StyleSheet, Text, View, Image } from 'react-native'
 import { putPhoto } from '../../store'
 import Camera from 'react-native-camera'
 import {connect} from 'react-redux'
@@ -12,6 +12,7 @@ class AppCamera extends Component {
 
   render () {
     let camera
+    let imageUrl = imageUrl | null
     return (
       <View style={styles.container}>
         <Camera
@@ -21,7 +22,7 @@ class AppCamera extends Component {
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}
         >
-
+          <Image style={styles.edge} source={{uri: `${imageUrl}  /3/3-top-edge.jpg`}} />
           <Text style={styles.capture} onPress={() => this.props.takePicture(camera)} >[capture]</Text>
         </Camera>
       </View>
@@ -60,6 +61,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center'
+  },
+  edge: {
+    position: 'absolute',
+    flexDirection: 'row',
+    top: 0,
+    right: 0,
+    left: 0,
+    height: 50,
+    justifyContent: 'space-between'
   },
   edgeblock: {
     backgroundColor: 'black',

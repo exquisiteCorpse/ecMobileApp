@@ -34,7 +34,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     camera.capture()
       .then((data) => {
         dispatch(putPhoto(data))
-        ownProps.navigation.navigate('NewCorpseScreen')
+        ownProps.navigation.navigate('NewCorpseScreen', {corpseId: 3, cell: 'middle', userId: 1})
       })
       .catch(err => console.error(err))
   }

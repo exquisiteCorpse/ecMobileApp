@@ -17,7 +17,7 @@ class NewCorpse extends Component {
 
   render () {
     const navigate = this.props.navigation.navigate
-
+    const corpseInfo = this.props.navigation.state.params
     return (
       <View style={styles.container}>
         <View style={styles.captured}>
@@ -30,7 +30,7 @@ class NewCorpse extends Component {
               title='Approve'
               color='#228b22'
               onPress={() => {
-                navigate('SendToFriendsScreen')
+                navigate('SendToFriendsScreen', corpseInfo)
               }}
             />
             <Button

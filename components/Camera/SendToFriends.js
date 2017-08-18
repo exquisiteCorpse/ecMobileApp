@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Image, Text, Button } from 'react-native'
+import { View, Image, Text, Button, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import { getPhoto } from '../../store'
 import Orientation from 'react-native-orientation'
@@ -14,6 +14,7 @@ class SendToFriends extends Component {
 
   render () {
     const { navigate } = this.props.navigation
+    const corpseInfo = this.props.navigation.state.params
     return (
       <View style={{ display: 'flex' }}>
         <Image
@@ -22,12 +23,16 @@ class SendToFriends extends Component {
           resizeMode={'contain'}
         />
         <View>
-
+          <TextInput
+            defaultValue={'Enter Corpse Title'}
+          />
         </View>
         <View style={styles.container}>
           <Text style={{ fontSize: 20 }}>Choose Wisely...</Text>
           <UserFriends
-            navigate={navigate} />
+            navigate={navigate}
+            corpseInfo={corpseInfo}
+          />
         </View>
       </View>
     )
