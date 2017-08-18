@@ -28,10 +28,6 @@ class EdgeCamera extends Component {
   }
 }
 
-EdgeCamera.navigationOptions = ({ navigation }) => ({
-  title: 'Edge Camera'
-})
-
 const mapStateToProps = null
 const mapDispatchToProps = (dispatch, ownProps) => ({
   takePicture (camera) {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Image, Text, Button } from 'react-native'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import { getPhoto, postNewPhoto, makeNewCorpe, makeNewAssign } from '../../store'
 import Orientation from 'react-native-orientation'
 import UserFriends from '../User/UserFriends'
@@ -13,25 +13,27 @@ class SendToFriends extends Component {
 
   render () {
     return (
-      <View style={{display: 'flex'}}>
+      <View style={{ display: 'flex' }}>
         <Image
-          style={{height: '65%', width: '100%'}}
+          style={{ height: '65%', width: '100%' }}
           source={{ uri: this.props.singlePhoto.path }}
           resizeMode={'contain'}
         />
-        <View
-          style={{height: '35%'}}>
+        <View>
           <Button
             title='send'
             color='#228b22'
-            onPress={() => this.props.postPhoto(this.props.singlePhoto)}
+            onPress={() => {
+              this.props.postPhoto(this.props.singlePhoto)
+              this.props.navigation.navigate('ConfirmationScreen')
+            }}
           />
-         </View>
-         <View style={styles.container}>
-            <Text style={{fontSize: 20}}>Choose Wisely...</Text>
-            <UserFriends />
-         </View>
-       </View>
+        </View>
+        <View style={styles.container}>
+          <Text style={{ fontSize: 20 }}>Choose Wisely...</Text>
+          <UserFriends singlePhoto={this.props.singlePhoto} />
+        </View>
+      </View>
     )
   }
 }
@@ -42,7 +44,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchPhoto: () => {
     dispatch(getPhoto())
   },
@@ -76,6 +78,7 @@ const mapDispatchToProps = (dispatch) => ({
             dispatch(makeNewAssign(assign))
           })
       })
+
   }
 })
 

@@ -10,11 +10,12 @@ import {
 import FBSDK, { LoginManager } from 'react-native-fbsdk'
 import Login, { _fbAuth } from './Button/LoginButton'
 import Orientation from 'react-native-orientation'
+import styles from './Style/AppWelcomeStyles'
 
 export default class App extends Component {
   state = {
     user: undefined, // user has not logged in yet
-  };
+  }
 
   // Set up Linking
   componentDidMount() {
@@ -32,8 +33,9 @@ export default class App extends Component {
 
   componentWillUnmount() {
     // Remove event listener
-    Linking.removeEventListener('url', this.handleOpenURL);
-  };
+    Linking.removeEventListener('url', this.handleOpenURL)
+  }
+
   render () {
     return (
       <View style={styles.container}>
@@ -44,15 +46,3 @@ export default class App extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  welcome: {
-    fontSize: 20,
-    fontWeight: 'bold'
-  }
-})
