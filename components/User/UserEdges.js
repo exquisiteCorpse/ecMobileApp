@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, ScrollView, View, Image } from 'react-native'
+import { StyleSheet, Text, ScrollView, View, Image, TouchableHighlight } from 'react-native'
 import styles from '../Style/UserHomeStyles'
 import {connect} from 'react-redux'
 import { fetchCorpes } from '../../store'
@@ -12,6 +12,7 @@ class UserEdges extends Component {
 
   render () {
     const { corpses } = this.props
+    const navigate = this.props.navigation.navigate
 
     return (
       <ScrollView>
@@ -29,11 +30,12 @@ class UserEdges extends Component {
                     <View style={styles.viewCorpse}>
                       {corpse.photos.map((photo) => {
                         return (
-                          <Image
-                            key={photo.id}
-                            style={styles.imageCorpse}
-                            source={{uri: `${imageUrl}/${photo.edgeUrl}`}}
-                          />
+                          <TouchableHighlight key={photo.id} onPress={() => { navigate('AppCameraScreen') }}>
+                            <Image
+                              style={styles.imageCorpse}
+                              source={{uri: `${imageUrl}/${photo.edgeUrl}`}}
+                            />
+                          </TouchableHighlight>
                         )
                       }).reverse()}
                     </View>
