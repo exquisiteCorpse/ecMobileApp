@@ -40,15 +40,10 @@ class UserHome extends Component {
                   <Text style={styles.textCorpse}>...</Text>
                 </View>
                 <View style={styles.viewCorpse}>
-                  {corpse.photos.map((photo) => {
-                    return (
-                      <Image
-                        key={photo.id}
-                        style={styles.imageCorpse}
-                        source={{uri: `${imageUrl}/${photo.imgUrl}`}}
-                      />
-                    )
-                  }).reverse()}
+                  <Image
+                    style={styles.viewCorpse}
+                    source={{uri: `${imageUrl}corpse-${corpse.id}.jpeg`}}
+                  />
                 </View>
                 <View style={styles.imageCorpseBottom}>
                   <LikeButton corpseId={corpse.id} userLike={userLike} userId='1' likes={likesCorpse[corpse.id]} style={styles} handleLike={this.props.handleLike} />
