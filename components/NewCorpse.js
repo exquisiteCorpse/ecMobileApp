@@ -19,12 +19,13 @@ class NewCorpse extends Component {
     const navigate = this.props.navigation.navigate
 
     return (
-      <View style={{display: 'flex'}}>
-        <Image
-          style={{height: '65%', width: '100%'}}
-          source={{ uri: this.props.singlePhoto.path }}
-          resizeMode={'contain'}
-        />
+      <View style={styles.container}>
+        <View style={styles.captured}>
+          <Image
+            style={styles.image}
+            source={{ uri: this.props.singlePhoto.path }}
+          />
+        </View>
         <View
           style={{height: '35%'}}>
           <View style={{flexGrow: 1}} />
@@ -37,7 +38,7 @@ class NewCorpse extends Component {
           />
           <Button
             title='Re-take'
-            color="#ff0000"
+            color='#ff0000'
             onPress={() => {
               navigate('AppCameraScreen')
             }}
@@ -56,9 +57,23 @@ class NewCorpse extends Component {
 const deviceWidth = Dimensions.get('window').width
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'row'
+  },
+  captured: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center'
+  },
   image: {
-    width: deviceWidth,
-    height: '35%'
+    position: 'absolute',
+    flexDirection: 'row',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    justifyContent: 'space-between'
   }
 })
 
