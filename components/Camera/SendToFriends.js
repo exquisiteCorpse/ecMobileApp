@@ -3,6 +3,7 @@ import { View, Image, Text, Button } from 'react-native'
 import {connect} from 'react-redux'
 import { getPhoto } from '../../store'
 import Orientation from 'react-native-orientation'
+import UserFriends from '../User/UserFriends'
 
 class SendToFriends extends Component {
   componentDidMount () {
@@ -12,7 +13,10 @@ class SendToFriends extends Component {
 
   render () {
     return (
-      <Text>Send To Friends page</Text>
+      <View>
+        <Text>Send To Friends page</Text>
+        <UserFriends />
+      </View>
     )
   }
 }
