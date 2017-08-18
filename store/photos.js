@@ -5,28 +5,27 @@ import axios from 'axios'
 
 /* -----------------    ACTION TYPES     ------------------ */
 
-const GET_ASSIGNMENTS = 'GET_ASSIGNMENTS'
+const GET_PHOTOS = 'GET_PHOTOS'
 
 /* ------------   ACTION CREATORS     ------------------ */
 
-const getAssignments = (assignments) => {
-  return { type: GET_ASSIGNMENTS, assignments }
+const getPhotos = (photos) => {
+  return { type: GET_PHOTOS, photos }
 }
 
 /* ------------       THUNK CREATORS     ------------------ */
 
-export const fetchAssignments = () => dispatch => {
-  axios.get(`${apiUrl}/assignments`)
-    .then(res => dispatch(getAssignments(res.data)))
-    .catch(err => console.log(err))
+export const fetchPhotos = () => dispatch => {
+  axios.get(`${apiUrl}/photos`)
+    .then(res => dispatch(getPhotos(res.data)))
 }
 
 /* ------------       REDUCERS     ------------------ */
 
 export default function (state = [], action) {
   switch (action.type) {
-    case GET_ASSIGNMENTS:
-      return action.assignments
+    case GET_PHOTOS:
+      return action.photos
     default:
       return state
   }

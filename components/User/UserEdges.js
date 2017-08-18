@@ -1,65 +1,85 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, ScrollView, View, Image, TouchableHighlight } from 'react-native'
-import styles from '../Style/UserHomeStyles'
 import {connect} from 'react-redux'
-import { fetchCorpes } from '../../store'
+import { fetchAssignments } from '../../store'
 import { imageUrl } from '../../store/url'
+import PhotoEdgeItem from '../Photo/PhotoEdgeItem'
+
+/* -----------------    COMPONENT     ------------------ */
 
 class UserEdges extends Component {
   componentDidMount () {
-    this.props.fetchData()
+    this.props.fetchAssignmentsData()
   }
 
   render () {
-    const { corpses } = this.props
+    const { assignments } = this.props
     const navigate = this.props.navigation.navigate
 
     return (
-      <ScrollView>
-        <View style={styles.container}>
-          {
-            corpses.map(corpse => {
-              if (corpse.id === 3) {
-                return (
-                  <View key={corpse.id} style={styles.corpse}>
-                    <View style={styles.imageCorpseTop}>
-                      <Text style={styles.textCorpse}>{corpse.photos.map((photo, i) => { return photo.user.username }).join('|')}</Text>
-                      <Text style={styles.titleCorpse}>{corpse.title}</Text>
-                      <Text style={styles.textCorpse}>...</Text>
-                    </View>
-                    <View style={styles.viewCorpse}>
-                      {corpse.photos.map((photo) => {
-                        return (
-                          <TouchableHighlight key={photo.id} onPress={() => { navigate('EdgeCameraScreen') }}>
-                            <Image
-                              style={styles.imageCorpse}
-                              source={{uri: `${imageUrl}/${photo.edgeUrl}`}}
-                            />
-                          </TouchableHighlight>
-                        )
-                      }).reverse()}
-                    </View>
-                  </View>
-                )
-              }
-            })
-          }
+      <View style={styles.container}>
+        <View>
+          <Image
+            style={styles.corpseEdge}
+            source={{uri: 'https://s3.amazonaws.com/exquisitecorpse-s3-001/3-1-top-edge.jpeg/3-1-top-edge.jpeg'}}
+          />
         </View>
-      </ScrollView>
+        <ScrollView>
+          {
+            assignments
+              .filter(assignment => assignment.assignorId === 1)
+              .map(assignment => {
+                // if (assignment.cell === 'bottom') {
+                //   assignment.cell = 'bottom'
+                // }
+                // if (assignment.cell === 'middle') {
+                //   assignment.cell = 'bottom'
+                // }
+                return (
+                  <TouchableHighlight key={assignment.photoId} onPress={() => { navigate('EdgeCameraScreen') }}>
+                    <View key={assignment.photoId}>
+                      <Image
+                        style={styles.corpseEdge}
+                        source={{uri: `${imageUrl}/${assignment.corpseId}-${assignment.assignorId}-top-edge.jpeg`}}
+                        // source={{uri: 'https://s3.amazonaws.com/exquisitecorpse-s3-001/3-1-top-edge.jpeg'}}
+                      />
+                    </View>
+                  </TouchableHighlight>
+                )
+              })
+          }
+        </ScrollView>
+      </View>
     )
   }
 }
 
+/* -----------------    CONTAINER     ------------------ */
+
 const mapStateToProps = (state) => {
   return {
-    corpses: state.corpses
+    assignments: state.assignments
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchData: () => {
-    dispatch(fetchCorpes())
+  fetchAssignmentsData: () => {
+    dispatch(fetchAssignments())
   }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserEdges)
+
+/* -----------------    STYLES     ------------------ */
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center'
+  },
+  corpseEdge: {
+    margin: 15,
+    height: 120,
+    width: 360
+  }
+})
