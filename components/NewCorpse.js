@@ -25,34 +25,27 @@ class NewCorpse extends Component {
             style={styles.image}
             source={{ uri: this.props.singlePhoto.path }}
           />
-        </View>
-        <View
-          style={{height: '35%'}}>
-          <View style={{flexGrow: 1}} />
-          <Button
-            title='Approve'
-            color='#228b22'
-            onPress={() => {
-              navigate('SendToFriendsScreen')
-            }}
+          <View style={styles.button}>
+            <Button
+              title='Approve'
+              color='#228b22'
+              onPress={() => {
+                navigate('SendToFriendsScreen')
+              }}
           />
-          <Button
-            title='Re-take'
-            color='#ff0000'
-            onPress={() => {
-              navigate('AppCameraScreen')
-            }}
+            <Button
+              title='Re-take'
+              color='#ff0000'
+              onPress={() => {
+                navigate('AppCameraScreen')
+              }}
           />
+          </View>
         </View>
-
       </View>
     )
   }
 }
-//  style={{width: '100%', height: '75%'}}
-// NewCorpse.navigationOptions = ({ navigation }) => ({
-//   title: 'Camera'
-// })
 
 const deviceWidth = Dimensions.get('window').width
 
@@ -74,6 +67,14 @@ const styles = StyleSheet.create({
     right: 0,
     left: 0,
     justifyContent: 'space-between'
+  },
+  button: {
+    position: 'absolute',
+    flexDirection: 'row',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    justifyContent: 'center'
   }
 })
 
