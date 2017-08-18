@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   button: {
     position: 'absolute',
     flexDirection: 'row',
-    bottom: 0,
+    bottom: 40,
     left: 0,
     right: 0,
     justifyContent: 'center'

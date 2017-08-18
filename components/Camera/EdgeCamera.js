@@ -65,12 +65,12 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   edge: {
-  	position: 'absolute',
-  	flexDirection: 'row',
-  	top: 0,
-  	right: 0,
-  	left: 0,
-    height: 120,
+    position: 'absolute',
+    flexDirection: 'row',
+    top: 0,
+    right: 0,
+    left: 0,
+    height: 50,
     justifyContent: 'space-between'
   }
 })

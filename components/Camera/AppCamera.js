@@ -21,6 +21,7 @@ class AppCamera extends Component {
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}
         >
+          <Text style={styles.edgeblock} />
           <Text style={styles.capture} onPress={() => this.props.takePicture(camera)} >[capture]</Text>
         </Camera>
       </View>
@@ -59,5 +60,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center'
+  },
+  edgeblock: {
+    backgroundColor: 'black',
+    position: 'absolute',
+    flexDirection: 'row',
+    top: 0,
+    right: 0,
+    left: 0,
+    height: 75,
+    justifyContent: 'space-between'
   }
 })
