@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import { getPhoto } from '../../store'
 import Orientation from 'react-native-orientation'
 import UserFriends from '../User/UserFriends'
-
+import styles from '../Style/FriendsListStyles'
 class SendToFriends extends Component {
   componentDidMount () {
     this.props.fetchPhoto()
@@ -13,8 +13,8 @@ class SendToFriends extends Component {
 
   render () {
     return (
-      <View>
-        <Text>Send To Friends page</Text>
+      <View style={styles.container}>
+        <Text style={{fontSize: 20}}>Choose Wisely...</Text>
         <UserFriends />
       </View>
     )

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchFriends } from '../../store'
 import { StyleSheet, Text, ScrollView, View, Image } from 'react-native'
+import styles from '../Style/FriendsListStyles'
 
 class UserFriends extends Component {
   componentDidMount () {
@@ -9,12 +10,13 @@ class UserFriends extends Component {
   }
   render () {
     const friends = this.props.friends
-    console.log('**************', friends)
+
+    console.log('**************', styles)
     return (
       <ScrollView>
-        <View>
+        <View style={styles.container}>
           { friends && friends.map(friend => {
-            return (<Text key={friend.id}>{friend.username}</Text>)
+            return (<Text key={friend.id}>{friend.username} | {friend.email}</Text>)
           })}
         </View>
       </ScrollView>
