@@ -20,7 +20,7 @@ class EdgeCamera extends Component {
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}
         >
-          <Image style={styles.edge} source={{uri: `${imageUrl}/3-1-top-edge.jpeg`}} />
+          <Image style={styles.edge} source={{uri: `${imageUrl}3-1-top-edge.jpeg`}} />
           <Text style={styles.capture} onPress={() => this.props.takePicture(camera)} >[capture]</Text>
         </Camera>
       </View>

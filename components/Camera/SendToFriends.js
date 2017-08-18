@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { View, Image, Text, Button } from 'react-native'
 import { connect } from 'react-redux'
-import { getPhoto, postNewPhoto, makeNewCorpe, makeNewAssign } from '../../store'
+import { getPhoto } from '../../store'
 import Orientation from 'react-native-orientation'
 import UserFriends from '../User/UserFriends'
 import styles from '../Style/FriendsListStyles'
+
 class SendToFriends extends Component {
   componentDidMount () {
     this.props.fetchPhoto()
@@ -12,6 +13,7 @@ class SendToFriends extends Component {
   }
 
   render () {
+    const { navigate } = this.props.navigation
     return (
       <View style={{ display: 'flex' }}>
         <Image
@@ -20,18 +22,12 @@ class SendToFriends extends Component {
           resizeMode={'contain'}
         />
         <View>
-          <Button
-            title='send'
-            color='#228b22'
-            onPress={() => {
-              this.props.postPhoto(this.props.singlePhoto)
-              this.props.navigation.navigate('ConfirmationScreen')
-            }}
-          />
+
         </View>
         <View style={styles.container}>
           <Text style={{ fontSize: 20 }}>Choose Wisely...</Text>
-          <UserFriends singlePhoto={this.props.singlePhoto} />
+          <UserFriends
+            navigate={navigate} />
         </View>
       </View>
     )
@@ -47,8 +43,24 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchPhoto: () => {
     dispatch(getPhoto())
-  },
-  postPhoto: (photoData) => {
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SendToFriends)
+
+/*
+
+   <Button
+            title='send'
+            color='#228b22'
+            onPress={() => {
+              this.props.postPhoto(this.props.singlePhoto)
+              this.props.navigation.navigate('ConfirmationScreen')
+            }}
+          />
+
+
+    postPhoto: (photoData) => {
     const userId = 1
     const corpse = {
       userId: userId,
@@ -78,8 +90,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
             dispatch(makeNewAssign(assign))
           })
       })
-
+    ownProps.navigation.navigate('ConfirmationScreen')
   }
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(SendToFriends)
+*/

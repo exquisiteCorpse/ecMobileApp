@@ -34,7 +34,7 @@ class UserEdges extends Component {
                     <View key={assignment.photoId}>
                       <Image
                         style={styles.corpseEdge}
-                        source={{uri: `${imageUrl}/${assignment.corpseId}-${assignment.assignorId}-top-edge.jpeg`}}
+                        source={{uri: `${imageUrl}${assignment.corpseId}-${assignment.assignorId}-top-edge.jpeg`}}
                         // source={{uri: 'https://s3.amazonaws.com/exquisitecorpse-s3-001/3-1-top-edge.jpeg'}}
                       />
                     </View>

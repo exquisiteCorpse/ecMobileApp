@@ -13,7 +13,7 @@ class Confirmation extends React.Component {
     return (
       <View style={styles.container2}>
         <Text style={styles.welcome}>Corpse sent successfully!</Text>
-        <Text>Get excited, you will receive the final Exquisite Corpse back when complete</Text>
+        <Text style={{textAlign: 'center'}}>Get excited, you will receive the final Exquisite Corpse back when complete</Text>
         <Button
           title='Back to Home'
           color='#1e90ff'

@@ -7,12 +7,12 @@ import Orientation from 'react-native-orientation'
 class NewCorpse extends Component {
   componentDidMount () {
     this.props.fetchPhoto()
-    console.log(this.props)
+    Orientation.lockToLandscape()
   }
 
   componentWillUnmount () {
     // remove lock
-    Orientation.unlockAllOrientations()
+
   }
 
   render () {
