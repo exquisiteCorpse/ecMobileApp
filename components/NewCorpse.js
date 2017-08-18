@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Image, Text, Button, StyleSheet, Dimensions } from 'react-native'
+import { View, Image, Text, Button, StyleSheet } from 'react-native'
 import {connect} from 'react-redux'
 import { getPhoto } from '../store'
 import Orientation from 'react-native-orientation'
@@ -32,22 +32,20 @@ class NewCorpse extends Component {
               onPress={() => {
                 navigate('SendToFriendsScreen')
               }}
-          />
+            />
             <Button
               title='Re-take'
               color='#ff0000'
               onPress={() => {
                 navigate('AppCameraScreen')
               }}
-          />
+            />
           </View>
         </View>
       </View>
     )
   }
 }
-
-const deviceWidth = Dimensions.get('window').width
 
 const styles = StyleSheet.create({
   container: {
