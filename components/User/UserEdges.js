@@ -30,7 +30,7 @@ class UserEdges extends Component {
                     <View style={styles.viewCorpse}>
                       {corpse.photos.map((photo) => {
                         return (
-                          <TouchableHighlight key={photo.id} onPress={() => { navigate('AppCameraScreen') }}>
+                          <TouchableHighlight key={photo.id} onPress={() => { navigate('EdgeCameraScreen') }}>
                             <Image
                               style={styles.imageCorpse}
                               source={{uri: `${imageUrl}/${photo.edgeUrl}`}}

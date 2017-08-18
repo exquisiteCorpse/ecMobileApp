@@ -3,6 +3,7 @@ import { AppRegistry, Platform } from 'react-native'
 import { StackNavigator, DrawerNavigator } from 'react-navigation'
 import App from './components/App'
 import AppCamera from './components/Camera/AppCamera'
+import EdgeCamera from './components/Camera/EdgeCamera'
 import UserHome from './components/User/UserHome'
 import UserEdges from './components/User/UserEdges'
 import { Icon } from 'react-native-elements'
@@ -63,6 +64,13 @@ const AllEdgesStack = StackNavigator({
     navigationOptions: ({ navigation }) => ({
       headerLeft: <DrawerIcon {...navigation} />
     })
+  },
+  EdgeCameraScreen: {
+    screen: EdgeCamera,
+    navigationOptions: { header: null }
+    // navigationOptions: ({ navigation }) => ({
+    //   headerLeft: <DrawerIcon {...navigation} />
+    // })
   }
 })
 
