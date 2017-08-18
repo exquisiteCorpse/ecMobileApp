@@ -28,10 +28,6 @@ class EdgeCamera extends Component {
   }
 }
 
-EdgeCamera.navigationOptions = ({ navigation }) => ({
-  title: 'Edge Camera'
-})
-
 const mapStateToProps = null
 const mapDispatchToProps = (dispatch, ownProps) => ({
   takePicture (camera) {
@@ -65,12 +61,12 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   edge: {
-  	position: 'absolute',
-  	flexDirection: 'row',
-  	top: 0,
-  	right: 0,
-  	left: 0,
-    height: 120,
+    position: 'absolute',
+    flexDirection: 'row',
+    top: 0,
+    right: 0,
+    left: 0,
+    height: 50,
     justifyContent: 'space-between'
   }
 })

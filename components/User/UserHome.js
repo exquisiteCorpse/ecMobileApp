@@ -11,7 +11,7 @@ class UserHome extends Component {
   }
 
   render () {
-    ///likes set up for render will move to its own file
+    /// likes set up for render will move to its own file
     const userLikes = []
     const likesCorpse = {}
     if (this.props.likes) {
@@ -62,10 +62,6 @@ class UserHome extends Component {
     )
   }
 }
-
-UserHome.navigationOptions = ({ navigation }) => ({
-  title: 'Home'
-})
 
 const mapStateToProps = (state) => {
   return {

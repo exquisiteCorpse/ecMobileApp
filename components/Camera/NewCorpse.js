@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Image, Text, Button, StyleSheet, Dimensions } from 'react-native'
+import { View, Image, Text, Button, StyleSheet } from 'react-native'
 import {connect} from 'react-redux'
 import { getPhoto } from '../../store'
 import Orientation from 'react-native-orientation'
@@ -19,43 +19,60 @@ class NewCorpse extends Component {
     const navigate = this.props.navigation.navigate
 
     return (
-      <View style={{display: 'flex'}}>
-        <Image
-          style={{height: '65%', width: '100%'}}
-          source={{ uri: this.props.singlePhoto.path }}
-          resizeMode={'contain'}
-        />
-        <View
-          style={{height: '35%'}}>
-          <View style={{flexGrow: 1}} />
-          <Button
-            title='Approve'
-            color='#228b22'
-            onPress={() => {
-              navigate('SendToFriendsScreen')
-            }}
+      <View style={styles.container}>
+        <View style={styles.captured}>
+          <Image
+            style={styles.image}
+            source={{ uri: this.props.singlePhoto.path }}
           />
-          <Button
-            title='Re-take'
-            color="#ff0000"
-            onPress={() => {
-              navigate('AppCameraScreen')
-            }}
-          />
+          <View style={styles.button}>
+            <Button
+              title='Approve'
+              color='#228b22'
+              onPress={() => {
+                navigate('SendToFriendsScreen')
+              }}
+            />
+            <Button
+              title='Re-take'
+              color='#ff0000'
+              onPress={() => {
+                navigate('AppCameraScreen')
+              }}
+            />
+          </View>
         </View>
-
       </View>
     )
   }
 }
 
-
-const deviceWidth = Dimensions.get('window').width
-
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'row'
+  },
+  captured: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center'
+  },
   image: {
-    width: deviceWidth,
-    height: '35%'
+    position: 'absolute',
+    flexDirection: 'row',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    justifyContent: 'space-between'
+  },
+  button: {
+    position: 'absolute',
+    flexDirection: 'row',
+    bottom: 40,
+    left: 0,
+    right: 0,
+    justifyContent: 'center'
   }
 })
 

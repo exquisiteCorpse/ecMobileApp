@@ -6,7 +6,6 @@ import {connect} from 'react-redux'
 import Orientation from 'react-native-orientation'
 
 class AppCamera extends Component {
-
   componentDidMount () {
     Orientation.lockToLandscape()
   }
@@ -22,16 +21,13 @@ class AppCamera extends Component {
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}
         >
+          <Text style={styles.edgeblock} />
           <Text style={styles.capture} onPress={() => this.props.takePicture(camera)} >[capture]</Text>
         </Camera>
       </View>
     )
   }
 }
-
-AppCamera.navigationOptions = ({ navigation }) => ({
-  title: 'Camera'
-})
 
 const mapStateToProps = null
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -64,5 +60,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center'
+  },
+  edgeblock: {
+    backgroundColor: 'black',
+    position: 'absolute',
+    flexDirection: 'row',
+    top: 0,
+    right: 0,
+    left: 0,
+    height: 75,
+    justifyContent: 'space-between'
   }
 })
