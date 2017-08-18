@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Image, Text, Button, StyleSheet, Dimensions } from 'react-native'
 import {connect} from 'react-redux'
-import { getPhoto } from '../store'
+import { getPhoto } from '../../store'
 import Orientation from 'react-native-orientation'
 
 class NewCorpse extends Component {
@@ -48,10 +48,7 @@ class NewCorpse extends Component {
     )
   }
 }
-//  style={{width: '100%', height: '75%'}}
-// NewCorpse.navigationOptions = ({ navigation }) => ({
-//   title: 'Camera'
-// })
+
 
 const deviceWidth = Dimensions.get('window').width
 

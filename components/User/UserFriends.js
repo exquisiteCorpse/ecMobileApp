@@ -10,6 +10,7 @@ class UserFriends extends Component {
   }
   render () {
     const friends = this.props.friends
+    const singlePhoto = this.props.singlePhoto
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -17,7 +18,7 @@ class UserFriends extends Component {
             return (
               <TouchableOpacity
                 key={friend.id}
-                onPress={() => this.props.sendEdge(friend.id)}>
+                onPress={() => this.props.sendEdge(friend.id, singlePhoto)}>
                 <Text>
                   {friend.username} | {friend.email}
                 </Text>
