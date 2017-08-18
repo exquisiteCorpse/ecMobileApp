@@ -6,7 +6,6 @@ import {connect} from 'react-redux'
 import Orientation from 'react-native-orientation'
 
 class AppCamera extends Component {
-
   componentDidMount () {
     Orientation.lockToLandscape()
   }
@@ -28,10 +27,6 @@ class AppCamera extends Component {
     )
   }
 }
-
-AppCamera.navigationOptions = ({ navigation }) => ({
-  title: 'Camera'
-})
 
 const mapStateToProps = null
 const mapDispatchToProps = (dispatch, ownProps) => ({

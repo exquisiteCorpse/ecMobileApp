@@ -45,11 +45,6 @@ export default class App extends Component {
   }
 }
 
-App.navigationOptions = ({ navigation }) => ({
-  title: 'Welcome'
- })
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
