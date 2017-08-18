@@ -15,7 +15,7 @@ class UserFriends extends Component {
     return (
       <ScrollView>
         <View style={styles.container}>
-          { friends && friends.map(friend => {
+          {friends && friends.map(friend => {
             return (
               <TouchableOpacity
                 key={friend.id}
@@ -51,29 +51,47 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       userId: userId,
       title: 'Testing'
     }
-    dispatch(makeNewCorpe(corpse))
-      .then((corpseId) => {
-        const body = {
-          cell: 'top',
-          corpseId: corpseId,
-          userId: userId
-        }
-        dispatch(postNewPhoto(photoData, body))
-          .then((photo) => {
-            let cell = 'middle'
-            if (photo.cell === 'middle') {
-              cell = 'bottom'
-            }
-            const assign = {
-              cell: cell,
-              photoId: photo.id,
-              assignorId: userId,
-              assigneeId: assigneeId,
-              corpseId: corpseId
-            }
-            dispatch(makeNewAssign(assign))
-          })
-      })
+    if (ownProps.corpseInfo) {
+      dispatch(postNewPhoto(photoData, ownProps.corpseInfo))
+        .then((photo) => {
+          let cell = ownProps.corpseInfo.cell
+          if (photo.cell === 'middle') {
+            cell = 'bottom'
+          }
+          const assign = {
+            cell: cell,
+            photoId: photo.id,
+            assignorId: userId,
+            assigneeId: assigneeId,
+            corpseId: ownProps.corpseInfo.corpseId
+          }
+          dispatch(makeNewAssign(assign))
+        })
+    } else {
+      dispatch(makeNewCorpe(corpse))
+        .then((corpseId) => {
+          const body = {
+            cell: 'top',
+            corpseId: corpseId,
+            userId: userId
+          }
+          dispatch(postNewPhoto(photoData, body))
+            .then((photo) => {
+              let cell = 'middle'
+              if (photo.cell === 'middle') {
+                cell = 'bottom'
+              }
+              const assign = {
+                cell: cell,
+                photoId: photo.id,
+                assignorId: userId,
+                assigneeId: assigneeId,
+                corpseId: corpseId
+              }
+              dispatch(makeNewAssign(assign))
+            })
+        })
+    }
     ownProps.navigate('ConfirmationScreen')
   }
 })

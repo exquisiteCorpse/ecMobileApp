@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { View, Image, Text, Button } from 'react-native'
+import { View, Image, Text, Button, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import { getPhoto } from '../../store'
 import Orientation from 'react-native-orientation'
 import UserFriends from '../User/UserFriends'
+import CompleteCorpse from '../User/CompleteCorpse'
 import styles from '../Style/FriendsListStyles'
 
 class SendToFriends extends Component {
@@ -14,6 +15,24 @@ class SendToFriends extends Component {
 
   render () {
     const { navigate } = this.props.navigation
+    const corpseInfo = this.props.navigation.state.params
+    let displayStage
+    let displayTitle = null
+    let displayText = null
+    if (corpseInfo) {
+      //corpseInfo.cell = 'bottom'
+      if (corpseInfo.cell === 'bottom') {
+        displayStage = <CompleteCorpse navigate={navigate} corpseInfo={corpseInfo}/>
+      } else {
+
+        displayText = <Text style={{ fontSize: 20 }}>Choose Wisely...</Text>
+        displayStage = <UserFriends navigate={navigate} corpseInfo={corpseInfo}/>
+      }
+    } else {
+      displayTitle =  <View><TextInput defaultValue={'Enter Corpse Title'}/></View>
+      displayText = <Text style={{ fontSize: 20 }}>Choose Wisely...</Text>
+      displayStage = <UserFriends navigate={navigate} />
+    }
     return (
       <View style={{ display: 'flex' }}>
         <Image
@@ -21,13 +40,10 @@ class SendToFriends extends Component {
           source={{ uri: this.props.singlePhoto.path }}
           resizeMode={'contain'}
         />
-        <View>
-
-        </View>
+        {displayTitle}
         <View style={styles.container}>
-          <Text style={{ fontSize: 20 }}>Choose Wisely...</Text>
-          <UserFriends
-            navigate={navigate} />
+          {displayText}
+          {displayStage}
         </View>
       </View>
     )
