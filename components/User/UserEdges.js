@@ -18,12 +18,14 @@ class UserEdges extends Component {
     let cell = ''
 
     return (
-      <View style={styles.container}>
-        <ScrollView>
+      <ScrollView>
+        <View style={styles.container}>
+
           {
             assignments
-            .filter(assignment => assignment.assignorId === 1)
+            .filter(assignment => assignment.assigneeId === 1 && assignment.complete === false)
             .map(assignment => {
+
               if (assignment.cell === 'middle') {
                 cell = 'top'
               }
@@ -32,18 +34,21 @@ class UserEdges extends Component {
               }
               return (
                 <TouchableHighlight key={assignment.photoId} onPress={() => { navigate('EdgeCameraScreen', { assignment: assignment, cell: cell } )}}>
+
                   <View key={assignment.photoId}>
+                    <Text>Assignment# {assignment.id} {assignment.cell}</Text>
                     <Image
                       style={styles.corpseEdge}
                       source={{uri: `${imageUrl}${assignment.corpseId}-${assignment.assignorId}-${cell}-edge.jpeg`}}
                     />
                   </View>
-                  </TouchableHighlight>
-                )
-              })
+                </TouchableHighlight>
+              )
+            })
           }
-        </ScrollView>
-      </View>
+
+        </View>
+      </ScrollView>
     )
   }
 }
@@ -72,8 +77,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   corpseEdge: {
-    height: 120,
-    width: 360,
-    justifyContent: 'center'
+    height: 10,
+    width: 600
+
   }
 })

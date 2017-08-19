@@ -30,7 +30,7 @@ class NewCorpse extends Component {
             source={{uri: `${imageUrl}${assignment.corpseId}-${assignment.assignorId}-${cell}-edge.jpeg`}}
           />
         )
-        assignmentParams = {assignment}
+        assignmentParams = {assignment: assignment}
         navToScreen = 'EdgeCameraScreen'
         retakeParams = this.props.navigation.state.params
       }
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   imageEdge: {
     position: 'absolute',
     flexDirection: 'row',
-    top: 50,
+    top: 10,
     bottom: 0,
     right: 0,
     left: 0,
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     left: 0,
-    height: 50,
+    height: 10,
     justifyContent: 'space-between'
   }
 })
