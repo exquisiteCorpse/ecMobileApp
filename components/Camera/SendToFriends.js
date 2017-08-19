@@ -22,6 +22,7 @@ class SendToFriends extends Component {
     let displayText = null
     //Nav based on assignment
     if (assignment) {
+      console.log(assignment,'djdjdjdjdjdjddjdjdjdjdjdjdjdjd')
       if (assignment.cell === 'bottom') {
         displayStage = <CompleteCorpse navigate={navigate} corpseInfo={assignment}/>
       } else {
