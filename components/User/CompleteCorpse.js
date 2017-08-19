@@ -42,7 +42,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   postPhoto: (photoData) => {
     const userId = 1
       dispatch(postNewPhoto(photoData, ownProps.corpseInfo))
-      ownProps.navigate('HomeScreen')
+      ownProps.navigate('AllCorpsesStack')
   }
 })
 
