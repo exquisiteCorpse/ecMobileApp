@@ -32,6 +32,7 @@ class UserHome extends Component {
         <View style={styles.container}>
           {this.props.corpses.map((corpse) => {
             if (corpse.complete) {
+              console.log(`${imageUrl}corpse-${corpse.id}.jpeg`)
               let userLike = userLikes.includes(corpse.id)
               return (<View key={corpse.id} style={styles.corpse}>
                 <View style={styles.imageCorpseTop}>

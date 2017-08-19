@@ -22,7 +22,7 @@ class AppCamera extends Component {
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}
         >
-          <Image style={styles.edge} source={{uri: `${imageUrl}  /3/3-top-edge.jpg`}} />
+          {/* <Image style={styles.edge} source={{uri: `${imageUrl}  /3/3-top-edge.jpg`}} /> */}
           <Text style={styles.capture} onPress={() => this.props.takePicture(camera)} >[capture]</Text>
         </Camera>
       </View>

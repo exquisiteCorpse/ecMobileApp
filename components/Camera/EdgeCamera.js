@@ -12,6 +12,7 @@ class EdgeCamera extends Component {
   }
 
   render () {
+    const { assignment, cell } = this.props.navigation.state.params
     let camera
     return (
       <View style={styles.container}>
@@ -20,7 +21,9 @@ class EdgeCamera extends Component {
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}
         >
-          <Image style={styles.edge} source={{uri: `${imageUrl}3-1-top-edge.jpeg`}} />
+          <Image style={styles.edge}
+            source={{uri: `${imageUrl}${assignment.corpseId}-${assignment.assignorId}-${cell}-edge.jpeg`}}
+          />
           <Text style={styles.capture} onPress={() => this.props.takePicture(camera)} >[capture]</Text>
         </Camera>
       </View>
@@ -34,7 +37,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     camera.capture()
       .then((data) => {
         dispatch(putPhoto(data))
-        ownProps.navigation.navigate('NewCorpseScreen', {corpseId: 3, cell: 'middle', userId: 1})
+        ownProps.navigation.navigate('NewCorpseScreen', { assignment: ownProps.navigation.state.params.assignment, cell: ownProps.navigation.state.params.cell })
       })
       .catch(err => console.error(err))
   }
