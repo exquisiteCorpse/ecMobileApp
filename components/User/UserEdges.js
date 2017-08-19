@@ -15,6 +15,7 @@ class UserEdges extends Component {
   render () {
     const { assignments } = this.props
     const navigate = this.props.navigation.navigate
+    let cell = ''
 
     return (
       <View style={styles.container}>
@@ -23,19 +24,18 @@ class UserEdges extends Component {
             assignments
               .filter(assignment => assignment.assignorId === 1)
               .map(assignment => {
-                // if (assignment.cell === 'bottom') {
-                //   assignment.cell = 'bottom'
-                // }
-                // if (assignment.cell === 'middle') {
-                //   assignment.cell = 'bottom'
-                // }
+                if (assignment.cell === 'middle') {
+                  cell = 'top'
+                }
+                if (assignment.cell === 'bottom') {
+                  cell = 'middle'
+                }
                 return (
                   <TouchableHighlight key={assignment.photoId} onPress={() => { navigate('EdgeCameraScreen') }}>
                     <View key={assignment.photoId}>
                       <Image
                         style={styles.corpseEdge}
-                        source={{uri: `${imageUrl}${assignment.corpseId}-${assignment.assignorId}-top-edge.jpeg`}}
-                        // source={{uri: 'https://s3.amazonaws.com/exquisitecorpse-s3-001/3-1-top-edge.jpeg'}}
+                        source={{uri: `${imageUrl}${assignment.corpseId}-${assignment.assignorId}-${cell}-edge.jpeg`}}
                       />
                     </View>
                   </TouchableHighlight>
