@@ -1,52 +1,55 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, ScrollView, View, Image, TouchableHighlight } from 'react-native'
+import styles from '../Style/UserEdgeStyles'
 import {connect} from 'react-redux'
-import { fetchAssignments } from '../../store'
+import { fetchAssignments, fetchCorpses } from '../../store'
 import { imageUrl } from '../../store/url'
-import PhotoEdgeItem from '../Photo/PhotoEdgeItem'
 
 /* -----------------    COMPONENT     ------------------ */
 
 class UserEdges extends Component {
   componentDidMount () {
     this.props.fetchAssignmentsData()
+    this.props.fetchCorpsesData()
   }
 
   render () {
-    const { assignments } = this.props
+    const { assignments, corpses } = this.props
     const navigate = this.props.navigation.navigate
     let cell = ''
 
     return (
       <ScrollView>
         <View style={styles.container}>
-
           {
             assignments
-            .filter(assignment => assignment.assigneeId === 1 && assignment.complete === false)
-            .map(assignment => {
-
-              if (assignment.cell === 'middle') {
-                cell = 'top'
-              }
-              if (assignment.cell === 'bottom') {
-                cell = 'middle'
-              }
-              return (
-                <TouchableHighlight key={assignment.photoId} onPress={() => { navigate('EdgeCameraScreen', { assignment: assignment, cell: cell } )}}>
-
-                  <View key={assignment.photoId}>
-                    <Text>Assignment# {assignment.id} {assignment.cell}</Text>
-                    <Image
-                      style={styles.corpseEdge}
-                      source={{uri: `${imageUrl}${assignment.corpseId}-${assignment.assignorId}-${cell}-edge.jpeg`}}
-                    />
+              .filter(assignment => assignment.assigneeId === 1 && assignment.complete === false)
+              .map(assignment => {
+                if (assignment.cell === 'middle') {
+                  cell = 'top'
+                }
+                if (assignment.cell === 'bottom') {
+                  cell = 'middle'
+                }
+                const corpse = corpses.find(corpse => corpse.id === assignment.corpseId)
+                return (
+                  <View key={assignment.corpseId} style={styles.edge}>
+                    <View style={styles.imageEdgeTop}>
+                      <Text style={styles.textCorpse}>{corpse.photos.map((photo, i) => { return photo.user.username }).join('|')}</Text>
+                      <Text style={styles.titleCorpse}>{corpse.title}</Text>
+                    </View>
+                    <View style={styles.viewEdge}>
+                      <TouchableHighlight onPress={() => { navigate('EdgeCameraScreen', { assignment: assignment, cell: cell }) }}>
+                        <Image
+                          style={styles.viewEdge}
+                          source={{uri: `${imageUrl}${assignment.corpseId}-${assignment.assignorId}-${cell}-edge.jpeg`}}
+                        />
+                      </TouchableHighlight>
+                    </View>
                   </View>
-                </TouchableHighlight>
-              )
-            })
+                )
+              })
           }
-
         </View>
       </ScrollView>
     )
@@ -57,28 +60,18 @@ class UserEdges extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    assignments: state.assignments
+    assignments: state.assignments,
+    corpses: state.corpses
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
   fetchAssignmentsData: () => {
     dispatch(fetchAssignments())
+  },
+  fetchCorpsesData: () => {
+    dispatch(fetchCorpses())
   }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserEdges)
-
-/* -----------------    STYLES     ------------------ */
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center'
-  },
-  corpseEdge: {
-    height: 10,
-    width: 600
-
-  }
-})

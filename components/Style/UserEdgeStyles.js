@@ -6,34 +6,31 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center'
   },
-  corpse: {
+  edge: {
     width: 360,
-    height: 420,
+    height: 50,
     marginTop: 15,
     marginBottom: 15,
     alignItems: 'center'
   },
-  imageCorpseTop: {
+  imageEdgeTop: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: 360,
     height: 30
   },
-  imageCorpseBottom: {
+  imageEdgeBottom: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: 360,
     height: 30
   },
-  viewCorpse: {
-    width: 360,
-    height: 360,
+  viewEdge: {
+    height: 20,
+    width: 600,
     alignItems: 'center'
-  },
-  textLikedCorpse: {
-    fontWeight: 'bold'
   },
   titleCorpse: {
     fontWeight: 'bold'
