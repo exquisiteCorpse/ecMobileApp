@@ -5,7 +5,7 @@ import SafariView from 'react-native-safari-view'
 import styles from './Style/LoginStyles.js'
 const currentURL={
   ip:'https://192.168.1.4/auth/facebook',
-  heroku: 'https://exquisitecorpse-fsa.herokuapp.com/auth/facebook'
+  heroku: 'https://exquisitecorpse-fsa.herokuapp.com/auth/facebook/facebook'
 
 }
 export default class App extends Component {
