@@ -27,7 +27,6 @@ const DrawerIcon = ({ navigate }) => {
 const WelcomeStack = StackNavigator({
   AppScreen: {
     screen: App,
-    //navigationOptions: { header: null }
     navigationOptions: ({ navigation }) => ({
       title: 'Welcome',
       headerLeft: <DrawerIcon {...navigation} />
