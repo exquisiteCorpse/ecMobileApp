@@ -3,7 +3,7 @@ import { StyleSheet, Text, ScrollView, View, Image } from 'react-native'
 import LikeButton from '../Button/LikeButton'
 import styles from '../Style/UserHomeStyles'
 import {connect} from 'react-redux'
-import { fetchLikes, fetchCorpes, destroyLike, postNewLike } from '../../store'
+import { fetchLikes, fetchCorpses, destroyLike, postNewLike } from '../../store'
 import { imageUrl } from '../../store/url'
 class UserHome extends Component {
   componentDidMount () {
@@ -33,23 +33,25 @@ class UserHome extends Component {
           {this.props.corpses.map((corpse) => {
             if (corpse.complete) {
               let userLike = userLikes.includes(corpse.id)
-              return (<View key={corpse.id} style={styles.corpse}>
-                <View style={styles.imageCorpseTop}>
-                  <Text style={styles.textCorpse}>{corpse.photos.map((photo, i) => { return photo.user.username }).join('|')}</Text>
-                  <Text style={styles.titleCorpse}>{corpse.title}</Text>
-                  <Text style={styles.textCorpse}>...</Text>
+              return (
+                <View key={corpse.id} style={styles.corpse}>
+                  <View style={styles.imageCorpseTop}>
+                    <Text style={styles.textCorpse}>{corpse.photos.map((photo, i) => { return photo.user.username }).join('|')}</Text>
+                    <Text style={styles.titleCorpse}>{corpse.title}</Text>
+                    <Text style={styles.textCorpse}>...</Text>
+                  </View>
+                  <View style={styles.viewCorpse}>
+                    <Image
+                      style={styles.viewCorpse}
+                      source={{uri: `${imageUrl}corpse-${corpse.id}.jpeg`}}
+                    />
+                  </View>
+                  <View style={styles.imageCorpseBottom}>
+                    <LikeButton corpseId={corpse.id} userLike={userLike} userId='1' likes={likesCorpse[corpse.id]} style={styles} handleLike={this.props.handleLike} />
+                    <Text>3 Share</Text>
+                  </View>
                 </View>
-                <View style={styles.viewCorpse}>
-                  <Image
-                    style={styles.viewCorpse}
-                    source={{uri: `${imageUrl}corpse-${corpse.id}.jpeg`}}
-                  />
-                </View>
-                <View style={styles.imageCorpseBottom}>
-                  <LikeButton corpseId={corpse.id} userLike={userLike} userId='1' likes={likesCorpse[corpse.id]} style={styles} handleLike={this.props.handleLike} />
-                  <Text>3 Share</Text>
-                </View>
-              </View>)
+              )
             }
           })}
         </View>
@@ -67,7 +69,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   fetchData: () => {
-    dispatch(fetchCorpes())
+    dispatch(fetchCorpses())
       .then(() => {
         dispatch(fetchLikes())
       })
