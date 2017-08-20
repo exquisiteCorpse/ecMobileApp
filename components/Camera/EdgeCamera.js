@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     left: 0,
-    height: 10,
+    height: 20,
     justifyContent: 'space-between'
   }
 })
