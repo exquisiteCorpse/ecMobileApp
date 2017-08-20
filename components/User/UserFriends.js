@@ -52,9 +52,17 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       title: 'Testing'
     }
     if (ownProps.corpseInfo) {
-      dispatch(postNewPhoto(photoData, ownProps.corpseInfo))
+      const corpseInfo = ownProps.corpseInfo.assignment
+      const body = {
+        corpseId: corpseInfo.corpseId,
+        userId: corpseInfo.assigneeId,
+        cell: corpseInfo.cell
+      }
+
+
+      dispatch(postNewPhoto(photoData, body))
         .then((photo) => {
-          let cell = ownProps.corpseInfo.cell
+          let cell = 'middle'
           if (photo.cell === 'middle') {
             cell = 'bottom'
           }
@@ -63,7 +71,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
             photoId: photo.id,
             assignorId: userId,
             assigneeId: assigneeId,
-            corpseId: ownProps.corpseInfo.corpseId
+            corpseId: corpseInfo.corpseId
           }
           dispatch(makeNewAssign(assign))
         })

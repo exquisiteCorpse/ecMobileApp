@@ -23,7 +23,7 @@ class UserEdges extends Component {
         <View style={styles.container}>
           {
             assignments
-              .filter(assignment => assignment.assignorId === 1)
+              .filter(assignment => assignment.assigneeId === 1 && assignment.complete === false)
               .map(assignment => {
                 if (assignment.cell === 'middle') {
                   cell = 'top'

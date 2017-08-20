@@ -28,8 +28,8 @@ const styles = StyleSheet.create({
     height: 30
   },
   viewEdge: {
-    width: 360,
-    height: 75,
+    height: 10,
+    width: 600,
     alignItems: 'center'
   },
   titleCorpse: {
