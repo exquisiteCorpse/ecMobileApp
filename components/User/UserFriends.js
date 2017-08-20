@@ -9,12 +9,15 @@ class UserFriends extends Component {
     this.props.fetchPhoto()
     this.props.fetchFriendsData()
   }
+
   render () {
     const { friends } = this.props
     const { singlePhoto } = this.props
+    const { corpseTitle } = this.props
     return (
       <ScrollView>
         <View style={styles.container}>
+          <Text style={{ fontSize: 15 }}>{`Choose friend to send ${corpseTitle} to:`}</Text>
           {friends && friends.map(friend => {
             return (
               <TouchableOpacity
@@ -49,7 +52,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     const userId = 1
     const corpse = {
       userId: userId,
-      title: 'Testing'
+      title: ownProps.corpseTitle
     }
     if (ownProps.corpseInfo) {
       dispatch(postNewPhoto(photoData, ownProps.corpseInfo))

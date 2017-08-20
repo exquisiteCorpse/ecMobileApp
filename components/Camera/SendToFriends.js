@@ -8,8 +8,15 @@ import CompleteCorpse from '../User/CompleteCorpse'
 import styles from '../Style/FriendsListStyles'
 
 class SendToFriends extends Component {
+  constructor () {
+    super()
+    this.state = {
+      corpseTitle: ''
+    }
+  }
   componentDidMount () {
     this.props.fetchPhoto()
+
     Orientation.unlockAllOrientations()
   }
 
@@ -18,21 +25,28 @@ class SendToFriends extends Component {
     const corpseInfo = this.props.navigation.state.params
     let displayStage
     let displayTitle = null
-    let displayText = null
+
     if (corpseInfo) {
-      //corpseInfo.cell = 'bottom'
+      // corpseInfo.cell = 'bottom'
       if (corpseInfo.cell === 'bottom') {
         displayStage = <CompleteCorpse navigate={navigate} corpseInfo={corpseInfo}/>
       } else {
-
-        displayText = <Text style={{ fontSize: 20 }}>Choose Wisely...</Text>
-        displayStage = <UserFriends navigate={navigate} corpseInfo={corpseInfo}/>
+        displayStage = <UserFriends navigate={navigate} corpseInfo={corpseInfo} />
       }
     } else {
-      displayTitle =  <View><TextInput defaultValue={'Enter Corpse Title'}/></View>
-      displayText = <Text style={{ fontSize: 20 }}>Choose Wisely...</Text>
-      displayStage = <UserFriends navigate={navigate} />
+      displayTitle = <View>
+        <TextInput
+          defaultValue={'Enter Title'}
+          onSubmitEditing={(event) => {
+            this.setState({corpseTitle: event.nativeEvent.text})
+          }}
+          maxLength={15}
+        /></View>
+      if (this.state.corpseTitle.length) {
+        displayStage = <UserFriends navigate={navigate} corpseTitle={this.state.corpseTitle}/>
+      }
     }
+
     return (
       <View style={{ display: 'flex' }}>
         <Image
@@ -42,7 +56,6 @@ class SendToFriends extends Component {
         />
         {displayTitle}
         <View style={styles.container}>
-          {displayText}
           {displayStage}
         </View>
       </View>
@@ -74,7 +87,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(SendToFriends)
               this.props.navigation.navigate('ConfirmationScreen')
             }}
           />
-
 
     postPhoto: (photoData) => {
     const userId = 1
