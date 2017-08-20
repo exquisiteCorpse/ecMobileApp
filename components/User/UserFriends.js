@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchFriends, getPhoto, postNewPhoto, makeNewCorpe, makeNewAssign } from '../../store'
+import { fetchFriends, getPhoto, postNewPhoto, makeNewCorpe, makeNewAssign, updateStatusAssignments } from '../../store'
 import { StyleSheet, Text, ScrollView, View, Image, TouchableOpacity } from 'react-native'
 import styles from '../Style/FriendsListStyles'
 
@@ -59,7 +59,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         cell: corpseInfo.cell
       }
 
-
       dispatch(postNewPhoto(photoData, body))
         .then((photo) => {
           let cell = 'middle'
@@ -74,6 +73,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
             corpseId: corpseInfo.corpseId
           }
           dispatch(makeNewAssign(assign))
+            .then(() => {
+              dispatch(updateStatusAssignments(corpseInfo.id, {complete: true}))
+            })
         })
     } else {
       dispatch(makeNewCorpe(corpse))

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchFriends, getPhoto, postNewPhoto, makeNewCorpe, makeNewAssign } from '../../store'
+import { fetchFriends, getPhoto, postNewPhoto, completeCorpes, updateStatusAssignments } from '../../store'
 import { StyleSheet, Text, ScrollView, View, Image, Button } from 'react-native'
 import styles from '../Style/FriendsListStyles'
 
@@ -41,12 +41,17 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   postPhoto: (photoData) => {
     const body = {
-      corpseId: ownProps.corpseInfo.corpseId,
-      userId: ownProps.corpseInfo.assigneeId,
-      cell: ownProps.corpseInfo.cell
+      corpseId: ownProps.corpseInfo.assignment.corpseId,
+      userId: ownProps.corpseInfo.assignment.assigneeId,
+      cell: ownProps.corpseInfo.assignment.cell
     }
     //console.log(ownProps.corpseInfo)
     dispatch(postNewPhoto(photoData, body))
+      .then(() => {
+        dispatch(completeCorpes(ownProps.corpseInfo.assignment.corpseId, {complete: true}))
+        dispatch(updateStatusAssignments(ownProps.corpseInfo.assignment.id, {complete: true}))
+      })
+
     ownProps.navigate('HomeScreen')
   }
 })
