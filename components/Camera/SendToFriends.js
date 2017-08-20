@@ -8,8 +8,15 @@ import CompleteCorpse from '../User/CompleteCorpse'
 import styles from '../Style/FriendsListStyles'
 
 class SendToFriends extends Component {
+  constructor () {
+    super()
+    this.state = {
+      corpseTitle: ''
+    }
+  }
   componentDidMount () {
     this.props.fetchPhoto()
+
     Orientation.unlockAllOrientations()
   }
 
@@ -17,23 +24,29 @@ class SendToFriends extends Component {
     const { navigate } = this.props.navigation
     const assignment = this.props.navigation.state.params
     let displayStage = null
-
     let displayTitle = null
+
     let displayText = null
     //Nav based on assignment
     if (assignment) {
-      
+
       if (assignment.assignment.cell === 'bottom') {
         displayStage = <CompleteCorpse navigate={navigate} corpseInfo={assignment}/>
       } else {
-        displayText = <Text style={{ fontSize: 20 }}>Choose Wisely...</Text>
         displayStage = <UserFriends navigate={navigate} corpseInfo={assignment}/>
       }
     } else {
       //Title shows if you its new
-      displayTitle =  <View><TextInput defaultValue={'Enter Corpse Title'}/></View>
-      displayText = <Text style={{ fontSize: 20 }}>Choose Wisely...</Text>
-      displayStage = <UserFriends navigate={navigate} />
+      displayTitle = <View><TextInput
+        defaultValue={'Enter Title'}
+        onSubmitEditing={(event) => {
+          this.setState({corpseTitle: event.nativeEvent.text})
+        }}
+        maxLength={15}
+      /></View>
+      if (this.state.corpseTitle.length) {
+        displayStage = <UserFriends navigate={navigate} corpseTitle={this.state.corpseTitle}/>
+      }
     }
 
     return (
@@ -45,7 +58,6 @@ class SendToFriends extends Component {
         />
         {displayTitle}
         <View style={styles.container}>
-          {displayText}
           {displayStage}
         </View>
       </View>
