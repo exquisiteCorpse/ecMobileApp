@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   },
   edge: {
     width: 360,
-    height: 420,
+    height: 50,
     marginTop: 15,
     marginBottom: 15,
     alignItems: 'center'
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     height: 30
   },
   viewEdge: {
-    height: 10,
+    height: 20,
     width: 600,
     alignItems: 'center'
   },

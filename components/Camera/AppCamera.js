@@ -22,7 +22,7 @@ class AppCamera extends Component {
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}
         >
-          {/* <Image style={styles.edge} source={{uri: `${imageUrl}  /3/3-top-edge.jpg`}} /> */}
+          <Text style={styles.edgeblock} />
           <Text style={styles.capture} onPress={() => this.props.takePicture(camera)} >[capture]</Text>
         </Camera>
       </View>
@@ -78,9 +78,7 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     left: 0,
-    height: 75,
+    height: 20,
     justifyContent: 'space-between'
   }
 })
-
-//{<Text style={styles.edgeblock} />}
