@@ -15,35 +15,40 @@ class UserEdges extends Component {
   render () {
     const { assignments } = this.props
     const navigate = this.props.navigation.navigate
+    let cell = ''
 
     return (
-      <View style={styles.container}>
-        <ScrollView>
+      <ScrollView>
+        <View style={styles.container}>
+
           {
             assignments
-              .filter(assignment => assignment.assignorId === 1)
-              .map(assignment => {
-                // if (assignment.cell === 'bottom') {
-                //   assignment.cell = 'bottom'
-                // }
-                // if (assignment.cell === 'middle') {
-                //   assignment.cell = 'bottom'
-                // }
-                return (
-                  <TouchableHighlight key={assignment.photoId} onPress={() => { navigate('EdgeCameraScreen') }}>
-                    <View key={assignment.photoId}>
-                      <Image
-                        style={styles.corpseEdge}
-                        source={{uri: `${imageUrl}${assignment.corpseId}-${assignment.assignorId}-top-edge.jpeg`}}
-                        // source={{uri: 'https://s3.amazonaws.com/exquisitecorpse-s3-001/3-1-top-edge.jpeg'}}
-                      />
-                    </View>
-                  </TouchableHighlight>
-                )
-              })
+            .filter(assignment => assignment.assigneeId === 1 && assignment.complete === false)
+            .map(assignment => {
+
+              if (assignment.cell === 'middle') {
+                cell = 'top'
+              }
+              if (assignment.cell === 'bottom') {
+                cell = 'middle'
+              }
+              return (
+                <TouchableHighlight key={assignment.photoId} onPress={() => { navigate('EdgeCameraScreen', { assignment: assignment, cell: cell } )}}>
+
+                  <View key={assignment.photoId}>
+                    <Text>Assignment# {assignment.id} {assignment.cell}</Text>
+                    <Image
+                      style={styles.corpseEdge}
+                      source={{uri: `${imageUrl}${assignment.corpseId}-${assignment.assignorId}-${cell}-edge.jpeg`}}
+                    />
+                  </View>
+                </TouchableHighlight>
+              )
+            })
           }
-        </ScrollView>
-      </View>
+
+        </View>
+      </ScrollView>
     )
   }
 }
@@ -72,8 +77,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   corpseEdge: {
-    height: 120,
-    width: 360,
-    justifyContent: 'center'
+    height: 10,
+    width: 600
+
   }
 })

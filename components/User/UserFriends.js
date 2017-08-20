@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchFriends, getPhoto, postNewPhoto, makeNewCorpe, makeNewAssign } from '../../store'
+import { fetchFriends, getPhoto, postNewPhoto, makeNewCorpe, makeNewAssign, updateStatusAssignments } from '../../store'
 import { StyleSheet, Text, ScrollView, View, Image, TouchableOpacity } from 'react-native'
 import styles from '../Style/FriendsListStyles'
 
@@ -13,11 +13,10 @@ class UserFriends extends Component {
   render () {
     const { friends } = this.props
     const { singlePhoto } = this.props
-    const { corpseTitle } = this.props
     return (
       <ScrollView>
         <View style={styles.container}>
-          <Text style={{ fontSize: 15 }}>{`Choose friend to send ${corpseTitle} to:`}</Text>
+          <Text style={{ fontSize: 15 }}>{`Choose friend to send to:`}</Text>
           {friends && friends.map(friend => {
             return (
               <TouchableOpacity
@@ -55,9 +54,16 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       title: ownProps.corpseTitle
     }
     if (ownProps.corpseInfo) {
-      dispatch(postNewPhoto(photoData, ownProps.corpseInfo))
+      const corpseInfo = ownProps.corpseInfo.assignment
+      const body = {
+        corpseId: corpseInfo.corpseId,
+        userId: corpseInfo.assigneeId,
+        cell: corpseInfo.cell
+      }
+
+      dispatch(postNewPhoto(photoData, body))
         .then((photo) => {
-          let cell = ownProps.corpseInfo.cell
+          let cell = 'middle'
           if (photo.cell === 'middle') {
             cell = 'bottom'
           }
@@ -66,9 +72,12 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
             photoId: photo.id,
             assignorId: userId,
             assigneeId: assigneeId,
-            corpseId: ownProps.corpseInfo.corpseId
+            corpseId: corpseInfo.corpseId
           }
           dispatch(makeNewAssign(assign))
+            .then(() => {
+              dispatch(updateStatusAssignments(corpseInfo.id, {complete: true}))
+            })
         })
     } else {
       dispatch(makeNewCorpe(corpse))

@@ -22,26 +22,28 @@ class SendToFriends extends Component {
 
   render () {
     const { navigate } = this.props.navigation
-    const corpseInfo = this.props.navigation.state.params
-    let displayStage
+    const assignment = this.props.navigation.state.params
+    let displayStage = null
     let displayTitle = null
 
-    if (corpseInfo) {
-      // corpseInfo.cell = 'bottom'
-      if (corpseInfo.cell === 'bottom') {
-        displayStage = <CompleteCorpse navigate={navigate} corpseInfo={corpseInfo}/>
+    let displayText = null
+    //Nav based on assignment
+    if (assignment) {
+
+      if (assignment.assignment.cell === 'bottom') {
+        displayStage = <CompleteCorpse navigate={navigate} corpseInfo={assignment}/>
       } else {
-        displayStage = <UserFriends navigate={navigate} corpseInfo={corpseInfo} />
+        displayStage = <UserFriends navigate={navigate} corpseInfo={assignment}/>
       }
     } else {
-      displayTitle = <View>
-        <TextInput
-          defaultValue={'Enter Title'}
-          onSubmitEditing={(event) => {
-            this.setState({corpseTitle: event.nativeEvent.text})
-          }}
-          maxLength={15}
-        /></View>
+      //Title shows if you its new
+      displayTitle = <View><TextInput
+        defaultValue={'Enter Title'}
+        onSubmitEditing={(event) => {
+          this.setState({corpseTitle: event.nativeEvent.text})
+        }}
+        maxLength={15}
+      /></View>
       if (this.state.corpseTitle.length) {
         displayStage = <UserFriends navigate={navigate} corpseTitle={this.state.corpseTitle}/>
       }
@@ -76,48 +78,3 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SendToFriends)
-
-/*
-
-   <Button
-            title='send'
-            color='#228b22'
-            onPress={() => {
-              this.props.postPhoto(this.props.singlePhoto)
-              this.props.navigation.navigate('ConfirmationScreen')
-            }}
-          />
-
-    postPhoto: (photoData) => {
-    const userId = 1
-    const corpse = {
-      userId: userId,
-      title: 'Testing'
-    }
-    dispatch(makeNewCorpe(corpse))
-      .then((corpseId) => {
-        const body = {
-          cell: 'top',
-          corpseId: corpseId,
-          userId: userId
-        }
-        dispatch(postNewPhoto(photoData, body))
-          .then((photo) => {
-            console.log(photo.id)
-            let cell = 'middle'
-            if (photo.cell === 'middle') {
-              cell = 'bottom'
-            }
-            const assign = {
-              cell: cell,
-              photoId: photo.id,
-              assignorId: userId,
-              assigneeId: userId,
-              corpseId: corpseId
-            }
-            dispatch(makeNewAssign(assign))
-          })
-      })
-    ownProps.navigation.navigate('ConfirmationScreen')
-  }
-*/
