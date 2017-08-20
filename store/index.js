@@ -9,6 +9,7 @@ import assignEdge from './assignEdge'
 import assignments from './assignments'
 import photos from './photos'
 import fbUser from './fbUser'
+import dbUser from './dbUser'
 
 const reducer = combineReducers({
   singlePhoto,
@@ -18,7 +19,8 @@ const reducer = combineReducers({
   assignEdge,
   assignments,
   photos,
-  fbUser
+  fbUser,
+  dbUser
 })
 
 const middleware = applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
@@ -34,3 +36,4 @@ export * from './assignEdge'
 export * from './assignments'
 export * from './photos'
 export * from './fbUser'
+export * from './dbUser'

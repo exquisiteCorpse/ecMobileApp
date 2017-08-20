@@ -14,9 +14,9 @@ const findOrCreateUser = (user) => {
 
 /* ------------       THUNK CREATORS     ------------------ */
 
-export const fetchFindOrCreateUser = (token) =>
+export const fetchFindOrCreateUser = (fbUser) =>
   dispatch =>
-    axios.get(`${apiUrl}/users`)
+    axios.post(`${apiUrl}/users/fbUser`, fbUser)
       .then((res) => {
         dispatch(findOrCreateUser(res.data))
         return res.data
