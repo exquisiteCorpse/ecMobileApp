@@ -40,6 +40,7 @@ export default class App extends Component {
       // Decode the user string and parse it into JSON
       user: JSON.parse(decodeURI(user_string))
     })
+
     if (Platform.OS === 'ios') {
       SafariView.dismiss()
     }
@@ -65,7 +66,8 @@ export default class App extends Component {
   };
 
   render() {
-    const { user } = this.state;
+    const { user } = this.state
+    
     return (
       <View style={styles.container}>
         { user
@@ -79,18 +81,18 @@ export default class App extends Component {
               </View>
             </View>
           : // Show Please log in message if not
-            <View style={styles.content}>
-              <Text style={styles.header}>
-                Welcome to {"\n"}
-                Exquisite Corpse!
-              </Text>
-              <View style={styles.avatar}>
-                <Icon name="user-circle" size={100} color="rgba(0,0,0,.09)" />
-              </View>
-              <Text style={styles.text}>
-                Please log in to continue
-              </Text>
+          <View style={styles.content}>
+            <Text style={styles.header}>
+              Welcome to {"\n"}
+              Exquisite Corpse!
+            </Text>
+            <View style={styles.avatar}>
+              <Icon name="user-circle" size={100} color="rgba(0,0,0,.09)" />
             </View>
+            <Text style={styles.text}>
+              Please log in to continue
+            </Text>
+          </View>
         }
         {/* Login buttons */}
         <View style={styles.buttons}>
@@ -112,5 +114,3 @@ const iconStyles = {
   borderRadius: 10,
   iconStyle: { paddingVertical: 5 },
 };
-
-

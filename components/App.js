@@ -15,11 +15,12 @@ import styles from './Style/AppWelcomeStyles'
 export default class App extends Component {
 
   render () {
+
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
         Welcome to Exquisite Corpse!</Text>
-        <Login />
+        <Login/>
       </View>
     )
   }
