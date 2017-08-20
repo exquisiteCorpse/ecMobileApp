@@ -11,11 +11,14 @@ import FBSDK, { LoginManager } from 'react-native-fbsdk'
 import Login, { _fbAuth } from './Button/LoginButton'
 //import Login from './Login'
 import styles from './Style/AppWelcomeStyles'
+import Orientation from 'react-native-orientation'
 
 export default class App extends Component {
+  componentDidMount () {
+    Orientation.unlockAllOrientations()
+  }
 
   render () {
-
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>

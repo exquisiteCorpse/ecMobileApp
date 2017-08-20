@@ -9,6 +9,7 @@ const GET_CORPSES = 'GET_CORPSES'
 const GET_CORPSE = 'GET_CORPSE'
 const MAKE_CORPSES = 'MAKE_CORPSES'
 const UPDATE_CORPSE = 'UPDATE_CORPSE'
+const EMAIL_CORPSE = 'EMAIL_CORPSE'
 
 /* ------------   ACTION CREATORS     ------------------ */
 
@@ -26,6 +27,10 @@ const makeCorpes = (corpse) => {
 
 const updateCorpes = (corpse) => {
   return { type: UPDATE_CORPSE, corpse }
+}
+
+const emailCorpse = (emailInfo) => {
+  return {type: EMAIL_CORPSE, emailInfo}
 }
 
 /* ------------       THUNK CREATORS     ------------------ */
