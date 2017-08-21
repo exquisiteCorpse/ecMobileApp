@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
   },
   welcome: {
     fontFamily: 'SedgwickAveDisplay-Regular',
-    paddingTop: 75,
-    paddingBottom: 15,
+    backgroundColor: 'white',
+
     fontSize: 35,
     color: 'black'
   },
