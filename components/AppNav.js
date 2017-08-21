@@ -93,17 +93,17 @@ const AppNav = DrawerNavigator({
   },
   Camera: { screen: AddNewCorpseStack,
     navigationOptions: {
-      title: 'Add New Corpse'
+      title: 'Start New'
     }
   },
   UserHome: { screen: AllCorpsesStack,
     navigationOptions: {
-      title: 'All Your Corpses'
+      title: 'Gallery'
     }
   },
   UserEdges: { screen: AllEdgesStack,
     navigationOptions: {
-      title: 'Unfinished Corpses'
+      title: 'To Complete'
     }
   }
 })
