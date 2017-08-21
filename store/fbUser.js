@@ -25,7 +25,7 @@ export const fetchUser = (token) =>
 
 /* ------------       REDUCERS     ------------------ */
 
-export default function (state = [], action) {
+export default function (state = {}, action) {
   switch (action.type) {
     case GET_USER:
       return action.user
@@ -33,24 +33,3 @@ export default function (state = [], action) {
       return state
   }
 }
-
-// function initUser (token) {
-//   return fetch('https://graph.facebook.com/v2.5/me?fields=email,name,friends&access_token=' + token)
-//     .then((response) => response.json())
-//     .then((json) => {
-//       const user = {}
-//       // Some user object has been set up somewhere, build that user here
-//       user.name = json.name
-//       user.id = json.id
-//       user.user_friends = json.friends
-//       user.email = json.email
-//       user.username = json.name
-//       user.loading = false
-//       user.loggedIn = true
-//       user.avatar = setAvatar(json.id)
-//     return user
-//   })
-//   .catch(() => {
-//     reject('ERROR GETTING DATA FROM FACEBOOK')
-//   })
-// }

@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchFriends, getPhoto, postNewPhoto, makeNewCorpe, makeNewAssign, updateStatusAssignments } from '../../store'
+import { fetchFriends, getPhoto, postNewPhoto, makeNewCorpe, makeNewAssign, updateStatusAssignments, getUserLoggedIn } from '../../store'
 import { StyleSheet, Text, ScrollView, View, Image, TouchableOpacity } from 'react-native'
 import styles from '../Style/FriendsListStyles'
 
 class UserFriends extends Component {
   componentDidMount () {
-    this.props.fetchPhoto()
-    this.props.fetchFriendsData()
+    this.props.fetchData()
   }
 
   render () {
@@ -36,19 +35,19 @@ class UserFriends extends Component {
 const mapStateToProps = (state) => {
   return {
     friends: state.friends,
-    singlePhoto: state.singlePhoto
+    singlePhoto: state.singlePhoto,
+    dbUser: dbUser
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  fetchFriendsData: () => {
+  fetchData: () => {
     dispatch(fetchFriends())
-  },
-  fetchPhoto: () => {
+    dispatch(getUserLoggedIn())
     dispatch(getPhoto())
   },
   postPhoto: (photoData, assigneeId) => {
-    const userId = 1
+    const userId = ownProps.dbUser.id
     const corpse = {
       userId: userId,
       title: ownProps.corpseTitle
