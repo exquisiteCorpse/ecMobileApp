@@ -25,8 +25,6 @@ class SendToFriends extends Component {
     const assignment = this.props.navigation.state.params
     let displayStage = null
     let displayTitle = null
-
-    // let displayText = null
     // Nav based on assignment
     if (assignment) {
 

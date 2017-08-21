@@ -15,27 +15,25 @@ const shareLinkContent = {
 }
 
 class UserHome extends Component {
-  constructor() {
+  constructor () {
     super()
-    const shareLinkContent = {
-      contentType: 'link',
-      contentUrl: 'https://www.facebook.com/',
-      contentDescription: 'Facebook sharing is easy!'
+    this.state = {
+      shareLinkContent: shareLinkContent
     }
-    this.state = {shareLinkContent: shareLinkContent}
+    this.shareLinkWithShareDialog = this.shareLinkWithShareDialog.bind(this)
   }
 
-  shareLinkWithShareDialog () {
+  shareLinkWithShareDialog (imageInfo) {
     var tmp = this
-    ShareDialog.canShow(this.state.shareLinkContent).then(
+    ShareDialog.canShow(imageInfo).then(
       (canShow) => {
         if (canShow) {
-          return ShareDialog.show(tmp.state.shareLinkContent)
+          return ShareDialog.show(imageInfo)
         }
       }
     ).then((result) => {
       if (result.isCancelled) {
-        alert ('Share cancelled');
+        alert ('Share cancelled')
       } else {
         alert ('Share success with postId: ' + result.postId)
       }
@@ -44,6 +42,7 @@ class UserHome extends Component {
       alert ('Share fail with error: ' + error)
     })
   }
+
   componentDidMount () {
     this.props.fetchData()
   }
@@ -71,11 +70,16 @@ class UserHome extends Component {
           {this.props.corpses.map((corpse) => {
             if (corpse.complete) {
               let userLike = userLikes.includes(corpse.id)
+              const imageInfo = {
+                contentType: 'link',
+                contentUrl: `${imageUrl}corpse-${corpse.id}.jpeg`,
+                contentDescription: 'Recent completed Exquisite Corpse'
+              }
               return (
                 <View key={corpse.id} style={styles.corpse}>
                   <View style={styles.imageCorpseTop}>
                     <Text style={styles.titleCorpse}>{corpse.title}</Text>
-                    <Text style={styles.textCorpse}>{corpse.photos.map((photo, i) => { return photo.user.username }).join(' | ')}</Text>
+                    <Text style={styles.textCorpse}>{corpse.photos.map((photo, i) => { return photo.user.username.split(' ').slice(0, 1) }).join(' | ')}</Text>
 
                   </View>
                   <View style={styles.viewCorpse}>
@@ -93,7 +97,9 @@ class UserHome extends Component {
                       <Icon name='facebook-square'
                         size={25}
                         color='#6495ed'
-                        onPress={this.shareLinkWithShareDialog.bind(this)}
+                        onPress={() => {
+                          this.shareLinkWithShareDialog(imageInfo)
+                        }}
                       />
                     </View>
 
@@ -116,7 +122,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchData: () => {
     dispatch(getUserLoggedIn())
     dispatch(fetchCorpses())
@@ -124,6 +130,7 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(fetchLikes())
       })
   },
+
   handleLike (corpseId, userId, userLike) {
     const like = {
       corpseId: +corpseId,

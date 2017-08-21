@@ -9,15 +9,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  welcome: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    textShadowColor: 'gray',
-    color: 'black',
-    paddingTop: 100,
-    paddingBottom: 20,
-    fontFamily: font
-  },
   background: {
     flex: 1,
     resizeMode: 'stretch',
@@ -31,6 +22,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     margin: 20
+  },
+  welcome: {
+    fontFamily: 'SedgwickAveDisplay-Regular',
+    backgroundColor: 'white',
+
+    fontSize: 35,
+    color: 'black'
   },
   confirmation: {
     fontSize: 25,

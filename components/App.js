@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+
+//import Login from './Login'
 import { View, Text, Image } from 'react-native'
 import Login from './Button/LoginButton'
+
 import styles from './Style/AppWelcomeStyles'
 import Orientation from 'react-native-orientation'
 
@@ -14,7 +17,7 @@ export default class App extends Component {
       <Image source={require('../public/images/guy.jpg')} style={styles.background}>
         <View style={styles.container}>
           <Text style={styles.welcome}>Exquisite Corpse</Text>
-          <Login />
+          <Login/>
         </View>
       </Image>
 

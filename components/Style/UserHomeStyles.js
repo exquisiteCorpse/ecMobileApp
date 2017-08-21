@@ -1,7 +1,13 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
 
-const font = 'sans-serif-thin'
+const jBold = 'JosefinSlab-Bold'
+const jReg = 'JosefinSlab-Regular'
+const calig = 'Calligraffitti-Regular'
+const Amatca = 'AmaticaSC-Regular'
+const AmatcaB = 'AmaticaSC-Bold'
+const fontBold = jBold
+const fontReg = jReg
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -37,21 +43,19 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   textLikedCorpse: {
-    fontWeight: 'bold',
-    fontFamily: font,
+    fontFamily: fontReg,
     color: 'black'
   },
   titleCorpse: {
-    fontWeight: 'bold',
-    fontSize: 17,
-    fontFamily: font,
+    fontSize: 25,
+    fontFamily: AmatcaB,
     color: 'black',
     marginLeft: 10
   },
   textCorpse: {
     color: '#2f4f4f',
-    fontFamily: font,
-    fontWeight: '800',
+    fontSize: 15,
+    fontFamily: Amatca,
     marginRight: 10
   }
 })

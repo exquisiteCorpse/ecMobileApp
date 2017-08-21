@@ -19,9 +19,9 @@ class UserFriends extends Component {
             return (
               <TouchableOpacity
                 key={friend.id}
-                onPress={() => this.props.postPhoto(singlePhoto, friend.id,  dbUser.id)}>
+                onPress={() => this.props.postPhoto(singlePhoto, friend.id, dbUser.id)}>
                 <Text style={styles.list} >
-                  {friend.username}  |  {friend.email}
+                  {friend.username}
                 </Text>
               </TouchableOpacity>)
           })}
