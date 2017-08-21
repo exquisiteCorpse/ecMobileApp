@@ -4,6 +4,7 @@ import { putPhoto } from '../../store'
 import Camera from 'react-native-camera'
 import {connect} from 'react-redux'
 import Orientation from 'react-native-orientation'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 class AppCamera extends Component {
   componentDidMount () {
@@ -12,7 +13,6 @@ class AppCamera extends Component {
 
   render () {
     let camera
-    let imageUrl = imageUrl | null
     return (
       <View style={styles.container}>
         <Camera
@@ -23,7 +23,10 @@ class AppCamera extends Component {
           aspect={Camera.constants.Aspect.fill}
         >
           <Text style={styles.edgeblock} />
-          <Text style={styles.capture} onPress={() => this.props.takePicture(camera)} >[capture]</Text>
+          <Icon name="camera" size={50} color={'#000000'}
+            style={{padding: 10, margin: 20}}
+            onPress={() => this.props.takePicture(camera)} />
+
         </Camera>
       </View>
     )

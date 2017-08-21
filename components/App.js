@@ -1,29 +1,23 @@
 import React, { Component } from 'react'
-import {
-  AppRegistry,
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  Linking,
-  Platform, } from 'react-native'
-import FBSDK, { LoginManager } from 'react-native-fbsdk'
-import Login, { _fbAuth } from './Button/LoginButton'
-//import Login from './Login'
+import { View, Text } from 'react-native'
+import Login from './Button/LoginButton'
 import styles from './Style/AppWelcomeStyles'
+import Orientation from 'react-native-orientation'
 
 export default class App extends Component {
+  componentDidMount () {
+    Orientation.unlockAllOrientations()
+  }
 
   render () {
-
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-        Welcome to Exquisite Corpse!</Text>
-        <Login/>
-      </View>
+      <Image source={require('../public/images/guy.jpg')} style={styles.background}>
+        <View style={styles.container}>
+          <Text style={styles.welcome}>Exquisite Corpse</Text>
+          <Login/>
+        </View>
+      </Image>
+
     )
   }
 }
-
-// <Login onPress={ this._fbAuth} />
