@@ -86,10 +86,26 @@ const AllEdgesStack = StackNavigator({
 })
 
 const AppNav = DrawerNavigator({
-  Home: { screen: WelcomeStack },
-  Camera: { screen: AddNewCorpseStack },
-  UserHome: { screen: AllCorpsesStack },
-  UserEdges: { screen: AllEdgesStack }
+  Home: { screen: WelcomeStack,
+    navigationOptions: {
+      title: 'Welcome'
+    }
+  },
+  Camera: { screen: AddNewCorpseStack,
+    navigationOptions: {
+      title: 'Start New'
+    }
+  },
+  UserHome: { screen: AllCorpsesStack,
+    navigationOptions: {
+      title: 'Gallery'
+    }
+  },
+  UserEdges: { screen: AllEdgesStack,
+    navigationOptions: {
+      title: 'To Complete'
+    }
+  }
 })
 
 export default AppNav

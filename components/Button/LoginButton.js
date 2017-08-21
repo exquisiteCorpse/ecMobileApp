@@ -1,8 +1,8 @@
 import FBSDK, { LoginButton, LoginManager, AccessToken } from 'react-native-fbsdk'
 import React, { Component} from 'react'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import {connect} from 'react-redux'
-import { fetchUser, fetchFindOrCreateUser } from '../../store'
+import { fetchUser, fetchFindOrCreateUser, getUserLoggedIn } from '../../store'
 
 export const _fbAuth = () => {
   LoginManager.logInWithReadPermissions(['public_profile', 'email'])
@@ -14,6 +14,7 @@ export const _fbAuth = () => {
 }
 
 class Login extends Component {
+
   render () {
     return (
       <View>
@@ -28,26 +29,27 @@ class Login extends Component {
                 alert ('Login was cancelled')
               } else {
                 this.props.fetchUserData()
+
               }
             }
           }
-          onLogoutFinished={() => alert (`Logged out as: ${this.props.fbUser.name}`)}
+          onLogoutFinished={() => alert (`See You Later ${this.props.dbUser}`)}
         />
       </View>
     )
+
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    fbUser: state.fbUser
+    fbUser: state.fbUser,
+    dbUser: state.dbUser
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchUserData: () => {
-    // LoginManager.logInWithReadPermissions(['public_profile', 'email'])
-    // .then(() => {
     AccessToken.getCurrentAccessToken()
       .then((data) => {
         dispatch(fetchUser(data.accessToken))
