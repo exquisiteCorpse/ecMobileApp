@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Image, Text, Button, TextInput } from 'react-native'
 import { connect } from 'react-redux'
-import { getPhoto } from '../../store'
+import { getPhoto, getUserLoggedIn } from '../../store'
 import Orientation from 'react-native-orientation'
 import UserFriends from '../User/UserFriends'
 import CompleteCorpse from '../User/CompleteCorpse'
@@ -68,13 +68,15 @@ class SendToFriends extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    singlePhoto: state.singlePhoto
+    singlePhoto: state.singlePhoto,
+    dbUser: state.dbUser
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   fetchPhoto: () => {
     dispatch(getPhoto())
+    dispatch(getUserLoggedIn())
   }
 })
 

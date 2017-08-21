@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchFriends, getPhoto, postNewPhoto, makeNewCorpe, makeNewAssign, updateStatusAssignments } from '../../store'
+import { fetchFriends, getPhoto, postNewPhoto, makeNewCorpe, makeNewAssign, updateStatusAssignments, getUserLoggedIn } from '../../store'
 import { StyleSheet, Text, ScrollView, View, Image, TouchableOpacity } from 'react-native'
 import styles from '../Style/FriendsListStyles'
 
 class UserFriends extends Component {
   componentDidMount () {
-    this.props.fetchPhoto()
-    this.props.fetchFriendsData()
+    this.props.fetchData(this.props.dbUser.id)
   }
 
   render () {
-    const { friends } = this.props
-    const { singlePhoto } = this.props
+    const { friends, singlePhoto, dbUser } = this.props
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -21,7 +19,7 @@ class UserFriends extends Component {
             return (
               <TouchableOpacity
                 key={friend.id}
-                onPress={() => this.props.postPhoto(singlePhoto, friend.id)}>
+                onPress={() => this.props.postPhoto(singlePhoto, friend.id,  dbUser.id)}>
                 <Text style={styles.list} >
                   {friend.username}  |  {friend.email}
                 </Text>
@@ -36,19 +34,16 @@ class UserFriends extends Component {
 const mapStateToProps = (state) => {
   return {
     friends: state.friends,
-    singlePhoto: state.singlePhoto
+    singlePhoto: state.singlePhoto,
+    dbUser: state.dbUser
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  fetchFriendsData: () => {
-    dispatch(fetchFriends())
+  fetchData: (id) => {
+    dispatch(fetchFriends(id))
   },
-  fetchPhoto: () => {
-    dispatch(getPhoto())
-  },
-  postPhoto: (photoData, assigneeId) => {
-    const userId = 1
+  postPhoto: (photoData, assigneeId, userId) => {
     const corpse = {
       userId: userId,
       title: ownProps.corpseTitle
