@@ -20,11 +20,12 @@ export default class App extends Component {
 
   render () {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-        Welcome to Exquisite Corpse!</Text>
-        <Login/>
-      </View>
+      <Image source={require('../public/images/guy.jpg')} style={styles.background}>
+        <View style={styles.container}>
+          <Text style={styles.welcome}>Exquisite Corpse</Text>
+          <Login/>
+        </View>
+      </Image>
     )
   }
 }

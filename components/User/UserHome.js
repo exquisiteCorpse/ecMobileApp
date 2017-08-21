@@ -74,9 +74,9 @@ class UserHome extends Component {
               return (
                 <View key={corpse.id} style={styles.corpse}>
                   <View style={styles.imageCorpseTop}>
-                    <Text style={styles.textCorpse}>{corpse.photos.map((photo, i) => { return photo.user.username }).join('|')}</Text>
                     <Text style={styles.titleCorpse}>{corpse.title}</Text>
-                    <Text style={styles.textCorpse}>...</Text>
+                    <Text style={styles.textCorpse}>{corpse.photos.map((photo, i) => { return photo.user.username }).join(' | ')}</Text>
+
                   </View>
                   <View style={styles.viewCorpse}>
                     <Image

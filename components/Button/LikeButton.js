@@ -14,7 +14,7 @@ export default class LikesButton extends Component {
 
           onPress={() => this.props.handleLike(this.props.corpseId, this.props.userId, this.props.userLike)}
         >
-          <Icon name='thumbs-o-up' size={15}></Icon>
+          <Icon name='thumbs-o-up' size={20} color='#008b8b'></Icon>
           <Text>{like}</Text>
 
         </TouchableOpacity>

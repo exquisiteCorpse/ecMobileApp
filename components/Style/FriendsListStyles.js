@@ -1,6 +1,8 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
 
+const font = 'sans-serif-thin'
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -10,12 +12,13 @@ const styles = StyleSheet.create({
     color: 'black',
     fontWeight: 'bold',
     fontSize: 20,
-    fontFamily: 'notoserif'
+    fontFamily: font
   },
   list: {
     color: 'black',
     fontSize: 15,
-    fontFamily: 'notoserif',
+    fontWeight: '500',
+    fontFamily: font,
     padding: 5
   }
 

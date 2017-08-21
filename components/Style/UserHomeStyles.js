@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
 
+const font = 'sans-serif-thin'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '90%',
+    width: '100%',
     height: 30
 
   },
@@ -37,11 +38,21 @@ const styles = StyleSheet.create({
   },
   textLikedCorpse: {
     fontWeight: 'bold',
-    fontFamily: 'sans-serif',
+    fontFamily: font,
     color: 'black'
   },
   titleCorpse: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: 17,
+    fontFamily: font,
+    color: 'black',
+    marginLeft: 10
+  },
+  textCorpse: {
+    color: '#2f4f4f',
+    fontFamily: font,
+    fontWeight: '800',
+    marginRight: 10
   }
 })
 

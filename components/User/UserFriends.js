@@ -16,7 +16,7 @@ class UserFriends extends Component {
     return (
       <ScrollView>
         <View style={styles.container}>
-          <Text style={styles.header}>{`Choose friend to send to:`}</Text>
+          <Text style={styles.header}>{`Choose Wisely..`}</Text>
           {friends && friends.map(friend => {
             return (
               <TouchableOpacity
