@@ -32,11 +32,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 20
   },
+  confirmation: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: 'black',
+    paddingBottom: 20,
+    fontFamily: font
+  },
   message: {
     textAlign: 'center',
     paddingBottom: 20,
     fontFamily: font,
-    fontWeight: '300',
+    fontWeight: '500',
     color: 'black'
   },
   button: {

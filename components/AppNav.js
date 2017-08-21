@@ -38,7 +38,7 @@ const AddNewCorpseStack = StackNavigator({
   AppCameraScreen: {
     screen: AppCamera,
     navigationOptions: {
-      title: 'Add New Corpse',
+      title: 'Start New',
       header: null
     }
   },
@@ -63,7 +63,7 @@ const AddNewCorpseStack = StackNavigator({
 const AllCorpsesStack = StackNavigator({
   UserHomeScreen: { screen: UserHome,
     navigationOptions: ({ navigation }) => ({
-      title: 'All Your Corpses',
+      title: 'Gallery',
       headerLeft: <DrawerIcon {...navigation} />
     })
   }
@@ -72,7 +72,7 @@ const AllCorpsesStack = StackNavigator({
 const AllEdgesStack = StackNavigator({
   UserEdgesScreen: { screen: UserEdges,
     navigationOptions: ({ navigation }) => ({
-      title: 'Unfinished Corpses',
+      title: 'To Complete',
       headerLeft: <DrawerIcon {...navigation} />
     })
   },
