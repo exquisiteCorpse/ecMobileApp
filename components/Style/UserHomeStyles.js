@@ -17,23 +17,28 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: 360,
+    width: '90%',
     height: 30
+
   },
   imageCorpseBottom: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: 360,
-    height: 30
+    width: '90%',
+    height: 30,
+    paddingTop: 10
+
   },
   viewCorpse: {
-    width: 360,
+    width: '100%',
     height: 360,
     alignItems: 'center'
   },
   textLikedCorpse: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontFamily: 'sans-serif',
+    color: 'black'
   },
   titleCorpse: {
     fontWeight: 'bold'

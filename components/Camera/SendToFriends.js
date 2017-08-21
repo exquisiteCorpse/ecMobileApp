@@ -26,8 +26,8 @@ class SendToFriends extends Component {
     let displayStage = null
     let displayTitle = null
 
-    let displayText = null
-    //Nav based on assignment
+    // let displayText = null
+    // Nav based on assignment
     if (assignment) {
 
       if (assignment.assignment.cell === 'bottom') {
@@ -36,14 +36,15 @@ class SendToFriends extends Component {
         displayStage = <UserFriends navigate={navigate} corpseInfo={assignment}/>
       }
     } else {
-      //Title shows if you its new
-      displayTitle = <View><TextInput
-        defaultValue={'Enter Title'}
-        onSubmitEditing={(event) => {
-          this.setState({corpseTitle: event.nativeEvent.text})
-        }}
-        maxLength={15}
-      /></View>
+      // Title shows if you its new
+      displayTitle = <View>
+        <TextInput
+          defaultValue={'Enter Title'}
+          onSubmitEditing={(event) => {
+            this.setState({corpseTitle: event.nativeEvent.text})
+          }}
+          maxLength={15}
+        /></View>
       if (this.state.corpseTitle.length) {
         displayStage = <UserFriends navigate={navigate} corpseTitle={this.state.corpseTitle}/>
       }
@@ -57,7 +58,7 @@ class SendToFriends extends Component {
           resizeMode={'contain'}
         />
         {displayTitle}
-        <View style={styles.container}>
+        <View >
           {displayStage}
         </View>
       </View>

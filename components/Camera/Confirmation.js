@@ -5,7 +5,6 @@ import styles from '../Style/AppWelcomeStyles'
 
 class Confirmation extends React.Component {
   componentDidMount () {
-
   }
 
   render () {

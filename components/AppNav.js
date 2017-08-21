@@ -53,6 +53,9 @@ const AddNewCorpseStack = StackNavigator({
   ConfirmationScreen: {
     screen: Confirmation,
     navigationOptions: { header: null }
+  },
+  UserEdgesScreen: {
+    screen: UserEdges
   }
 
 })
