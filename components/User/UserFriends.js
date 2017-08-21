@@ -14,14 +14,14 @@ class UserFriends extends Component {
     return (
       <ScrollView>
         <View style={styles.container}>
-          <Text style={{ fontSize: 15 }}>{`Choose friend to send to:`}</Text>
+          <Text style={styles.header}>{`Choose Wisely..`}</Text>
           {friends && friends.map(friend => {
             return (
               <TouchableOpacity
                 key={friend.id}
-                onPress={() => this.props.postPhoto(singlePhoto, friend.id, dbUser.id)}>
-                <Text>
-                  {friend.username} | {friend.email}
+                onPress={() => this.props.postPhoto(singlePhoto, friend.id,  dbUser.id)}>
+                <Text style={styles.list} >
+                  {friend.username}  |  {friend.email}
                 </Text>
               </TouchableOpacity>)
           })}

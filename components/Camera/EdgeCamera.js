@@ -5,6 +5,7 @@ import Camera from 'react-native-camera'
 import {connect} from 'react-redux'
 import Orientation from 'react-native-orientation'
 import { imageUrl } from '../../store/url'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 class EdgeCamera extends Component {
   componentDidMount () {
@@ -24,7 +25,10 @@ class EdgeCamera extends Component {
           <Image style={styles.edge}
             source={{uri: `${imageUrl}${assignment.corpseId}-${assignment.assignorId}-${cell}-edge.jpeg`}}
           />
-          <Text style={styles.capture} onPress={() => this.props.takePicture(camera)} >[capture]</Text>
+          <Icon name="camera"
+            size={50}
+            onPress={() => this.props.takePicture(camera)}
+          />
         </Camera>
       </View>
     )

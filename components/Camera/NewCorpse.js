@@ -54,7 +54,7 @@ class NewCorpse extends Component {
             />
             <Button
               title='Re-take'
-              color='#ff0000'
+              color='#8b0000'
               onPress={() => {
                 navigate(navToScreen, retakeParams)
               }}
