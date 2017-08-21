@@ -17,22 +17,18 @@ const shareLinkContent = {
 class UserHome extends Component {
   constructor () {
     super()
-    const shareLinkContent = {
-      contentType: 'link',
-      contentUrl: 'https://www.facebook.com/',
-      contentDescription: 'Facebook sharing is easy!'
-    }
     this.state = {
       shareLinkContent: shareLinkContent
     }
+    this.shareLinkWithShareDialog = this.shareLinkWithShareDialog.bind(this)
   }
 
-  shareLinkWithShareDialog () {
+  shareLinkWithShareDialog (imageInfo) {
     var tmp = this
-    ShareDialog.canShow(this.state.shareLinkContent).then(
+    ShareDialog.canShow(imageInfo).then(
       (canShow) => {
         if (canShow) {
-          return ShareDialog.show(tmp.state.shareLinkContent)
+          return ShareDialog.show(imageInfo)
         }
       }
     ).then((result) => {
@@ -74,6 +70,11 @@ class UserHome extends Component {
           {this.props.corpses.map((corpse) => {
             if (corpse.complete) {
               let userLike = userLikes.includes(corpse.id)
+              const imageInfo = {
+                contentType: 'link',
+                contentUrl: `${imageUrl}corpse-${corpse.id}.jpeg`,
+                contentDescription: 'Recent completed Exquisite Corpse'
+              }
               return (
                 <View key={corpse.id} style={styles.corpse}>
                   <View style={styles.imageCorpseTop}>
@@ -84,9 +85,7 @@ class UserHome extends Component {
                   <View style={styles.viewCorpse}>
                     <Image
                       style={styles.viewCorpse}
-
                       source={{uri: `${imageUrl}corpse-${corpse.id}.jpeg`}}
-
                     />
                   </View>
                   <View style={styles.imageCorpseBottom}>
@@ -98,7 +97,9 @@ class UserHome extends Component {
                       <Icon name='facebook-square'
                         size={25}
                         color='#6495ed'
-                        onPress={this.props.shareLinkWithShareDialog.bind(this)}
+                        onPress={() => {
+                          this.shareLinkWithShareDialog(imageInfo)
+                        }}
                       />
                     </View>
 
