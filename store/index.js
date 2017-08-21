@@ -19,13 +19,15 @@ const reducer = combineReducers({
   assignEdge,
   assignments,
   photos,
-  fbUser,
-  dbUser
+  dbUser,
+  fbUser
+
 })
 
 const middleware = applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
+//const middleware = applyMiddleware(thunkMiddleware)
 const store = createStore(reducer, middleware)
-
+//store.subscribe(() => { console.log(Object.keys(store.getState())) })
 export default store
 
 export * from './singlePhoto'
@@ -35,5 +37,5 @@ export * from './friends'
 export * from './assignEdge'
 export * from './assignments'
 export * from './photos'
-export * from './fbUser'
 export * from './dbUser'
+export * from './fbUser'

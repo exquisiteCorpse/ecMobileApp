@@ -3,7 +3,7 @@ import { StyleSheet, Text, ScrollView, View, Image } from 'react-native'
 import LikeButton from '../Button/LikeButton'
 import styles from '../Style/UserHomeStyles'
 import {connect} from 'react-redux'
-import { fetchLikes, fetchCorpses, destroyLike, postNewLike } from '../../store'
+import store, { getUserLoggedIn, fetchLikes, fetchCorpses, destroyLike, postNewLike, getUserApp } from '../../store'
 import { imageUrl } from '../../store/url'
 class UserHome extends Component {
   componentDidMount () {
@@ -16,7 +16,7 @@ class UserHome extends Component {
     const likesCorpse = {}
     if (this.props.likes) {
       this.props.likes.forEach((like) => {
-        if (like.userId === 1) {
+        if (like.userId === this.props.dbUser.id) {
           userLikes.push(like.corpseId)
         }
         if (likesCorpse[like.corpseId]) {
@@ -47,7 +47,7 @@ class UserHome extends Component {
                     />
                   </View>
                   <View style={styles.imageCorpseBottom}>
-                    <LikeButton corpseId={corpse.id} userLike={userLike} userId='1' likes={likesCorpse[corpse.id]} style={styles} handleLike={this.props.handleLike} />
+                    <LikeButton corpseId={corpse.id} userLike={userLike} userId={this.props.dbUser.id} likes={likesCorpse[corpse.id]} style={styles} handleLike={this.props.handleLike} />
                     <Text>3 Share</Text>
                   </View>
                 </View>
@@ -63,12 +63,14 @@ class UserHome extends Component {
 const mapStateToProps = (state) => {
   return {
     likes: state.likes,
-    corpses: state.corpses
+    corpses: state.corpses,
+    dbUser: state.dbUser
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
   fetchData: () => {
+    dispatch(getUserLoggedIn())
     dispatch(fetchCorpses())
       .then(() => {
         dispatch(fetchLikes())
@@ -80,13 +82,10 @@ const mapDispatchToProps = (dispatch) => ({
       userId: +userId
     }
     if (userLike) {
-      console.log('drop', corpseId, userId, userLike)
       dispatch(destroyLike(like))
     } else {
-      console.log('post', corpseId, userId, userLike)
       dispatch(postNewLike(like))
     }
-    console.log(corpseId, userId, userLike)
   }
 })
 export default connect(mapStateToProps, mapDispatchToProps)(UserHome)
