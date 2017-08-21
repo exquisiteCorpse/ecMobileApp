@@ -6,6 +6,11 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"
   },
+  "rnpm": {
+    "assets": [
+      "./public/assets/fonts"
+    ]
+  },
   "dependencies": {
     "axios": "^0.16.2",
     "form-data": "^2.2.0",

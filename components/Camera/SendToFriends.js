@@ -27,7 +27,7 @@ class SendToFriends extends Component {
     let displayTitle = null
 
     let displayText = null
-    //Nav based on assignment
+    // Nav based on assignment
     if (assignment) {
 
       if (assignment.assignment.cell === 'bottom') {
@@ -36,7 +36,7 @@ class SendToFriends extends Component {
         displayStage = <UserFriends navigate={navigate} corpseInfo={assignment}/>
       }
     } else {
-      //Title shows if you its new
+      // Title shows if you its new
       displayTitle = <View><TextInput
         defaultValue={'Enter Title'}
         onSubmitEditing={(event) => {

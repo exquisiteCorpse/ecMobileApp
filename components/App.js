@@ -18,7 +18,7 @@ export default class App extends Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
+        <Text style={styles.test}>
         Welcome to Exquisite Corpse!</Text>
         <Login/>
       </View>
