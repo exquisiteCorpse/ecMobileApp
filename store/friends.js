@@ -2,7 +2,7 @@
 /* -----------------    IMPORTS     ------------------ */
 import { apiUrl } from './url'
 import axios from 'axios'
-const userId = 1
+
 
 /* -----------------    ACTION TYPES     ------------------ */
 
@@ -16,7 +16,7 @@ const getFriends = (friends) => {
 
 /* ------------       THUNK CREATORS     ------------------ */
 
-export const fetchFriends = () =>
+export const fetchFriends = (userId) =>
   dispatch =>
     axios.get(`${apiUrl}/friends/${userId}`)
       .then(res =>

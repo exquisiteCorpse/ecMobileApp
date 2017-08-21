@@ -82,13 +82,10 @@ const mapDispatchToProps = (dispatch) => ({
       userId: +userId
     }
     if (userLike) {
-      console.log('drop', corpseId, userId, userLike)
       dispatch(destroyLike(like))
     } else {
-      console.log('post', corpseId, userId, userLike)
       dispatch(postNewLike(like))
     }
-    console.log(corpseId, userId, userLike)
   }
 })
 export default connect(mapStateToProps, mapDispatchToProps)(UserHome)

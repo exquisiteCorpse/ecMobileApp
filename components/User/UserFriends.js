@@ -6,12 +6,11 @@ import styles from '../Style/FriendsListStyles'
 
 class UserFriends extends Component {
   componentDidMount () {
-    this.props.fetchData()
+    this.props.fetchData(this.props.dbUser.id)
   }
 
   render () {
-    const { friends } = this.props
-    const { singlePhoto } = this.props
+    const { friends, singlePhoto, dbUser } = this.props
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -20,7 +19,7 @@ class UserFriends extends Component {
             return (
               <TouchableOpacity
                 key={friend.id}
-                onPress={() => this.props.postPhoto(singlePhoto, friend.id)}>
+                onPress={() => this.props.postPhoto(singlePhoto, friend.id, dbUser.id)}>
                 <Text>
                   {friend.username} | {friend.email}
                 </Text>
@@ -36,18 +35,15 @@ const mapStateToProps = (state) => {
   return {
     friends: state.friends,
     singlePhoto: state.singlePhoto,
-    dbUser: dbUser
+    dbUser: state.dbUser
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  fetchData: () => {
-    dispatch(fetchFriends())
-    dispatch(getUserLoggedIn())
-    dispatch(getPhoto())
+  fetchData: (id) => {
+    dispatch(fetchFriends(id))
   },
-  postPhoto: (photoData, assigneeId) => {
-    const userId = ownProps.dbUser.id
+  postPhoto: (photoData, assigneeId, userId) => {
     const corpse = {
       userId: userId,
       title: ownProps.corpseTitle

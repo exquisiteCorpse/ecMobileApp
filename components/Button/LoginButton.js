@@ -14,17 +14,8 @@ export const _fbAuth = () => {
 }
 
 class Login extends Component {
-  compnentDidMount(){
-    this.props.fetchUserLoggedIn()
-  }
 
   render () {
-    let dbUser
-    if (this.props.dbUser){
-      dbUser = this.props.dbUser
-      console.log(dbUser.username,'.............TEST..................')
-    }
-    //console.log(this.props.navigation.navigate('HomeScreen'), 'navigate is here')
     return (
       <View>
         <LoginButton
@@ -42,7 +33,7 @@ class Login extends Component {
               }
             }
           }
-          onLogoutFinished={() => alert (`Logged out as: ${this.props.dbUser.username}`)}
+          onLogoutFinished={() => alert (`See You Later ${this.props.dbUser}`)}
         />
       </View>
     )
@@ -64,12 +55,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         dispatch(fetchUser(data.accessToken))
           .then((user) => {
             dispatch(fetchFindOrCreateUser(user))
-            //ownProps.navigation.navigate('NewCorpseScreen')
           })
       })
-  },
-  fetchUserLoggedIn: () => {
-    dispatch(getUserLoggedIn())
   }
 })
 
