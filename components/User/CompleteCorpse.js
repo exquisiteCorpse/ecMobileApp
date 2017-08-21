@@ -14,7 +14,7 @@ class CompeleteCorpse extends Component {
     const { singlePhoto } = this.props
     return (
       <View style={styles.container2}>
-        <Text style={{textAlign: 'center'}}>Click To Complete</Text>
+        <Text style={{textAlign: 'center', margin: 20}}>Click To Complete</Text>
         <Button
           title='complete'
           color='#1e90ff'
@@ -45,14 +45,13 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       userId: ownProps.corpseInfo.assignment.assigneeId,
       cell: ownProps.corpseInfo.assignment.cell
     }
-    //console.log(ownProps.corpseInfo)
     dispatch(postNewPhoto(photoData, body))
       .then(() => {
         dispatch(completeCorpes(ownProps.corpseInfo.assignment.corpseId, {complete: true}))
         dispatch(updateStatusAssignments(ownProps.corpseInfo.assignment.id, {complete: true}))
       })
 
-    ownProps.navigate('HomeScreen')
+    ownProps.navigation.navigate('UserHomeScreen')
   }
 })
 

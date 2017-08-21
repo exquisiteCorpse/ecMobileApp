@@ -48,15 +48,13 @@ const mapDispatchToProps = (dispatch) => ({
   fetchUserData: () => {
     // LoginManager.logInWithReadPermissions(['public_profile', 'email'])
     // .then(() => {
-      AccessToken.getCurrentAccessToken()
-        .then((data) => {
-          dispatch(fetchUser(data.accessToken))
-            .then((user) => {
-              dispatch(fetchFindOrCreateUser(user))
-            })
-        })
-    //})
-
+    AccessToken.getCurrentAccessToken()
+      .then((data) => {
+        dispatch(fetchUser(data.accessToken))
+          .then((user) => {
+            dispatch(fetchFindOrCreateUser(user))
+          })
+      })
   }
 })
 
