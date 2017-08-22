@@ -21,7 +21,7 @@ class NewCorpse extends Component {
     let imageStyle = styles.image
     if (this.props.navigation.state.params) {
 
-      const { assignment, cell } = this.props.navigation.state.params
+      const {assignment, cell} = this.props.navigation.state.params
       if (assignment) {
         imageStyle = styles.imageEdge
         edge = (

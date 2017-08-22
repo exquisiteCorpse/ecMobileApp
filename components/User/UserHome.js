@@ -93,7 +93,7 @@ class UserHome extends Component {
                 </View>
               )
             }
-          })}
+          }).reverse()}
         </View>
       </ScrollView>
     )

@@ -18,6 +18,7 @@ class UserEdges extends Component {
     const { assignments, corpses, dbUser } = this.props
     const navigate = this.props.navigation.navigate
     let cell = ''
+    if (!(assignments.length && corpses.length)) { return <Text></Text> }
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -31,11 +32,15 @@ class UserEdges extends Component {
               if (assignment.cell === 'bottom') {
                   cell = 'middle'
               }
-              const corpse = corpses.find(corpse => corpse.id === assignment.corpseId)
+
+              const corpse = corpses.find((corpse) => {
+                return corpse.id === assignment.corpseId
+              })
+              if(!corpse){ console.log('HTYTHTUTH', assignment.corpseId)}
               return (
                 <View key={assignment.id} style={styles.edge}>
                   <View style={styles.imageEdgeTop}>
-                    <Text style={styles.textCorpse}>{corpse.photos.map((photo, i) => { return photo.user.username }).join('|')}</Text>
+                    <Text style={styles.textCorpse}>{corpse.photos.map((photo) => { return photo.user.username }).join('|')}</Text>
                     <Text style={styles.titleCorpse}>{corpse.title}</Text>
                   </View>
                   <View style={styles.viewEdge}>
