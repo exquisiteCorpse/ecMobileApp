@@ -7,7 +7,6 @@ import styles from '../Style/FriendsListStyles'
 class CompeleteCorpse extends Component {
   componentDidMount () {
     this.props.fetchPhoto()
-    this.props.fetchFriendsData()
   }
   render () {
 
@@ -51,7 +50,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         dispatch(updateStatusAssignments(ownProps.corpseInfo.assignment.id, {complete: true}))
       })
 
-    //ownProps.navigation.navigate('UserHomeScreen')
+    ownProps.navigate('AppScreen')
   }
 })
 
