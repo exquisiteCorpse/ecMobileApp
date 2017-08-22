@@ -51,7 +51,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         dispatch(updateStatusAssignments(ownProps.corpseInfo.assignment.id, {complete: true}))
       })
 
-    ownProps.navigation.navigate('UserHomeScreen')
+    //ownProps.navigation.navigate('UserHomeScreen')
   }
 })
 
