@@ -21,6 +21,7 @@ class EdgeCamera extends Component {
           ref={(cam) => { camera = cam }}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}
+          captureQuality={Camera.constants.CaptureQuality.low}
         >
           <Image style={styles.edge}
             source={{uri: `${imageUrl}${assignment.corpseId}-${assignment.assignorId}-${cell}-edge.jpeg`}}
