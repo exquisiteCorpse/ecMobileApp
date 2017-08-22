@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },
   message: {
     textAlign: 'center',
-    fontSize: 30,
+    fontSize: 25,
     fontFamily: AmatcaB,
     color: 'black',
     paddingBottom: 20

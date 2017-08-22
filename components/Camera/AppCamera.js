@@ -22,7 +22,7 @@ class AppCamera extends Component {
           }}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}
-          captureQuality={Camera.constants.CaptureQuality.high}
+          captureQuality={Camera.constants.CaptureQuality.medium}
         >
           <Text style={styles.edgeblock} />
           <Icon name="camera" size={50} color={'#000000'}
@@ -44,7 +44,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
           .then(res =>
             dispatch(putPhoto(res)),
           ownProps.navigation.navigate('NewCorpseScreen'))
-          .catch(err => console.log(err, '{{{{}}}}unable to resize'))
+          .catch(err => console.log(err, '-unable to resize'))
       })
       .catch(err => console.error(err))
   }
