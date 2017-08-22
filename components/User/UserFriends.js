@@ -5,20 +5,19 @@ import { StyleSheet, Text, ScrollView, View, Image, TouchableOpacity } from 'rea
 import styles from '../Style/FriendsListStyles'
 
 class UserFriends extends Component {
-  componentDidMount () {
+  componentDidMount() {
     this.props.fetchData(this.props.dbUser.id)
   }
 
   render () {
     const { friends, singlePhoto, dbUser } = this.props
     return (
-      <ScrollView>
-        <View style={styles.container}>
+      <ScrollView stlye={{flex: 1, height: '40%'}}>
+        <View style={styles.content}>
           <Text style={styles.header}>{`Choose Wisely..`}</Text>
           {friends && friends.map(friend => {
             return (
-              <TouchableOpacity
-                key={friend.id}
+              <TouchableOpacity key={friend.id}
                 onPress={() => this.props.postPhoto(singlePhoto, friend.id, dbUser.id)}>
                 <Text style={styles.list} >
                   {friend.username}
@@ -71,7 +70,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
           }
           dispatch(makeNewAssign(assign))
             .then(() => {
-              dispatch(updateStatusAssignments(corpseInfo.id, {complete: true}))
+              dispatch(updateStatusAssignments(corpseInfo.id, { complete: true }))
             })
         })
     } else {

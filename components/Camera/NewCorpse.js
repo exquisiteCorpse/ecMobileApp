@@ -22,6 +22,7 @@ class NewCorpse extends Component {
     if (this.props.navigation.state.params) {
 
       const {assignment, cell} = this.props.navigation.state.params
+
       if (assignment) {
         imageStyle = styles.imageEdge
         edge = (
@@ -42,7 +43,7 @@ class NewCorpse extends Component {
           {edge}
           <Image
             style={imageStyle}
-            source={{ uri: this.props.singlePhoto.path }}
+            source={{ uri: this.props.singlePhoto.uri }}
           />
           <View style={styles.button}>
             <Button
