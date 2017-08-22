@@ -11,13 +11,12 @@ const fontReg = jReg
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: 'white'
   },
   corpse: {
-    width: 360,
-    height: 420,
-    marginTop: 15,
-    marginBottom: 15,
+    width: '100%',
+    height: 450,
     alignItems: 'center'
   },
   imageCorpseTop: {
@@ -25,8 +24,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
-    height: 30
-
+    height: 40
   },
   imageCorpseBottom: {
     flex: 1,
@@ -50,7 +48,8 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontFamily: AmatcaB,
     color: 'black',
-    marginLeft: 10
+    marginLeft: 10,
+    marginBottom: 10
   },
   textCorpse: {
     color: '#2f4f4f',

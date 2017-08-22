@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
 
-const font = 'sans-serif-thin'
+const font = 'SedgwickAveDisplay-Regular'
 
 const styles = StyleSheet.create({
   container: {
@@ -24,15 +24,12 @@ const styles = StyleSheet.create({
     margin: 20
   },
   welcome: {
-    fontFamily: 'SedgwickAveDisplay-Regular',
-    backgroundColor: 'white',
-
-    fontSize: 35,
+    fontFamily: font,
+    fontSize: 50,
     color: 'black'
   },
   confirmation: {
     fontSize: 25,
-    fontWeight: 'bold',
     color: 'black',
     paddingBottom: 20,
     fontFamily: font
@@ -41,7 +38,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingBottom: 20,
     fontFamily: font,
-    fontWeight: '500',
     color: 'black'
   },
   button: {

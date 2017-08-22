@@ -8,44 +8,30 @@ import { imageUrl } from '../../store/url'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { ShareDialog } from 'react-native-fbsdk'
 
-const shareLinkContent = {
-  contentType: 'link',
-  contentUrl: 'https://facebook.com',
-  contentDescription: 'Facebook sharing is easy!'
-}
 
 class UserHome extends Component {
   constructor () {
     super()
-    this.state = {
-      shareLinkContent: shareLinkContent
-    }
     this.shareLinkWithShareDialog = this.shareLinkWithShareDialog.bind(this)
-  }
-
-  shareLinkWithShareDialog (imageInfo) {
-    var tmp = this
-    ShareDialog.canShow(imageInfo).then(
-      (canShow) => {
-        if (canShow) {
-          return ShareDialog.show(imageInfo)
-        }
-      }
-    ).then((result) => {
-      if (result.isCancelled) {
-        alert ('Share cancelled')
-      } else {
-        alert ('Share success with postId: ' + result.postId)
-      }
-    },
-    (error) => {
-      alert ('Share fail with error: ' + error)
-    })
   }
 
   componentDidMount () {
     this.props.fetchData()
   }
+
+  shareLinkWithShareDialog (imageInfo) {
+    ShareDialog.canShow(imageInfo).then(
+      (canShow) => {
+        if (canShow) return ShareDialog.show(imageInfo)
+      })
+      .then((result) => {
+        result.isCancelled
+          ? alert ('Share cancelled')
+          : alert ('Share success with postId: ' + result.postId)
+      }, (error) =>  alert ('Share fail with error: ' + error))
+  }
+
+
 
   render () {
     /// likes set up for render will move to its own file
@@ -92,7 +78,6 @@ class UserHome extends Component {
 
                     <LikeButton corpseId={corpse.id} userLike={userLike} userId={this.props.dbUser.id} likes={likesCorpse[corpse.id]} style={styles} handleLike={this.props.handleLike}
                     />
-
                     <View >
                       <Icon name='facebook-square'
                         size={25}

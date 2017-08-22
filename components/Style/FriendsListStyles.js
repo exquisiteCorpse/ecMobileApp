@@ -2,6 +2,8 @@ import React from 'react'
 import { StyleSheet } from 'react-native'
 
 const font = 'sans-serif-thin'
+const AmatcaB = 'AmaticaSC-Bold'
+const AmatcaR = 'AmaticaSC-Regular'
 
 const styles = StyleSheet.create({
   container: {
@@ -10,15 +12,13 @@ const styles = StyleSheet.create({
   },
   header: {
     color: 'black',
-    fontWeight: 'bold',
-    fontSize: 20,
-    fontFamily: font
+    fontSize: 25,
+    fontFamily: AmatcaB
   },
   list: {
     color: 'black',
     fontSize: 15,
-    fontWeight: '500',
-    fontFamily: font,
+    fontFamily: AmatcaR,
     padding: 5
   }
 

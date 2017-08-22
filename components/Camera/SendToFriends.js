@@ -16,7 +16,6 @@ class SendToFriends extends Component {
   }
   componentDidMount () {
     this.props.fetchPhoto()
-
     Orientation.unlockAllOrientations()
   }
 
@@ -27,7 +26,6 @@ class SendToFriends extends Component {
     let displayTitle = null
     // Nav based on assignment
     if (assignment) {
-
       if (assignment.assignment.cell === 'bottom') {
         displayStage = <CompleteCorpse navigate={navigate} corpseInfo={assignment}/>
       } else {
