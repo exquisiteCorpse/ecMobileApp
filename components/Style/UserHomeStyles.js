@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   textLikedCorpse: {
-    fontFamily: jBold,
     color: 'black'
   },
   titleCorpse: {

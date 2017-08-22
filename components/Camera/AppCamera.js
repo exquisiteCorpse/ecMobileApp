@@ -40,16 +40,11 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   takePicture (camera) {
     camera.capture()
       .then((data) => {
-        console.log("*******************+++++++", data)
-        ImageResizer.createResizedImage(data.path, 400, 1200, 'JPEG', 100)
+        ImageResizer.createResizedImage(data.path, 640, 480, 'JPEG', 100)
           .then(res =>
-            // console.log('============', res),
             dispatch(putPhoto(res)),
-
           ownProps.navigation.navigate('NewCorpseScreen'))
           .catch(err => console.log(err, '{{{{}}}}unable to resize'))
-        // dispatch(putPhoto(data))
-        // ownProps.navigation.navigate('NewCorpseScreen')
       })
       .catch(err => console.error(err))
   }
