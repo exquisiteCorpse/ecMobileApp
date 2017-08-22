@@ -2,6 +2,8 @@ import React from 'react'
 import { StyleSheet } from 'react-native'
 
 const font = 'SedgwickAveDisplay-Regular'
+const Amatca = 'AmaticaSC-Regular'
+const AmatcaB = 'AmaticaSC-Bold'
 
 const styles = StyleSheet.create({
   container: {
@@ -29,16 +31,18 @@ const styles = StyleSheet.create({
     color: 'black'
   },
   confirmation: {
-    fontSize: 25,
+    textAlign: 'center',
+    fontSize: 40,
+    fontFamily: font,
     color: 'black',
-    paddingBottom: 20,
-    fontFamily: font
+    paddingBottom: 20
   },
   message: {
     textAlign: 'center',
-    paddingBottom: 20,
-    fontFamily: font,
-    color: 'black'
+    fontSize: 30,
+    fontFamily: AmatcaB,
+    color: 'black',
+    paddingBottom: 20
   },
   button: {
     padding: 20

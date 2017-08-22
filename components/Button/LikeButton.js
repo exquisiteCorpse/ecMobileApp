@@ -7,7 +7,7 @@ export default class LikesButton extends Component {
   render () {
     let like = <Text >{this.props.likes} Likes</Text>
     if (this.props.userLike) {
-      like = <Text style={this.props.style.textLikedCorpse}>{this.props.likes} Likes</Text>
+      like = <Text style={styles.textLikedCorpse}>{this.props.likes} Likes</Text>
     }
     return (
       <View>
