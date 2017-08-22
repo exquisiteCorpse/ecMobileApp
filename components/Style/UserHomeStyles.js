@@ -3,11 +3,9 @@ import { StyleSheet } from 'react-native'
 
 const jBold = 'JosefinSlab-Bold'
 const jReg = 'JosefinSlab-Regular'
-const calig = 'Calligraffitti-Regular'
 const Amatca = 'AmaticaSC-Regular'
 const AmatcaB = 'AmaticaSC-Bold'
-const fontBold = jBold
-const fontReg = jReg
+const reenie = 'ArchitectsDaughter-Regular'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -17,7 +15,7 @@ const styles = StyleSheet.create({
   corpse: {
     flex: 1,
     width: '100%',
-    height: 450,
+    height: 460,
     alignItems: 'center'
   },
   imageCorpseTop: {
@@ -42,7 +40,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   textLikedCorpse: {
-    fontFamily: fontReg,
+    fontFamily: jBold,
     color: 'black'
   },
   titleCorpse: {

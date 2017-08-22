@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, TouchableOpacity, Text } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import styles from '../Style/UserHomeStyles'
 
 export default class LikesButton extends Component {
   render () {
@@ -16,7 +17,7 @@ export default class LikesButton extends Component {
           }}
         >
           <Icon name='thumbs-o-up' size={20} color='#008b8b'></Icon>
-          <Text>{like}</Text>
+          <Text style={styles.textLikedCorpse}>{like}</Text>
 
         </TouchableOpacity>
       </View>

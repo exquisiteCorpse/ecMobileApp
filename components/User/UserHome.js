@@ -28,7 +28,7 @@ class UserHome extends Component {
         result.isCancelled
           ? alert ('Share cancelled')
           : alert ('Share success with postId: ' + result.postId)
-      }, (error) =>  alert ('Share fail with error: ' + error))
+      }, (error) => alert ('Share fail with error: ' + error))
   }
 
 
@@ -77,7 +77,7 @@ class UserHome extends Component {
                   </View>
                   <View style={styles.imageCorpseBottom}>
 
-                    <LikeButton corpseId={corpse.id} userLike={userLike} userId={this.props.dbUser.id} likes={likesCorpse[corpse.id]} style={styles} handleLike={this.props.handleLike}
+                    <LikeButton corpseId={corpse.id} userLike={userLike} userId={this.props.dbUser.id} likes={likesCorpse[corpse.id]} handleLike={this.props.handleLike}
                     />
                     <View >
                       <Icon name='facebook-square'
