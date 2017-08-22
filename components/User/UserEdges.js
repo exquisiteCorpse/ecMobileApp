@@ -21,30 +21,30 @@ class UserEdges extends Component {
         <View style={styles.container}>
           {
             assignments
-            .filter(assignment => assignment.assigneeId === dbUser.id && assignment.complete === false)
-            .map(assignment => {
-              if (assignment.cell === 'middle') {
+              .filter(assignment => assignment.assigneeId === dbUser.id && assignment.complete === false)
+              .map(assignment => {
+                if (assignment.cell === 'middle') {
                   cell = 'top'
-              }
-              if (assignment.cell === 'bottom') {
+                }
+                if (assignment.cell === 'bottom') {
                   cell = 'middle'
-              }
-              const corpse = corpses.find(corpse => corpse.id === assignment.corpseId)
-              return (
-                <View key={assignment.id} style={styles.edge}>
-                  <View style={styles.imageEdgeTop}>
-                    <Text style={styles.textCorpse}>{corpse.photos.map((photo, i) => { return photo.user.username }).join('|')}</Text>
-                    <Text style={styles.titleCorpse}>{corpse.title}</Text>
+                }
+                const corpse = corpses.find(corpse => corpse.id === assignment.corpseId)
+                return (
+                  <View key={assignment.id} style={styles.edge}>
+                    <View style={styles.imageEdgeTop}>
+                      <Text style={styles.textCorpse}>{corpse.photos.map((photo, i) => { return photo.user.username }).join('|')}</Text>
+                      <Text style={styles.titleCorpse}>{corpse.title}</Text>
+                    </View>
+                    <View style={styles.viewEdge}>
+                      <TouchableHighlight onPress={() => { navigate('EdgeCameraScreen', { assignment: assignment, cell: cell }) }}>
+                        <Image
+                          style={styles.viewEdge}
+                          source={{uri: `${imageUrl}${assignment.corpseId}-${assignment.assignorId}-${cell}-edge.jpeg`}}
+                        />
+                      </TouchableHighlight>
+                    </View>
                   </View>
-                  <View style={styles.viewEdge}>
-                    <TouchableHighlight onPress={() => { navigate('EdgeCameraScreen', { assignment: assignment, cell: cell }) }}>
-                      <Image
-                        style={styles.viewEdge}
-                        source={{uri: `${imageUrl}${assignment.corpseId}-${assignment.assignorId}-${cell}-edge.jpeg`}}
-                      />
-                    </TouchableHighlight>
-                  </View>
-                </View>
                 )
               })
           }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchFriends, getPhoto, postNewPhoto, completeCorpes, updateStatusAssignments } from '../../store'
+import { fetchFriends, getPhoto, postNewPhoto, completeCorpse, updateStatusAssignments } from '../../store'
 import { StyleSheet, Text, ScrollView, View, Image, Button } from 'react-native'
 import styles from '../Style/FriendsListStyles'
 
@@ -10,7 +10,6 @@ class CompeleteCorpse extends Component {
     this.props.fetchFriendsData()
   }
   render () {
-
     const { singlePhoto } = this.props
     return (
       <View style={styles.container2}>
@@ -47,7 +46,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     }
     dispatch(postNewPhoto(photoData, body))
       .then(() => {
-        dispatch(completeCorpes(ownProps.corpseInfo.assignment.corpseId, {complete: true}))
+        dispatch(completeCorpse(ownProps.corpseInfo.assignment.corpseId, {complete: true}))
         dispatch(updateStatusAssignments(ownProps.corpseInfo.assignment.id, {complete: true}))
       })
 

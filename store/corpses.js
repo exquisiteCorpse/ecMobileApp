@@ -7,7 +7,7 @@ import axios from 'axios'
 
 const GET_CORPSES = 'GET_CORPSES'
 const GET_CORPSE = 'GET_CORPSE'
-const MAKE_CORPSES = 'MAKE_CORPSES'
+const MAKE_CORPSE = 'MAKE_CORPSE'
 const UPDATE_CORPSE = 'UPDATE_CORPSE'
 
 /* ------------   ACTION CREATORS     ------------------ */
@@ -20,11 +20,11 @@ const getCorpse = (corpse) => {
   return { type: GET_CORPSE, corpse }
 }
 
-const makeCorpes = (corpse) => {
-  return { type: MAKE_CORPSES, corpse }
+const makeCorpse = (corpse) => {
+  return { type: MAKE_CORPSE, corpse }
 }
 
-const updateCorpes = (corpse) => {
+const updateCorpse = (corpse) => {
   return { type: UPDATE_CORPSE, corpse }
 }
 
@@ -43,20 +43,20 @@ export const fetchCorpse = (id) =>
       .then(res => dispatch(getCorpse(res.data)))
       .catch(err => console.error('Fetching corpse unsuccesful', err))
 
-export const makeNewCorpe = (corpse) =>
+export const makeNewCorpse = (corpse) =>
   dispatch =>
     axios.post(`${apiUrl}/corpses/`, corpse)
       .then((res) => {
-        dispatch(makeCorpes(res.data))
+        dispatch(makeCorpse(res.data))
         return res.data.id
       })
       .catch(err => console.log(err))
 
-export const completeCorpes = (id, corpse) =>
+export const completeCorpse = (id, corpse) =>
   dispatch =>
     axios.put(`${apiUrl}/corpses/${id}`, corpse)
       .then((res) => {
-        dispatch(makeCorpes(res.data))
+        dispatch(makeCorpse(res.data))
         return res.data.id
       })
       .catch(err => console.log(err))
@@ -68,7 +68,7 @@ export default function (state = [], action) {
       return action.corpses
     case GET_CORPSE:
       return action.corpse
-    case MAKE_CORPSES:
+    case MAKE_CORPSE:
       return state.concat(action.corpse)
     case UPDATE_CORPSE:
       return state.filter((corpse) => {
