@@ -19,16 +19,19 @@ class NewCorpse extends Component {
     let retakeParams = null
     let assignmentParams = null
     let imageStyle = styles.image
+    let source = this.props.singlePhoto.uri
     if (this.props.navigation.state.params) {
 
       const {assignment, cell} = this.props.navigation.state.params
       if (assignment) {
         imageStyle = styles.imageEdge
+        source = this.props.singlePhoto.path
         edge = (
           <Image
             style={styles.edge}
             source={{uri: `${imageUrl}${assignment.corpseId}-${assignment.assignorId}-${cell}-edge.jpeg`}}
           />
+
         )
         assignmentParams = {assignment: assignment}
         navToScreen = 'EdgeCameraScreen'
@@ -42,7 +45,7 @@ class NewCorpse extends Component {
           {edge}
           <Image
             style={imageStyle}
-            source={{ uri: this.props.singlePhoto.uri }}
+            source={{ uri: source }}
           />
           <View style={styles.button}>
             <Button
