@@ -2,7 +2,7 @@ import FBSDK, { LoginButton, LoginManager, AccessToken } from 'react-native-fbsd
 import React, { Component} from 'react'
 import { View, Text } from 'react-native'
 import {connect} from 'react-redux'
-import { fetchUser, fetchFindOrCreateUser, getUserLoggedIn } from '../../store'
+import { fetchUser, fetchFindOrCreateUser } from '../../store'
 
 export const _fbAuth = () => {
   LoginManager.logInWithReadPermissions(['public_profile', 'email'])
@@ -14,12 +14,13 @@ export const _fbAuth = () => {
 }
 
 class Login extends Component {
-
+  componentDidMount () {
+    this.props.loggedIn()
+  }
   render () {
     return (
       <View>
         <LoginButton
-
           readPermissions={['public_profile', 'email']}
           onLoginFinished={
             (error, result) => {
@@ -29,7 +30,6 @@ class Login extends Component {
                 alert ('Login was cancelled')
               } else {
                 this.props.fetchUserData()
-
               }
             }
           }
@@ -56,6 +56,19 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
           .then((user) => {
             dispatch(fetchFindOrCreateUser(user))
           })
+      })
+  },
+  loggedIn: () => {
+    AccessToken.getCurrentAccessToken()
+      .then((data) => {
+        if (data === null) {
+          console.log('done')
+        } else {
+          dispatch(fetchUser(data.accessToken))
+            .then((user) => {
+              dispatch(fetchFindOrCreateUser(user))
+            })
+        }
       })
   }
 })
