@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
   corpse: {
+    flex: 1,
     width: '100%',
     height: 450,
     alignItems: 'center'
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
 
   },
   viewCorpse: {
-    width: '100%',
+    width: '95%',
     height: 360,
     alignItems: 'center'
   },

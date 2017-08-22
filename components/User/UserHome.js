@@ -70,6 +70,7 @@ class UserHome extends Component {
                   </View>
                   <View style={styles.viewCorpse}>
                     <Image
+                      resizeMode='contain'
                       style={styles.viewCorpse}
                       source={{uri: `${imageUrl}corpse-${corpse.id}.jpeg`}}
                     />

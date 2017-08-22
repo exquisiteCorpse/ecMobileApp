@@ -6,18 +6,19 @@ const AmatcaB = 'AmaticaSC-Bold'
 const AmatcaR = 'AmaticaSC-Regular'
 
 const styles = StyleSheet.create({
-  container: {
+  content: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: 'center',
+
   },
   header: {
     color: 'black',
-    fontSize: 25,
+    fontSize: 30,
     fontFamily: AmatcaB
   },
   list: {
     color: 'black',
-    fontSize: 15,
+    fontSize: 25,
     fontFamily: AmatcaR,
     padding: 5
   }
