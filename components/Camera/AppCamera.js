@@ -21,6 +21,7 @@ class AppCamera extends Component {
           }}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}
+          captureQuality={Camera.constants.CaptureQuality.low}
         >
           <Text style={styles.edgeblock} />
           <Icon name="camera" size={50} color={'#000000'}
