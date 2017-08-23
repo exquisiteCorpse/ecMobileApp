@@ -23,6 +23,7 @@ class AppCamera extends Component {
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}
           captureQuality={Camera.constants.CaptureQuality.medium}
+          orientation={Camera.constants.Orientation.landscapeLeft}
         >
           <Text style={styles.edgeblock} />
           <Text style={styles.camblock} />

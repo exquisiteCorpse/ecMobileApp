@@ -50,11 +50,6 @@ class SendToFriends extends Component {
 
     return (
       <View style={{ display: 'flex' }}>
-        <Image
-          style={{ height: '65%', width: '100%' }}
-          source={{ uri: source }}
-          // resizeMode={'contain'}
-        />
         {displayTitle}
         <View >
           {displayStage}
