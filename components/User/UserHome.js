@@ -7,7 +7,7 @@ import store, { getUserLoggedIn, fetchLikes, fetchCorpses, destroyLike, postNewL
 import { imageUrl } from '../../store/url'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { ShareDialog } from 'react-native-fbsdk'
-
+import socket from '../socket'
 
 class UserHome extends Component {
   constructor () {
@@ -17,6 +17,10 @@ class UserHome extends Component {
 
   componentDidMount () {
     this.props.fetchData()
+    socket.on('message', (message)=> {
+      dispatch(fetchLikes())
+      console.log('action', message)
+    })
   }
 
   shareLinkWithShareDialog (imageInfo) {
@@ -123,8 +127,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       userId: +userId
     }
     if (userLike) {
+      socket.emit('message', like)
       dispatch(destroyLike(like))
     } else {
+      socket.emit('message', like)
       dispatch(postNewLike(like))
     }
   }
