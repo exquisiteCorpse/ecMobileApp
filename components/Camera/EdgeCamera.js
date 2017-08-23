@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 import Orientation from 'react-native-orientation'
 import { imageUrl } from '../../store/url'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import ImageResizer from 'react-native-image-resizer'
 
 class EdgeCamera extends Component {
   componentDidMount () {
@@ -21,7 +22,7 @@ class EdgeCamera extends Component {
           ref={(cam) => { camera = cam }}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}
-          captureQuality={Camera.constants.CaptureQuality['720p']}
+          captureQuality={Camera.constants.CaptureQuality.medium}
         >
           <Image style={styles.edge}
             source={{uri: `${imageUrl}${assignment.corpseId}-${assignment.assignorId}-${cell}-edge.jpeg`}}
@@ -41,7 +42,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   takePicture (camera) {
     camera.capture()
       .then((data) => {
-        dispatch(putPhoto(data))
+        ImageResizer.createResizedImage(data.path, 640, 480, 'JPEG', 100)
+          .then(res =>
+            dispatch(putPhoto(res)))
         ownProps.navigation.navigate('NewCorpseScreen', { assignment: ownProps.navigation.state.params.assignment, cell: ownProps.navigation.state.params.cell })
       })
       .catch(err => console.error(err))

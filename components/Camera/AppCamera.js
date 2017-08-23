@@ -22,7 +22,7 @@ class AppCamera extends Component {
           }}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}
-          captureQuality={Camera.constants.CaptureQuality['720p']}
+          captureQuality={Camera.constants.CaptureQuality.medium}
         >
           <Text style={styles.edgeblock} />
           <Text style={styles.camblock} />
