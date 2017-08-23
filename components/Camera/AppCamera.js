@@ -23,6 +23,7 @@ class AppCamera extends Component {
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}
           captureQuality={Camera.constants.CaptureQuality.medium}
+          orientation={Camera.constants.Orientation.landscapeLeft}
         >
           <Text style={styles.edgeblock} />
           <Text style={styles.camblock} />
@@ -40,7 +41,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   takePicture (camera) {
     camera.capture()
       .then((data) => {
-        ImageResizer.createResizedImage(data.path, 640, 480, 'JPEG', 100)
+        ImageResizer.createResizedImage(data.path, 640, 480, 'JPEG', 100, 0)
           .then(res =>
             dispatch(putPhoto(res)),
           ownProps.navigation.navigate('NewCorpseScreen'))

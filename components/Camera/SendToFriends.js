@@ -27,7 +27,6 @@ class SendToFriends extends Component {
     // let source = this.props.singlePhoto.uri
     // Nav based on assignment
     if (assignment) {
-      // source = this.props.singlePhoto.path
       if (assignment.assignment.cell === 'bottom') {
         displayStage = <CompleteCorpse navigate={navigate} corpseInfo={assignment} />
       } else {
