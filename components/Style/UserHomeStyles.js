@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
   corpse: {
     width: '100%',
-    height: 460,
+    height: 480,
     alignItems: 'center'
   },
   imageCorpseTop: {
@@ -34,9 +34,9 @@ const styles = StyleSheet.create({
   },
   viewCorpse: {
     width: '95%',
-    height: 360,
-    alignItems: 'center',
-    marginTop: 5
+    height: 380,
+    alignItems: 'center'
+
   },
   textLikedCorpse: {
     fontFamily: Roboto,
