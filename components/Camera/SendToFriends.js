@@ -24,8 +24,10 @@ class SendToFriends extends Component {
     const assignment = this.props.navigation.state.params
     let displayStage = null
     let displayTitle = null
+    let source = this.props.singlePhoto.uri
     // Nav based on assignment
     if (assignment) {
+      source = this.props.singlePhoto.path
       if (assignment.assignment.cell === 'bottom') {
         displayStage = <CompleteCorpse navigate={navigate} corpseInfo={assignment}/>
       } else {
@@ -50,7 +52,7 @@ class SendToFriends extends Component {
       <View style={{ display: 'flex' }}>
         <Image
           style={{ height: '65%', width: '100%' }}
-          source={{ uri: this.props.singlePhoto.uri }}
+          source={{ uri: source }}
           // resizeMode={'contain'}
         />
         {displayTitle}

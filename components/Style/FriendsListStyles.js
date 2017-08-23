@@ -8,8 +8,7 @@ const AmatcaR = 'AmaticaSC-Regular'
 const styles = StyleSheet.create({
   content: {
     flex: 1,
-    alignItems: 'center',
-
+    alignItems: 'center'
   },
   header: {
     color: 'black',

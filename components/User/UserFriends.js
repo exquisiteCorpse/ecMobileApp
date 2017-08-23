@@ -12,7 +12,7 @@ class UserFriends extends Component {
   render () {
     const { friends, singlePhoto, dbUser } = this.props
     return (
-      <ScrollView stlye={{flex: 1, height: '40%'}}>
+      <ScrollView >
         <View style={styles.content}>
           <Text style={styles.header}>{`Choose Wisely..`}</Text>
           {friends && friends.map(friend => {
