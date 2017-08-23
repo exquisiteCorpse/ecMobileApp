@@ -37,9 +37,8 @@ export const releaseUserDB = () =>
 
 /* ------------       REDUCERS     ------------------ */
 
-const initialState = {}
 
-export default function (state = initialState, action) {
+export default function (state = {}, action) {
   switch (action.type) {
     case FIND_OR_CREATE_USER:
       return action.user
