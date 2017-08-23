@@ -31,9 +31,7 @@ export const releaseUserFB = () =>
   dispatch =>
     dispatch(clearFbUser())
 
-const initialState = {}
-
-export default function (state = initialState, action) {
+export default function (state = {}, action) {
   switch (action.type) {
     case GET_USER:
       return action.user
