@@ -6,8 +6,10 @@ import styles from '../Style/UserHomeStyles'
 export default class LikesButton extends Component {
   render () {
     let like = <Text >{this.props.likes} Likes</Text>
+    let thumb = <Icon name='thumbs-o-up' size={20} color='#008b8b'></Icon>
     if (this.props.userLike) {
       like = <Text style={styles.textLikedCorpse}>{this.props.likes} Likes</Text>
+      thumb = <Icon name='thumbs-up' size={20} color='#008b8b'></Icon>
     }
     return (
       <View>
@@ -16,7 +18,7 @@ export default class LikesButton extends Component {
             this.props.handleLike(this.props.corpseId, this.props.userId, this.props.userLike)
           }}
         >
-          <Icon name='thumbs-o-up' size={20} color='#008b8b'></Icon>
+          {thumb}
           <Text style={styles.textLikedCorpse}>{like}</Text>
 
         </TouchableOpacity>
