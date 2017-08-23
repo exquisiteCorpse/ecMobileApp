@@ -23,6 +23,7 @@ class NewCorpse extends Component {
     if (this.props.navigation.state.params) {
       const {assignment, cell} = this.props.navigation.state.params
       if (assignment) {
+        source = this.props.singlePhoto.path
         edge = (
           <Image
             style={styles.edge}
