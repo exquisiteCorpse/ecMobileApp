@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   header: {
     width: '75%',
     textAlign: 'center',
-    fontSize: 30,
+    fontSize: 25,
     fontWeight: 'bold',
     fontFamily: Roboto,
     color: darkgrey,
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   list: {
     alignItems: 'center',
     color: darkgrey,
-    fontSize: 24,
+    fontSize: 23,
     fontFamily: Roboto,
     paddingTop: 5
   },
