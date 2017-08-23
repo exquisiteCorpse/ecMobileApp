@@ -24,10 +24,10 @@ class AppCamera extends Component {
           captureQuality={Camera.constants.CaptureQuality.low}
         >
           <Text style={styles.edgeblock} />
-          <Icon name="camera" size={50} color={'#000000'}
+          <Text style={styles.camblock} />
+          <Icon name='camera' size={50} color={'#000000'}
             style={{padding: 10, margin: 20}}
             onPress={() => this.props.takePicture(camera)} />
-
         </Camera>
       </View>
     )
@@ -66,23 +66,24 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center'
   },
-  edge: {
-    position: 'absolute',
-    flexDirection: 'row',
-    top: 0,
-    right: 0,
-    left: 0,
-    height: 50,
-    justifyContent: 'space-between'
-  },
   edgeblock: {
-    backgroundColor: 'black',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
     position: 'absolute',
     flexDirection: 'row',
     top: 0,
     right: 0,
     left: 0,
     height: 20,
+    justifyContent: 'space-between'
+  },
+  camblock: {
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    position: 'absolute',
+    flexDirection: 'row',
+    bottom: 0,
+    right: 0,
+    left: 0,
+    height: 215,
     justifyContent: 'space-between'
   }
 })

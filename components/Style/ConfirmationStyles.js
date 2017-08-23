@@ -7,31 +7,28 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    margin: 20,
+    backgroundColor: 'white'
   },
-  header: {
-    color: 'black',
-    fontSize: 20,
+  confirmation: {
+    textAlign: 'center',
+    fontSize: 25,
+    fontWeight: 'bold',
     fontFamily: Roboto,
-    marginTop: 10
-  },
-  list: {
     color: 'black',
-    fontSize: 15,
-    fontFamily: Roboto,
-    padding: 5
+    paddingBottom: 20
   },
   message: {
     textAlign: 'center',
     fontSize: 18,
-    marginTop: 10,
+    width: '75%',
     paddingBottom: 20,
     fontFamily: Roboto,
     color: 'black'
   },
-  option: {
-    width: '100%',
-    alignItems: 'center'
+  button: {
+    width: '30%'
   }
 })
 

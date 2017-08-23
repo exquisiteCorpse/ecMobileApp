@@ -15,9 +15,8 @@ export default class LikesButton extends Component {
             this.props.handleLike(this.props.corpseId, this.props.userId, this.props.userLike)
           }}
         >
-          <Icon name='thumbs-o-up' size={20} color='#008b8b'></Icon>
-          <Text>{like}</Text>
-
+          <Icon name='thumbs-o-up' style={{marginLeft: 10}} size={20} color='black' />
+          <Text style={{marginLeft: 10}}>{like}</Text>
         </TouchableOpacity>
       </View>
     )

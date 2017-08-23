@@ -17,22 +17,10 @@ const styles = StyleSheet.create({
     height: '100%',
     justifyContent: 'center'
   },
-  container2: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 20
-  },
   welcome: {
     fontFamily: font,
     fontSize: 50,
     color: 'black'
-  },
-  confirmation: {
-    fontSize: 25,
-    color: 'black',
-    paddingBottom: 20,
-    fontFamily: font
   },
   message: {
     textAlign: 'center',
@@ -43,7 +31,6 @@ const styles = StyleSheet.create({
   button: {
     padding: 20
   }
-
 })
 
 export default styles

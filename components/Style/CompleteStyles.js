@@ -9,18 +9,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  header: {
-    color: 'black',
-    fontSize: 20,
-    fontFamily: Roboto,
-    marginTop: 10
-  },
-  list: {
-    color: 'black',
-    fontSize: 15,
-    fontFamily: Roboto,
-    padding: 5
-  },
   message: {
     textAlign: 'center',
     fontSize: 18,

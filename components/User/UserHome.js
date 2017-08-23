@@ -8,7 +8,6 @@ import { imageUrl } from '../../store/url'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { ShareDialog } from 'react-native-fbsdk'
 
-
 class UserHome extends Component {
   constructor () {
     super()
@@ -26,12 +25,10 @@ class UserHome extends Component {
       })
       .then((result) => {
         result.isCancelled
-          ? alert ('Share cancelled')
-          : alert ('Share success with postId: ' + result.postId)
-      }, (error) =>  alert ('Share fail with error: ' + error))
+          ? alert('Share cancelled')
+          : alert('Share success with postId: ' + result.postId)
+      }, (error) => alert('Share fail with error: ' + error))
   }
-
-
 
   render () {
     /// likes set up for render will move to its own file
@@ -66,7 +63,6 @@ class UserHome extends Component {
                   <View style={styles.imageCorpseTop}>
                     <Text style={styles.titleCorpse}>{corpse.title}</Text>
                     <Text style={styles.textCorpse}>{corpse.photos.map((photo, i) => { return photo.user.username.split(' ').slice(0, 1) }).join(' | ')}</Text>
-
                   </View>
                   <View style={styles.viewCorpse}>
                     <Image
@@ -75,13 +71,13 @@ class UserHome extends Component {
                     />
                   </View>
                   <View style={styles.imageCorpseBottom}>
-
                     <LikeButton corpseId={corpse.id} userLike={userLike} userId={this.props.dbUser.id} likes={likesCorpse[corpse.id]} style={styles} handleLike={this.props.handleLike}
                     />
                     <View >
                       <Icon name='facebook-square'
+                        style={{marginRight: 10}}
                         size={25}
-                        color='#6495ed'
+                        color='black'
                         onPress={() => {
                           this.shareLinkWithShareDialog(imageInfo)
                         }}
@@ -128,8 +124,5 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     }
   }
 })
+
 export default connect(mapStateToProps, mapDispatchToProps)(UserHome)
-
-/*
-
-*/

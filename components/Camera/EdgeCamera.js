@@ -26,10 +26,10 @@ class EdgeCamera extends Component {
           <Image style={styles.edge}
             source={{uri: `${imageUrl}${assignment.corpseId}-${assignment.assignorId}-${cell}-edge.jpeg`}}
           />
-          <Icon name="camera"
-            size={50}
-            onPress={() => this.props.takePicture(camera)}
-          />
+          <Text style={styles.camblock} />
+          <Icon name='camera' size={50} color={'#000000'}
+            style={{padding: 10, margin: 20}}
+            onPress={() => this.props.takePicture(camera)} />
         </Camera>
       </View>
     )
@@ -75,6 +75,16 @@ const styles = StyleSheet.create({
     right: 0,
     left: 0,
     height: 20,
+    justifyContent: 'space-between'
+  },
+  camblock: {
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    position: 'absolute',
+    flexDirection: 'row',
+    bottom: 0,
+    right: 0,
+    left: 0,
+    height: 215,
     justifyContent: 'space-between'
   }
 })

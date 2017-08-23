@@ -15,15 +15,12 @@ class NewCorpse extends Component {
     const navigate = this.props.navigation.navigate
     let navToScreen = 'AppCameraScreen'
     let sendToFriendsNav = 'SendToFriendsScreen'
-    let edge = null
+    let edge = (<Text style={styles.edgeblock} />)
     let retakeParams = null
     let assignmentParams = null
-    let imageStyle = styles.image
     if (this.props.navigation.state.params) {
-
       const {assignment, cell} = this.props.navigation.state.params
       if (assignment) {
-        imageStyle = styles.imageEdge
         edge = (
           <Image
             style={styles.edge}
@@ -41,24 +38,29 @@ class NewCorpse extends Component {
         <View style={styles.captured}>
           {edge}
           <Image
-            style={imageStyle}
+            style={styles.image}
             source={{ uri: this.props.singlePhoto.path }}
           />
-          <View style={styles.button}>
-            <Button
-              title='Approve'
-              color='#228b22'
-              onPress={() => {
-                navigate(sendToFriendsNav, assignmentParams)
-              }}
-            />
-            <Button
-              title='Re-take'
-              color='#8b0000'
-              onPress={() => {
-                navigate(navToScreen, retakeParams)
-              }}
-            />
+          <Text style={styles.camblock} />
+          <View style={styles.options}>
+            <View style={styles.optionButtons}>
+              <Button
+                title='Approve'
+                color='black'
+                onPress={() => {
+                  navigate(sendToFriendsNav, assignmentParams)
+                }}
+              />
+            </View>
+            <View style={styles.optionButtons}>
+              <Button
+                title='Re-take'
+                color='black'
+                onPress={() => {
+                  navigate(navToScreen, retakeParams)
+                }}
+              />
+            </View>
           </View>
         </View>
       </View>
@@ -79,28 +81,11 @@ const styles = StyleSheet.create({
   image: {
     position: 'absolute',
     flexDirection: 'row',
-    top: 0,
+    top: 20,
     bottom: 0,
     right: 0,
     left: 0,
     justifyContent: 'space-between'
-  },
-  imageEdge: {
-    position: 'absolute',
-    flexDirection: 'row',
-    top: 10,
-    bottom: 0,
-    right: 0,
-    left: 0,
-    justifyContent: 'space-between'
-  },
-  button: {
-    position: 'absolute',
-    flexDirection: 'row',
-    bottom: 40,
-    left: 0,
-    right: 0,
-    justifyContent: 'center'
   },
   edge: {
     position: 'absolute',
@@ -108,7 +93,40 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     left: 0,
-    height: 10,
+    height: 20,
+    justifyContent: 'space-between'
+  },
+  options: {
+    position: 'absolute',
+    flexDirection: 'row',
+    bottom: 40,
+    left: 0,
+    right: 0,
+    justifyContent: 'center'
+  },
+  optionButtons: {
+    marginLeft: 10,
+    marginRight: 10,
+    width: '30%'
+  },
+  edgeblock: {
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    position: 'absolute',
+    flexDirection: 'row',
+    top: 0,
+    right: 0,
+    left: 0,
+    height: 20,
+    justifyContent: 'space-between'
+  },
+  camblock: {
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    position: 'absolute',
+    flexDirection: 'row',
+    bottom: 0,
+    right: 0,
+    left: 0,
+    height: 215,
     justifyContent: 'space-between'
   }
 })
