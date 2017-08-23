@@ -50,8 +50,8 @@ class SendToFriends extends Component {
       <View style={{ display: 'flex' }}>
         <Image
           style={{ height: '65%', width: '100%' }}
-          source={{ uri: this.props.singlePhoto.path }}
-          resizeMode={'contain'}
+          source={{ uri: this.props.singlePhoto.uri }}
+          // resizeMode={'contain'}
         />
         {displayTitle}
         <View >
