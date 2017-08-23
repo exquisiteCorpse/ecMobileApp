@@ -42,7 +42,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   takePicture (camera) {
     camera.capture()
       .then((data) => {
-        ImageResizer.createResizedImage(data.path, 640, 480, 'JPEG', 100)
+        ImageResizer.createResizedImage(data.path, 640, 480, 'JPEG', 100, 0)
           .then(res =>
             dispatch(putPhoto(res)))
         ownProps.navigation.navigate('NewCorpseScreen', { assignment: ownProps.navigation.state.params.assignment, cell: ownProps.navigation.state.params.cell })
