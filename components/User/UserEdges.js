@@ -18,33 +18,33 @@ class UserEdges extends Component {
     const { assignments, corpses, dbUser } = this.props
     const navigate = this.props.navigation.navigate
     let cell = ''
-    if (!(assignments.length && corpses.length)) { return <Text></Text> }
+    if (!(assignments.length && corpses.length)) { return <Text /> }
     return (
-      <ScrollView>
+      <ScrollView style={{backgroundColor: 'white'}}>
         <View style={styles.container}>
           {
             assignments
             .filter(assignment => assignment.assigneeId === dbUser.id && assignment.complete === false)
             .map(assignment => {
               if (assignment.cell === 'middle') {
-                  cell = 'top'
+                cell = 'top'
               }
               if (assignment.cell === 'bottom') {
-                  cell = 'middle'
+                cell = 'middle'
               }
 
               const corpse = corpses.find((corpse) => {
                 return corpse.id === assignment.corpseId
               })
-              if(!corpse){ console.log('HTYTHTUTH', assignment.corpseId)}
+              if (!corpse) { console.log('HTYTHTUTH', assignment.corpseId) }
               return (
                 <View key={assignment.id} style={styles.edge}>
                   <View style={styles.imageEdgeTop}>
-                    <Text style={styles.textCorpse}>{corpse.photos.map((photo) => { return photo.user.username }).join('|')}</Text>
                     <Text style={styles.titleCorpse}>{corpse.title}</Text>
+                    <Text style={styles.textCorpse}>{corpse.photos.map((photo) => { return photo.user.username }).join('|')}</Text>
                   </View>
                   <View style={styles.viewEdge}>
-                    <TouchableHighlight onPress={() => { navigate('EdgeCameraScreen', { assignment: assignment, cell: cell }) }}>
+                    <TouchableHighlight style={styles.touch} onPress={() => { navigate('EdgeCameraScreen', { assignment: assignment, cell: cell }) }}>
                       <Image
                         style={styles.viewEdge}
                         source={{uri: `${imageUrl}${assignment.corpseId}-${assignment.assignorId}-${cell}-edge.jpeg`}}
@@ -52,8 +52,8 @@ class UserEdges extends Component {
                     </TouchableHighlight>
                   </View>
                 </View>
-                )
-              })
+              )
+            })
           }
         </View>
       </ScrollView>

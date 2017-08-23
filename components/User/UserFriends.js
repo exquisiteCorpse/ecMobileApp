@@ -5,7 +5,7 @@ import { StyleSheet, Text, ScrollView, View, Image, TouchableOpacity } from 'rea
 import styles from '../Style/FriendsListStyles'
 
 class UserFriends extends Component {
-  componentDidMount() {
+  componentDidMount () {
     this.props.fetchData(this.props.dbUser.id)
   }
 
@@ -13,7 +13,7 @@ class UserFriends extends Component {
     const { friends, singlePhoto, dbUser } = this.props
     return (
       <ScrollView >
-        <View style={styles.content}>
+        <View style={styles.container}>
           <Text style={styles.header}>{`Choose Wisely..`}</Text>
           {friends && friends.map(friend => {
             return (

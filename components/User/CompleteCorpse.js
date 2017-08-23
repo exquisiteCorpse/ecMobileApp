@@ -2,23 +2,24 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchFriends, getPhoto, postNewPhoto, completeCorpes, updateStatusAssignments } from '../../store'
 import { StyleSheet, Text, ScrollView, View, Image, Button } from 'react-native'
-import styles from '../Style/FriendsListStyles'
+import styles from '../Style/CompleteStyles'
 
 class CompeleteCorpse extends Component {
   componentDidMount () {
     this.props.fetchPhoto()
   }
   render () {
-
     const { singlePhoto } = this.props
     return (
       <View style={styles.container2}>
-        <Text style={{textAlign: 'center', margin: 20}}>Click To Complete</Text>
-        <Button
-          title='complete'
-          color='#1e90ff'
-          onPress={() => { this.props.postPhoto(singlePhoto) }}
+        <Text style={styles.message}>Click To Complete</Text>
+        <View style={styles.option}>
+          <Button
+            title='complete'
+            color='black'
+            onPress={() => { this.props.postPhoto(singlePhoto) }}
         />
+        </View>
       </View>
     )
   }

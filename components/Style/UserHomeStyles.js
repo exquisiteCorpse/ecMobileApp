@@ -1,11 +1,9 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
 
-const jBold = 'JosefinSlab-Bold'
-const jReg = 'JosefinSlab-Regular'
-const Amatca = 'AmaticaSC-Regular'
-const AmatcaB = 'AmaticaSC-Bold'
-const reenie = 'ArchitectsDaughter-Regular'
+const Roboto = 'Roboto-Regular'
+const darkgrey = '#2d2f31'
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -13,7 +11,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
   corpse: {
-    flex: 1,
     width: '100%',
     height: 460,
     alignItems: 'center'
@@ -22,38 +19,43 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '100%',
-    height: 40
+    width: '95%',
+    height: 50,
+    marginTop: 20
   },
   imageCorpseBottom: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '90%',
+    width: '95%',
     height: 30,
-    paddingTop: 10
-
+    paddingTop: 10,
+    marginBottom: 10
   },
   viewCorpse: {
     width: '95%',
     height: 360,
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: 5
   },
   textLikedCorpse: {
-    color: 'black'
+    fontFamily: Roboto,
+    color: darkgrey,
+    marginLeft: 10
   },
   titleCorpse: {
-    fontSize: 25,
-    fontFamily: AmatcaB,
-    color: 'black',
-    marginLeft: 10,
-    marginBottom: 10
+    fontSize: 18,
+    fontFamily: Roboto,
+    fontWeight: 'bold',
+    color: darkgrey,
+    marginLeft: 10
   },
   textCorpse: {
-    color: '#2f4f4f',
-    fontSize: 15,
-    fontFamily: Amatca,
-    marginRight: 10
+    color: darkgrey,
+    fontSize: 12,
+    fontFamily: Roboto,
+    marginRight: 10,
+    paddingTop: 5
   }
 })
 
