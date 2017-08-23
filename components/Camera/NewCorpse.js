@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   options: {
     position: 'absolute',
     flexDirection: 'row',
-    bottom: 20,
+    bottom: 40,
     left: 0,
     right: 0,
     justifyContent: 'center'
