@@ -27,10 +27,12 @@ const DrawerIcon = ({ navigate }) => {
 const WelcomeStack = StackNavigator({
   AppScreen: {
     screen: App,
-    navigationOptions: ({ navigation }) => ({
-      title: 'Welcome',
-      headerLeft: <DrawerIcon {...navigation} />
-    })
+    navigationOptions: ({ navigation, screenProps }) => {
+      return {
+        title: 'Welcome',
+        headerLeft: <DrawerIcon {...navigation} />
+      }
+    }
   }
 })
 
@@ -87,9 +89,7 @@ const AllEdgesStack = StackNavigator({
 
 const AppNav = DrawerNavigator({
   Home: { screen: WelcomeStack,
-    navigationOptions: {
-      title: 'Welcome'
-    }
+    title: 'Welcome'
   },
   Camera: { screen: AddNewCorpseStack,
     navigationOptions: {
