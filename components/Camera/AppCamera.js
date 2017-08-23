@@ -5,6 +5,7 @@ import Camera from 'react-native-camera'
 import {connect} from 'react-redux'
 import Orientation from 'react-native-orientation'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import ImageResizer from 'react-native-image-resizer'
 
 class AppCamera extends Component {
   componentDidMount () {
@@ -21,7 +22,7 @@ class AppCamera extends Component {
           }}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}
-          captureQuality={Camera.constants.CaptureQuality.low}
+          captureQuality={Camera.constants.CaptureQuality.medium}
         >
           <Text style={styles.edgeblock} />
           <Text style={styles.camblock} />
@@ -39,8 +40,11 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   takePicture (camera) {
     camera.capture()
       .then((data) => {
-        dispatch(putPhoto(data))
-        ownProps.navigation.navigate('NewCorpseScreen')
+        ImageResizer.createResizedImage(data.path, 640, 480, 'JPEG', 100)
+          .then(res =>
+            dispatch(putPhoto(res)),
+          ownProps.navigation.navigate('NewCorpseScreen'))
+          .catch(err => console.log(err, '-unable to resize'))
       })
       .catch(err => console.error(err))
   }

@@ -7,6 +7,7 @@ import store, { getUserLoggedIn, fetchLikes, fetchCorpses, destroyLike, postNewL
 import { imageUrl } from '../../store/url'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { ShareDialog } from 'react-native-fbsdk'
+import socket from '../socket'
 
 class UserHome extends Component {
   constructor () {
@@ -16,6 +17,10 @@ class UserHome extends Component {
 
   componentDidMount () {
     this.props.fetchData()
+    socket.on('message', (message) => {
+      dispatch(fetchLikes())
+      console.log('action', message)
+    })
   }
 
   shareLinkWithShareDialog (imageInfo) {
@@ -66,13 +71,13 @@ class UserHome extends Component {
                   </View>
                   <View style={styles.viewCorpse}>
                     <Image
+                      resizeMode='contain'
                       style={styles.viewCorpse}
                       source={{uri: `${imageUrl}corpse-${corpse.id}.jpeg`}}
                     />
                   </View>
                   <View style={styles.imageCorpseBottom}>
-                    <LikeButton corpseId={corpse.id} userLike={userLike} userId={this.props.dbUser.id} likes={likesCorpse[corpse.id]} style={styles} handleLike={this.props.handleLike}
-                    />
+                    <LikeButton corpseId={corpse.id} userLike={userLike} userId={this.props.dbUser.id} likes={likesCorpse[corpse.id]} handleLike={this.props.handleLike} />
                     <View >
                       <Icon name='facebook-square'
                         style={{marginRight: 10}}
@@ -118,8 +123,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       userId: +userId
     }
     if (userLike) {
+      socket.emit('message', like)
       dispatch(destroyLike(like))
     } else {
+      socket.emit('message', like)
       dispatch(postNewLike(like))
     }
   }

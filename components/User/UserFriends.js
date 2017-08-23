@@ -12,13 +12,12 @@ class UserFriends extends Component {
   render () {
     const { friends, singlePhoto, dbUser } = this.props
     return (
-      <ScrollView>
+      <ScrollView >
         <View style={styles.container}>
           <Text style={styles.header}>{`Choose Wisely..`}</Text>
           {friends && friends.map(friend => {
             return (
-              <TouchableOpacity
-                key={friend.id}
+              <TouchableOpacity key={friend.id}
                 onPress={() => this.props.postPhoto(singlePhoto, friend.id, dbUser.id)}>
                 <Text style={styles.list} >
                   {friend.username}
@@ -71,7 +70,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
           }
           dispatch(makeNewAssign(assign))
             .then(() => {
-              dispatch(updateStatusAssignments(corpseInfo.id, {complete: true}))
+              dispatch(updateStatusAssignments(corpseInfo.id, { complete: true }))
             })
         })
     } else {

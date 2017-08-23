@@ -4,12 +4,14 @@ import styles from '../Style/UserEdgeStyles'
 import {connect} from 'react-redux'
 import { fetchAssignments, fetchCorpses, getUserLoggedIn } from '../../store'
 import { imageUrl } from '../../store/url'
+import Orientation from 'react-native-orientation'
 
 /* -----------------    COMPONENT     ------------------ */
 
 class UserEdges extends Component {
   componentDidMount () {
     this.props.fetchData()
+    Orientation.unlockAllOrientations()
   }
 
   render () {

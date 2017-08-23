@@ -39,7 +39,8 @@ const styles = StyleSheet.create({
   },
   textLikedCorpse: {
     fontFamily: Roboto,
-    color: 'black'
+    color: 'black',
+    marginLeft: 10
   },
   titleCorpse: {
     fontSize: 18,
