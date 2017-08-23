@@ -24,39 +24,41 @@ class SendToFriends extends Component {
     const assignment = this.props.navigation.state.params
     let displayStage = null
     let displayTitle = null
-    let source = this.props.singlePhoto.uri
+    // let source = this.props.singlePhoto.uri
     // Nav based on assignment
     if (assignment) {
       // source = this.props.singlePhoto.path
       if (assignment.assignment.cell === 'bottom') {
-        displayStage = <CompleteCorpse navigate={navigate} corpseInfo={assignment}/>
+        displayStage = <CompleteCorpse navigate={navigate} corpseInfo={assignment} />
       } else {
-        displayStage = <UserFriends navigate={navigate} corpseInfo={assignment}/>
+        displayStage = <UserFriends navigate={navigate} corpseInfo={assignment} />
       }
     } else {
       // Title shows if you its new
-      displayTitle = <View>
+      displayTitle =
         <TextInput
-          defaultValue={'Enter Title'}
+          style={styles.input}
+          defaultValue={'Title'}
+          caretHidden
+          selectTextOnFocus
+          selectionColor={'#585f62'}
+          underlineColorAndroid={'#585f62'}
           onSubmitEditing={(event) => {
             this.setState({corpseTitle: event.nativeEvent.text})
           }}
           maxLength={15}
-        /></View>
+        />
       if (this.state.corpseTitle.length) {
-        displayStage = <UserFriends navigate={navigate} corpseTitle={this.state.corpseTitle}/>
+        displayStage = <UserFriends navigate={navigate} corpseTitle={this.state.corpseTitle} />
       }
     }
 
     return (
-      <View style={{ display: 'flex' }}>
-        <Image
-          style={{ height: '65%', width: '100%' }}
-          source={{ uri: source }}
-          // resizeMode={'contain'}
-        />
-        {displayTitle}
-        <View >
+      <View style={styles.container}>
+        <View style={styles.title}>
+          {displayTitle}
+        </View>
+        <View style={styles.info}>
           {displayStage}
         </View>
       </View>

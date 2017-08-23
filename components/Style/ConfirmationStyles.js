@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
   confirmation: {
-    textAlign: 'center',
+    alignItems: 'center',
     fontSize: 25,
     fontWeight: 'bold',
     fontFamily: Roboto,
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20
   },
   message: {
-    textAlign: 'center',
+    alignItems: 'center',
     fontSize: 18,
     width: '75%',
     paddingBottom: 20,
