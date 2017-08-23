@@ -5,6 +5,7 @@ import axios from 'axios'
 /* -----------------    ACTION TYPES     ------------------ */
 const GET_LOGGIN_USER = 'GET_LOGGIN_USER'
 const FIND_OR_CREATE_USER = 'FIND_OR_CREATE_USER'
+const CLEAR_DB_USER = 'CLEAR_USER'
 
 /* ------------   ACTION CREATORS     ------------------ */
 
@@ -16,6 +17,9 @@ const findOrCreateUser = (user) => {
   return { type: FIND_OR_CREATE_USER, user }
 }
 
+export const clearDbUser = () => {
+  return { type: CLEAR_DB_USER }
+}
 /* ------------       THUNK CREATORS     ------------------ */
 
 export const fetchFindOrCreateUser = (fbUser) =>
@@ -27,14 +31,22 @@ export const fetchFindOrCreateUser = (fbUser) =>
       })
       .catch(err => console.log(err))
 
+export const releaseUserDB = () =>
+  dispatch =>
+    dispatch(clearDbUser())
+
 /* ------------       REDUCERS     ------------------ */
 
-export default function (state = {}, action) {
+const initialState = {}
+
+export default function (state = initialState, action) {
   switch (action.type) {
     case FIND_OR_CREATE_USER:
       return action.user
     case GET_LOGGIN_USER:
       return state
+    case CLEAR_DB_USER:
+      return {}
     default:
       return state
   }

@@ -17,7 +17,7 @@ export default class App extends Component {
       <Image source={require('../public/images/guy.jpg')} style={styles.background}>
         <View style={styles.container}>
           <Text style={styles.welcome}>Exquisite Corpse</Text>
-          <Login/>
+          <Login />
         </View>
       </Image>
 

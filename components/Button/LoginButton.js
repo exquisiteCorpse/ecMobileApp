@@ -2,16 +2,8 @@ import FBSDK, { LoginButton, LoginManager, AccessToken } from 'react-native-fbsd
 import React, { Component} from 'react'
 import { View, Text } from 'react-native'
 import {connect} from 'react-redux'
-import { fetchUser, fetchFindOrCreateUser } from '../../store'
+import { fetchUser, fetchFindOrCreateUser, releaseUserDB, releaseUserFB } from '../../store'
 
-export const _fbAuth = () => {
-  LoginManager.logInWithReadPermissions(['public_profile', 'email'])
-  .then((result) => {
-    console.log('LOGIN MANAGER', result)
-    result.isCancelled ? alert ('Login cancelled') : alert('Login success with permissions: ' +
-      result.grantedPermissions.toString())
-  }, (error) => { alert ('Login fail with error: ' + error) })
-}
 
 class Login extends Component {
   componentDidMount () {
@@ -33,11 +25,10 @@ class Login extends Component {
               }
             }
           }
-          onLogoutFinished={() => alert (`See You Later ${this.props.dbUser}`)}
+          onLogoutFinished={this.props.loggedOut}
         />
       </View>
     )
-
   }
 }
 
@@ -70,6 +61,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
             })
         }
       })
+  },
+  loggedOut: () => {
+    dispatch(releaseUserDB())
+    dispatch(releaseUserFB())
   }
 })
 
