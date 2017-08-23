@@ -53,7 +53,7 @@ class UserHome extends Component {
     }
 
     return (
-      <ScrollView>
+      <ScrollView style={{backgroundColor: 'white'}}>
         <View style={styles.container}>
           {this.props.corpses.map((corpse) => {
             if (corpse.complete) {

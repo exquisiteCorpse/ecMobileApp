@@ -20,7 +20,7 @@ class UserEdges extends Component {
     let cell = ''
     if (!(assignments.length && corpses.length)) { return <Text /> }
     return (
-      <ScrollView>
+      <ScrollView style={{backgroundColor: 'white'}}>
         <View style={styles.container}>
           {
             assignments
