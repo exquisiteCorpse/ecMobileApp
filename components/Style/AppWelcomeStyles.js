@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet } from 'react-native'
 
 const font = 'SedgwickAveDisplay-Regular'
+const darkgrey = '#2d2f31'
 
 const styles = StyleSheet.create({
   container: {
@@ -20,13 +21,13 @@ const styles = StyleSheet.create({
   welcome: {
     fontFamily: font,
     fontSize: 50,
-    color: 'black'
+    color: darkgrey
   },
   message: {
     textAlign: 'center',
     paddingBottom: 20,
     fontFamily: font,
-    color: 'black'
+    color: darkgrey
   },
   button: {
     padding: 20

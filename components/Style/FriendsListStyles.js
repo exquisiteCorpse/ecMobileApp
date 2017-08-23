@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet } from 'react-native'
 
 const Roboto = 'Roboto-Regular'
+const darkgrey = '#2d2f31'
 
 const styles = StyleSheet.create({
   container: {
@@ -10,13 +11,13 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   header: {
-    color: 'black',
+    color: darkgrey,
     fontSize: 20,
     fontFamily: Roboto,
     marginTop: 10
   },
   list: {
-    color: 'black',
+    color: darkgrey,
     fontSize: 15,
     fontFamily: Roboto,
     padding: 5
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingBottom: 20,
     fontFamily: Roboto,
-    color: 'black'
+    color: darkgrey
   },
   option: {
     width: '100%',

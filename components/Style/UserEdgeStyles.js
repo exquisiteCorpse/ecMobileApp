@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet } from 'react-native'
 
 const Roboto = 'Roboto-Regular'
+const darkgrey = '#2d2f31'
 
 const styles = StyleSheet.create({
   container: {
@@ -43,11 +44,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: Roboto,
     fontWeight: 'bold',
-    color: 'black',
+    color: darkgrey,
     marginLeft: 10
   },
   textCorpse: {
-    color: 'black',
+    color: darkgrey,
     fontSize: 12,
     fontFamily: Roboto,
     marginRight: 10,
