@@ -18,7 +18,7 @@ class CompeleteCorpse extends Component {
             title='complete'
             color='black'
             onPress={() => { this.props.postPhoto(singlePhoto) }}
-        />
+          />
         </View>
       </View>
     )

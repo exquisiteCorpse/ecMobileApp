@@ -24,7 +24,7 @@ class SendToFriends extends Component {
     const assignment = this.props.navigation.state.params
     let displayStage = null
     let displayTitle = null
-    // let source = this.props.singlePhoto.uri
+
     // Nav based on assignment
     if (assignment) {
       if (assignment.assignment.cell === 'bottom') {

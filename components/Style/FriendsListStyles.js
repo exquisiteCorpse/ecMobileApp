@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   list: {
     alignItems: 'center',
     color: darkgrey,
-    fontSize: 15,
+    fontSize: 23,
     fontFamily: Roboto,
     paddingTop: 5
   },

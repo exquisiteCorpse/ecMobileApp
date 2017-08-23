@@ -40,11 +40,11 @@ class NewCorpse extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.captured}>
-          {edge}
           <Image
             style={styles.image}
             source={{ uri: source }}
           />
+          {edge}
           <Text style={styles.camblock} />
           <View style={styles.options}>
             <View style={styles.optionButtons}>
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   image: {
     position: 'absolute',
     flexDirection: 'row',
-    top: 20,
+    top: 0,
     bottom: 0,
     right: 0,
     left: 0,
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     left: 0,
-    height: 20,
+    height: 60,
     justifyContent: 'space-between'
   },
   options: {
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     left: 0,
-    height: 20,
+    height: 60,
     justifyContent: 'space-between'
   },
   camblock: {
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     left: 0,
-    height: 215,
+    height: 155,
     justifyContent: 'space-between'
   }
 })
