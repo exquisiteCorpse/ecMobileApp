@@ -21,17 +21,17 @@ class SendToFriends extends Component {
 
   render () {
     const { navigate } = this.props.navigation
-    const assignment = this.props.navigation.state.params
+    const {assignment, cell, stack} = this.props.navigation.state.params
     let displayStage = null
     let displayTitle = null
     let source = this.props.singlePhoto.uri
     // Nav based on assignment
     if (assignment) {
       // source = this.props.singlePhoto.path
-      if (assignment.assignment.cell === 'bottom') {
-        displayStage = <CompleteCorpse navigate={navigate} corpseInfo={assignment}/>
+      if (assignment.cell === 'bottom') {
+        displayStage = <CompleteCorpse navigation={this.props.navigation} navigate={navigate} corpseInfo={assignment} cell={assignment.cell} stack={stack}/>
       } else {
-        displayStage = <UserFriends navigate={navigate} corpseInfo={assignment}/>
+        displayStage = <UserFriends navigate={navigate} corpseInfo={assignment} cell={assignment.cell} stack={stack}/>
       }
     } else {
       // Title shows if you its new
@@ -44,7 +44,7 @@ class SendToFriends extends Component {
           maxLength={15}
         /></View>
       if (this.state.corpseTitle.length) {
-        displayStage = <UserFriends navigate={navigate} corpseTitle={this.state.corpseTitle}/>
+        displayStage = <UserFriends navigate={navigate} corpseTitle={this.state.corpseTitle} cell={cell} stack={stack}/>
       }
     }
 

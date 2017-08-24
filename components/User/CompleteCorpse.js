@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { fetchFriends, getPhoto, postNewPhoto, completeCorpes, updateStatusAssignments } from '../../store'
 import { StyleSheet, Text, ScrollView, View, Image, Button } from 'react-native'
 import styles from '../Style/CompleteStyles'
+import { NavigationActions } from 'react-navigation'
 
 class CompeleteCorpse extends Component {
   componentDidMount () {
@@ -10,6 +11,7 @@ class CompeleteCorpse extends Component {
   }
   render () {
     const { singlePhoto } = this.props
+    console.log(this.props, 'here are the props')
     return (
       <View style={styles.container2}>
         <Text style={styles.message}>Click To Complete</Text>
@@ -17,8 +19,10 @@ class CompeleteCorpse extends Component {
           <Button
             title='complete'
             color='black'
-            onPress={() => { this.props.postPhoto(singlePhoto) }}
-        />
+            onPress={() => {
+              this.props.postPhoto(singlePhoto)
+            }}
+          />
         </View>
       </View>
     )
@@ -41,17 +45,22 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   postPhoto: (photoData) => {
     const body = {
-      corpseId: ownProps.corpseInfo.assignment.corpseId,
-      userId: ownProps.corpseInfo.assignment.assigneeId,
-      cell: ownProps.corpseInfo.assignment.cell
+      corpseId: ownProps.corpseInfo.corpseId,
+      userId: ownProps.corpseInfo.assigneeId,
+      cell: ownProps.corpseInfo.cell
     }
     dispatch(postNewPhoto(photoData, body))
       .then(() => {
-        dispatch(completeCorpes(ownProps.corpseInfo.assignment.corpseId, {complete: true}))
-        dispatch(updateStatusAssignments(ownProps.corpseInfo.assignment.id, {complete: true}))
+        dispatch(completeCorpes(ownProps.corpseInfo.corpseId, {complete: true}))
+        dispatch(updateStatusAssignments(ownProps.corpseInfo.id, {complete: true}))
       })
-
-    ownProps.navigate('AppScreen')
+    const resetAction = NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({ routeName: 'UserEdgesScreen' })
+      ]
+    })
+    ownProps.navigation.dispatch(resetAction)
   }
 })
 

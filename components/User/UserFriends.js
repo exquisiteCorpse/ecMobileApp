@@ -10,7 +10,7 @@ class UserFriends extends Component {
   }
 
   render () {
-    const { friends, singlePhoto, dbUser } = this.props
+    const { friends, singlePhoto, dbUser, corpseInfo } = this.props
     return (
       <ScrollView >
         <View style={styles.container}>
@@ -48,11 +48,11 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       title: ownProps.corpseTitle
     }
     if (ownProps.corpseInfo) {
-      const corpseInfo = ownProps.corpseInfo.assignment
+      const corpseInfo = ownProps.corpseInfo
       const body = {
         corpseId: corpseInfo.corpseId,
         userId: corpseInfo.assigneeId,
-        cell: corpseInfo.cell
+        cell: ownProps.cell
       }
 
       dispatch(postNewPhoto(photoData, body))
@@ -98,7 +98,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
             })
         })
     }
-    ownProps.navigate('ConfirmationScreen')
+    ownProps.navigate('ConfirmationScreen', {stack: ownProps.stack})
   }
 })
 

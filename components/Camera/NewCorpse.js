@@ -21,7 +21,7 @@ class NewCorpse extends Component {
     let source = this.props.singlePhoto.uri
 
     if (this.props.navigation.state.params) {
-      const {assignment, cell} = this.props.navigation.state.params
+      const {assignment, cell, stack} = this.props.navigation.state.params
       if (assignment) {
         //source = this.props.singlePhoto.path
         edge = (
@@ -31,9 +31,11 @@ class NewCorpse extends Component {
           />
 
         )
-        assignmentParams = {assignment: assignment}
+        assignmentParams = {assignment: assignment, cell: cell, stack: stack}
         navToScreen = 'EdgeCameraScreen'
         retakeParams = this.props.navigation.state.params
+      }else {
+        assignmentParams = {stack: stack}
       }
     }
 
