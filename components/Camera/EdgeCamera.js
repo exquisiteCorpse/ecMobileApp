@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     left: 0,
-    height: 155,
+    height: 205,
     justifyContent: 'space-between'
   }
 })
