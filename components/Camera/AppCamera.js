@@ -23,6 +23,7 @@ class AppCamera extends Component {
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}
           captureQuality={Camera.constants.CaptureQuality.medium}
+          orientation={Camera.constants.Orientation.landscapeLeft}
         >
           <Text style={styles.edgeblock} />
           <Text style={styles.camblock} />
@@ -40,7 +41,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   takePicture (camera) {
     camera.capture()
       .then((data) => {
-        ImageResizer.createResizedImage(data.path, 640, 480, 'JPEG', 100)
+        ImageResizer.createResizedImage(data.path, 640, 480, 'JPEG', 100, 0)
           .then(res =>
             dispatch(putPhoto(res)),
           ownProps.navigation.navigate('NewCorpseScreen', {stack: 'new'}))
@@ -53,14 +54,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default connect(mapStateToProps, mapDispatchToProps)(AppCamera)
 
 const styles = StyleSheet.create({
-  capture: {
-    flex: 0,
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    color: '#000',
-    padding: 10,
-    margin: 40
-  },
   container: {
     flex: 1,
     flexDirection: 'row'
@@ -77,7 +70,7 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     left: 0,
-    height: 20,
+    height: 60,
     justifyContent: 'space-between'
   },
   camblock: {
@@ -87,7 +80,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     left: 0,
-    height: 215,
+    height: 205,
     justifyContent: 'space-between'
   }
 })

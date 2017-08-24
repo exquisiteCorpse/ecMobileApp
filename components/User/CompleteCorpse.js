@@ -13,7 +13,7 @@ class CompeleteCorpse extends Component {
     const { singlePhoto } = this.props
     console.log(this.props, 'here are the props')
     return (
-      <View style={styles.container2}>
+      <View>
         <Text style={styles.message}>Click To Complete</Text>
         <View style={styles.option}>
           <Button
@@ -22,6 +22,7 @@ class CompeleteCorpse extends Component {
             onPress={() => {
               this.props.postPhoto(singlePhoto)
             }}
+
           />
         </View>
       </View>

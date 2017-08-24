@@ -7,32 +7,54 @@ const darkgrey = '#2d2f31'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'white'
   },
-  header: {
-    color: darkgrey,
-    fontSize: 20,
-    fontFamily: Roboto,
-    marginTop: 10
+  title: {
+    position: 'absolute',
+    flexDirection: 'row',
+    top: 60,
+    left: 10,
+    right: 10,
+    justifyContent: 'center'
   },
-  list: {
-    color: darkgrey,
-    fontSize: 15,
-    fontFamily: Roboto,
-    padding: 5
+  info: {
+    flexDirection: 'row',
+    left: 0,
+    right: 0,
+    justifyContent: 'center'
   },
-  message: {
-    textAlign: 'center',
-    fontSize: 18,
-    marginTop: 10,
-    paddingBottom: 20,
+  input: {
+    flex: 1,
+    fontSize: 25,
+    fontWeight: 'bold',
     fontFamily: Roboto,
     color: darkgrey
   },
-  option: {
-    width: '100%',
-    alignItems: 'center'
+  header: {
+    width: '75%',
+    textAlign: 'center',
+    fontSize: 25,
+    fontWeight: 'bold',
+    fontFamily: Roboto,
+    color: darkgrey,
+    paddingBottom: 20
+  },
+  list: {
+    alignItems: 'center',
+    color: darkgrey,
+    fontSize: 23,
+    fontFamily: Roboto,
+    paddingTop: 5
+  },
+  message: {
+    alignItems: 'center',
+    fontSize: 18,
+    width: '75%',
+    paddingBottom: 20,
+    fontFamily: Roboto,
+    color: darkgrey
   }
 })
 

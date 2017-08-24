@@ -12,9 +12,9 @@ class UserFriends extends Component {
   render () {
     const { friends, singlePhoto, dbUser, corpseInfo } = this.props
     return (
-      <ScrollView >
-        <View style={styles.container}>
-          <Text style={styles.header}>{`Choose Wisely..`}</Text>
+      <ScrollView style={{backgroundColor: 'white'}}>
+        <View style={{alignItems: 'center'}}>
+          <Text style={styles.header}>{`Select a friend to play next! Choose wisely...`}</Text>
           {friends && friends.map(friend => {
             return (
               <TouchableOpacity key={friend.id}
