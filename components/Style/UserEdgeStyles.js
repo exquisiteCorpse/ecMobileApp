@@ -53,6 +53,14 @@ const styles = StyleSheet.create({
     fontFamily: Roboto,
     marginRight: 10,
     paddingTop: 5
+  },
+  titleNoEdge: {
+    fontSize: 40,
+    fontFamily: Roboto,
+    fontWeight: 'bold',
+    color: darkgrey,
+    paddingTop: 30,
+    marginLeft: 10
   }
 })
 

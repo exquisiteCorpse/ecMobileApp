@@ -44,7 +44,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         ImageResizer.createResizedImage(data.path, 640, 480, 'JPEG', 100, 0)
           .then(res =>
             dispatch(putPhoto(res)),
-          ownProps.navigation.navigate('NewCorpseScreen'))
+          ownProps.navigation.navigate('NewCorpseScreen', {stack: 'new'}))
           .catch(err => console.log(err, '-unable to resize'))
       })
       .catch(err => console.error(err))

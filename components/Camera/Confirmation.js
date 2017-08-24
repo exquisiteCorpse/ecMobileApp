@@ -2,23 +2,31 @@ import React, { Component } from 'react'
 import { View, Image, Text, Button } from 'react-native'
 import { connect } from 'react-redux'
 import styles from '../Style/ConfirmationStyles'
+import { NavigationActions } from 'react-navigation'
 
 class Confirmation extends React.Component {
-  componentDidMount () {
-  }
 
   render () {
-    const navigate = this.props.navigation.navigate
+    let routePath = 'UserHomeScreen'
+
+    if(this.props.navigation.state.params.stack === 'edge') { routePath = 'UserEdgesScreen' }
+
     return (
       <View style={styles.container}>
         <Text style={styles.confirmation}>Corpse sent successfully!</Text>
         <Text style={styles.message}>Get excited, you will receive the final Exquisite Corpse back when complete</Text>
         <Button
-          title='Back to Home'
+          title='Make Another Corpse'
           color='black'
           style={styles.button}
           onPress={() => {
-            navigate('UserHomeScreen')
+            const resetAction = NavigationActions.reset({
+              index: 0,
+              actions: [
+              NavigationActions.navigate({ routeName: routePath })
+              ]
+            })
+            this.props.navigation.dispatch(resetAction)
           }}
         />
       </View>

@@ -6,10 +6,24 @@ import NewCorpse from './Camera/NewCorpse'
 import SendToFriends from './Camera/SendToFriends'
 import Confirmation from './Camera/Confirmation'
 import UserHome from './User/UserHome'
+import CompleteCorpse from './User/CompleteCorpse'
 import UserEdges from './User/UserEdges'
 import { Icon } from 'react-native-elements'
 import { StackNavigator, DrawerNavigator } from 'react-navigation'
 import App from './App'
+
+const CameraIcon = ({ navigate }) => {
+  if (Platform.OS === 'ios') {
+    return null
+  } else {
+    return <Icon
+      name='camera'
+      type='font-awesome'
+      color='black'
+      style={{ paddingRight: 20 }}
+      onPress={() => navigate('AppCameraScreen')} />
+  }
+}
 
 const DrawerIcon = ({ navigate }) => {
   if (Platform.OS === 'ios') {
@@ -29,7 +43,7 @@ const WelcomeStack = StackNavigator({
     screen: App,
     navigationOptions: ({ navigation, screenProps }) => {
       return {
-        title: 'Welcome',
+        title: 'Home',
         headerLeft: <DrawerIcon {...navigation} />
       }
     }
@@ -37,6 +51,13 @@ const WelcomeStack = StackNavigator({
 })
 
 const AddNewCorpseStack = StackNavigator({
+  UserHomeScreen: { screen: UserHome,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Gallery',
+      headerLeft: <DrawerIcon {...navigation} />,
+      headerRight: <CameraIcon {...navigation} />
+    })
+  },
   AppCameraScreen: {
     screen: AppCamera,
     navigationOptions: {
@@ -55,55 +76,52 @@ const AddNewCorpseStack = StackNavigator({
   ConfirmationScreen: {
     screen: Confirmation,
     navigationOptions: { header: null }
-  },
-  UserEdgesScreen: {
-    screen: UserEdges
-  }
-
-})
-
-const AllCorpsesStack = StackNavigator({
-  UserHomeScreen: { screen: UserHome,
-    navigationOptions: ({ navigation }) => ({
-      title: 'Gallery',
-      headerLeft: <DrawerIcon {...navigation} />
-    })
   }
 })
 
 const AllEdgesStack = StackNavigator({
   UserEdgesScreen: { screen: UserEdges,
     navigationOptions: ({ navigation }) => ({
-      title: 'To Complete',
+      title: 'Edges',
       headerLeft: <DrawerIcon {...navigation} />
     })
   },
   EdgeCameraScreen: {
     screen: EdgeCamera,
     navigationOptions: { header: null }
-    // navigationOptions: ({ navigation }) => ({
-    //   headerLeft: <DrawerIcon {...navigation} />
-    // })
+  },
+  NewCorpseScreen: {
+    screen: NewCorpse,
+    navigationOptions: { header: null }
+  },
+  SendToFriendsScreen: {
+    screen: SendToFriends,
+    navigationOptions: { header: null }
+  },
+  ConfirmationScreen: {
+    screen: Confirmation,
+    navigationOptions: { header: null }
+  },
+  CompleteCorpseScreen: { screen: CompleteCorpse,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Complete',
+      header: null
+    })
   }
 })
 
 const AppNav = DrawerNavigator({
   Home: { screen: WelcomeStack,
-    title: 'Welcome'
+    title: 'Home'
   },
-  Camera: { screen: AddNewCorpseStack,
-    navigationOptions: {
-      title: 'Start New'
-    }
-  },
-  UserHome: { screen: AllCorpsesStack,
+  UserHome: { screen: AddNewCorpseStack,
     navigationOptions: {
       title: 'Gallery'
     }
   },
   UserEdges: { screen: AllEdgesStack,
     navigationOptions: {
-      title: 'To Complete'
+      title: 'Edges'
     }
   }
 })

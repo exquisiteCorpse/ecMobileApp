@@ -18,7 +18,12 @@ class UserEdges extends Component {
     const { assignments, corpses, dbUser } = this.props
     const navigate = this.props.navigation.navigate
     let cell = ''
-    if (!(assignments.length && corpses.length)) { return <Text /> }
+    //this is crazy
+    if (!(assignments.length &&
+      corpses.length &&
+      assignments.filter(assignment => assignment.assigneeId === dbUser.id && assignment.complete === false).length)
+    ) { return <Text style={styles.titleNoEdge}>You Have No Edges</Text> }
+
     return (
       <ScrollView style={{backgroundColor: 'white'}}>
         <View style={styles.container}>
@@ -26,6 +31,7 @@ class UserEdges extends Component {
             assignments
             .filter(assignment => assignment.assigneeId === dbUser.id && assignment.complete === false)
             .map(assignment => {
+
               if (assignment.cell === 'middle') {
                 cell = 'top'
               }
