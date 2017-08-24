@@ -39,7 +39,7 @@ const DrawerIcon = ({ navigate }) => {
       onPress={() => navigate('DrawerOpen')} />
   }
 }
-109389833127290
+
 const WelcomeStack = StackNavigator({
   AppScreen: {
     screen: App,

@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     left: 0,
-    height: 60,
+    height: 40,
     justifyContent: 'space-between'
   },
   options: {
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     left: 0,
-    height: 60,
+    height: 40,
     justifyContent: 'space-between'
   },
   camblock: {
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     left: 0,
-    height: 205,
+    height: 155,
     justifyContent: 'space-between'
   }
 })

@@ -12,40 +12,31 @@ class UserFriends extends Component {
 
   render () {
     const { friends, singlePhoto, dbUser } = this.props
-    if (!friends.length) {
-      return (
-        <ScrollView style={{ backgroundColor: 'white' }}>
-          <View style={{ alignItems: 'center' }}>
-            <Text style={styles.header}>{`Until we integrate the addFriend component...`}<Icon name='wrench' size={25} /></Text>
-            <TouchableOpacity
-              onPress={() => this.props.postPhoto(singlePhoto, dbUser.id, dbUser.id)}>
-              <Text style={styles.list} >
-                {dbUser.username}
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
-      )
-    } else {
-      return (
-        <ScrollView style={{ backgroundColor: 'white' }}>
-          <View style={{ alignItems: 'center' }}>
-            <Text style={styles.header}>{`Select a friend to play next! Choose wisely...`}</Text>
-            {friends && friends.map(friend => {
-              return (
-                <TouchableOpacity key={friend.id}
-                  onPress={() => this.props.postPhoto(singlePhoto, friend.id, dbUser.id)}>
-                  <Text style={styles.list} >
-                    {friend.username}
-                  </Text>
-                </TouchableOpacity>)
-            })}
-          </View>
-        </ScrollView>
-      )
-    }
+    return (
+      <ScrollView style={{ backgroundColor: 'white' }}>
+        <View style={{ alignItems: 'center' }}>
+          <Text style={styles.header}>{`Select a friend to play next! Choose wisely...`}</Text>
+          <TouchableOpacity
+            onPress={() => this.props.postPhoto(singlePhoto, dbUser.id, dbUser.id)}>
+            <Text style={styles.list} >
+              {dbUser.username}
+            </Text>
+          </TouchableOpacity>
+          {friends && friends.map(friend => {
+            return (
+              <TouchableOpacity key={friend.id}
+                onPress={() => this.props.postPhoto(singlePhoto, friend.id, dbUser.id)}>
+                <Text style={styles.list} >
+                  {friend.username}
+                </Text>
+              </TouchableOpacity>)
+          })}
+        </View>
+      </ScrollView>
+    )
   }
 }
+
 
 const mapStateToProps = (state) => {
   return {
