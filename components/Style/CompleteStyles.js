@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
   },
   message: {
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 25,
+    fontWeight: 'bold',
     marginTop: 10,
     paddingBottom: 20,
     fontFamily: Roboto,

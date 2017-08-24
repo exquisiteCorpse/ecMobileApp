@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20
   },
   message: {
-    alignItems: 'center',
+    textAlign: 'center',
     fontSize: 18,
     width: '75%',
     paddingBottom: 20,
