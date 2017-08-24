@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchFriends, getPhoto, postNewPhoto, completeCorpes, updateStatusAssignments } from '../../store'
+import { fetchFriends, getPhoto, postNewPhoto, completeCorpes, updateStatusAssignments, dropAssignment } from '../../store'
 import { StyleSheet, Text, ScrollView, View, Image, Button } from 'react-native'
 import styles from '../Style/CompleteStyles'
 import { NavigationActions } from 'react-navigation'
@@ -52,6 +52,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     }
     dispatch(postNewPhoto(photoData, body))
       .then(() => {
+        dispatch(dropAssignment({ id: ownProps.corpseInfo.id, complete: true }))
         dispatch(completeCorpes(ownProps.corpseInfo.corpseId, {complete: true}))
         dispatch(updateStatusAssignments(ownProps.corpseInfo.id, {complete: true}))
       })

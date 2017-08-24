@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchFriends, getPhoto, postNewPhoto, makeNewCorpe, makeNewAssign, updateStatusAssignments, getUserLoggedIn } from '../../store'
+import { fetchFriends, getPhoto, postNewPhoto, makeNewCorpe, makeNewAssign, updateStatusAssignments, dropAssignment } from '../../store'
 import { StyleSheet, Text, ScrollView, View, Image, TouchableOpacity } from 'react-native'
 import styles from '../Style/FriendsListStyles'
 
@@ -70,6 +70,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
           }
           dispatch(makeNewAssign(assign))
             .then(() => {
+              dispatch(dropAssignment({ id: corpseInfo.id, complete: true }))
               dispatch(updateStatusAssignments(corpseInfo.id, { complete: true }))
             })
         })
