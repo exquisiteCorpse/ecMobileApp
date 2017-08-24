@@ -45,7 +45,6 @@ const WelcomeStack = StackNavigator({
     screen: App,
     navigationOptions: ({ navigation, screenProps }) => {
       return {
-        headerTitle: headerLogo,
         title: 'Home',
         headerLeft: <DrawerIcon {...navigation} />
       }
