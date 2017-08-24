@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchFriends, getPhoto, postNewPhoto, completeCorpes, updateStatusAssignments, dropAssignment } from '../../store'
-import { StyleSheet, Text, ScrollView, View, Image, Button } from 'react-native'
+import { Text, View, Button } from 'react-native'
 import styles from '../Style/CompleteStyles'
 import { NavigationActions } from 'react-navigation'
 
@@ -11,7 +11,6 @@ class CompeleteCorpse extends Component {
   }
   render () {
     const { singlePhoto } = this.props
-    console.log(this.props, 'here are the props')
     return (
       <View style={styles.container}>
         <Text style={styles.message}>It's done! Click To Complete!</Text>
@@ -22,7 +21,6 @@ class CompeleteCorpse extends Component {
             onPress={() => {
               this.props.postPhoto(singlePhoto)
             }}
-
           />
         </View>
       </View>

@@ -17,10 +17,6 @@ class UserHome extends Component {
 
   componentDidMount () {
     this.props.fetchData()
-    // socket.on('message', (message) => {
-    //   dispatch(fetchLikes())
-    //   console.log('action', message)
-    // })
   }
 
   shareLinkWithShareDialog (imageInfo) {
@@ -41,14 +37,9 @@ class UserHome extends Component {
     const likesCorpse = {}
     if (this.props.likes) {
       this.props.likes.forEach((like) => {
-        if (like.userId === this.props.dbUser.id) {
-          userLikes.push(like.corpseId)
-        }
-        if (likesCorpse[like.corpseId]) {
-          likesCorpse[like.corpseId]++
-        } else {
-          likesCorpse[like.corpseId] = 1
-        }
+        if (like.userId === this.props.dbUser.id) userLikes.push(like.corpseId)
+        if (likesCorpse[like.corpseId]) likesCorpse[like.corpseId]++
+        else likesCorpse[like.corpseId] = 1
       })
     }
 
@@ -122,13 +113,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       corpseId: +corpseId,
       userId: +userId
     }
-    if (userLike) {
-      // socket.emit('message', like)
-      dispatch(destroyLike(like))
-    } else {
-      // socket.emit('message', like)
-      dispatch(postNewLike(like))
-    }
+    userLike ? dispatch(destroyLike(like)) : dispatch(postNewLike(like))
   }
 })
 

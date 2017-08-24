@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { View, Image, Text, Button, StyleSheet } from 'react-native'
+import { View, Image, Text, Button } from 'react-native'
 import {connect} from 'react-redux'
 import { getPhoto } from '../../store'
 import { imageUrl } from '../../store/url'
 import Orientation from 'react-native-orientation'
+import styles from '../Style/NewCorpseStyles'
 
 class NewCorpse extends Component {
   componentDidMount () {
@@ -23,18 +24,16 @@ class NewCorpse extends Component {
     if (this.props.navigation.state.params) {
       const {assignment, cell, stack} = this.props.navigation.state.params
       if (assignment) {
-
         edge = (
           <Image
             style={styles.edge}
             source={{uri: `${imageUrl}${assignment.corpseId}-${assignment.assignorId}-${cell}-edge.jpeg`}}
           />
-
         )
         assignmentParams = {assignment: assignment, cell: cell, stack: stack}
         navToScreen = 'EdgeCameraScreen'
         retakeParams = this.props.navigation.state.params
-      }else {
+      } else {
         assignmentParams = {stack: stack}
       }
     }
@@ -73,69 +72,6 @@ class NewCorpse extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row'
-  },
-  captured: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center'
-  },
-  image: {
-    position: 'absolute',
-    flexDirection: 'row',
-    top: 0,
-    bottom: 0,
-    right: 0,
-    left: 0,
-    justifyContent: 'space-between'
-  },
-  edge: {
-    position: 'absolute',
-    flexDirection: 'row',
-    top: 0,
-    right: 0,
-    left: 0,
-    height: 60,
-    justifyContent: 'space-between'
-  },
-  options: {
-    position: 'absolute',
-    flexDirection: 'row',
-    bottom: 40,
-    left: 0,
-    right: 0,
-    justifyContent: 'center'
-  },
-  optionButtons: {
-    marginLeft: 10,
-    marginRight: 10,
-    width: '30%'
-  },
-  edgeblock: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    position: 'absolute',
-    flexDirection: 'row',
-    top: 0,
-    right: 0,
-    left: 0,
-    height: 60,
-    justifyContent: 'space-between'
-  },
-  camblock: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    position: 'absolute',
-    flexDirection: 'row',
-    bottom: 0,
-    right: 0,
-    left: 0,
-    height: 205,
-    justifyContent: 'space-between'
-  }
-})
 
 const mapStateToProps = (state) => {
   return {

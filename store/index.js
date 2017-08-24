@@ -19,7 +19,6 @@ const reducer = combineReducers({
   photos,
   dbUser,
   fbUser
-
 })
 
 const middleware = applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))

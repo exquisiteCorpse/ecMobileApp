@@ -60,6 +60,7 @@ export const completeCorpes = (id, corpse) =>
         return res.data.id
       })
       .catch(err => console.log(err))
+
 /* ------------       REDUCERS     ------------------ */
 
 export default function (state = [], action) {

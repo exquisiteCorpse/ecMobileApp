@@ -80,9 +80,6 @@ export default function (state = [], action) {
           return assignment
         }
       })
-      // return state.filter((assignment) => {
-      //   return action.assign.id !== assignment.id
-      // })
     default:
       return state
   }
