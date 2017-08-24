@@ -13,8 +13,8 @@ class CompeleteCorpse extends Component {
     const { singlePhoto } = this.props
     console.log(this.props, 'here are the props')
     return (
-      <View>
-        <Text style={styles.message}>Click To Complete</Text>
+      <View style={styles.container}>
+        <Text style={styles.message}>It's done! Click To Complete!</Text>
         <View style={styles.option}>
           <Button
             title='complete'

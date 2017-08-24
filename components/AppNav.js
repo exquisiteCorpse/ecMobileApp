@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Platform } from 'react-native'
+import { Platform, Image } from 'react-native'
 import AppCamera from './Camera/AppCamera'
 import EdgeCamera from './Camera/EdgeCamera'
 import NewCorpse from './Camera/NewCorpse'
@@ -11,6 +11,8 @@ import UserEdges from './User/UserEdges'
 import { Icon } from 'react-native-elements'
 import { StackNavigator, DrawerNavigator } from 'react-navigation'
 import App from './App'
+
+const headerLogo = <Image style={{width: 200, height: 60, alignSelf: 'center', marginRight: 50}} source={require('../public/images/ec-logo.png')} />
 
 const CameraIcon = ({ navigate }) => {
   if (Platform.OS === 'ios') {
@@ -43,6 +45,7 @@ const WelcomeStack = StackNavigator({
     screen: App,
     navigationOptions: ({ navigation, screenProps }) => {
       return {
+        headerTitle: headerLogo,
         title: 'Home',
         headerLeft: <DrawerIcon {...navigation} />
       }
@@ -53,6 +56,7 @@ const WelcomeStack = StackNavigator({
 const AddNewCorpseStack = StackNavigator({
   UserHomeScreen: { screen: UserHome,
     navigationOptions: ({ navigation }) => ({
+      headerTitle: <Image style={{width: 200, height: 60, alignSelf: 'center'}} source={require('../public/images/ec-logo.png')} />,
       title: 'Gallery',
       headerLeft: <DrawerIcon {...navigation} />,
       headerRight: <CameraIcon {...navigation} />
@@ -82,6 +86,7 @@ const AddNewCorpseStack = StackNavigator({
 const AllEdgesStack = StackNavigator({
   UserEdgesScreen: { screen: UserEdges,
     navigationOptions: ({ navigation }) => ({
+      headerTitle: headerLogo,
       title: 'Edges',
       headerLeft: <DrawerIcon {...navigation} />
     })
@@ -104,6 +109,7 @@ const AllEdgesStack = StackNavigator({
   },
   CompleteCorpseScreen: { screen: CompleteCorpse,
     navigationOptions: ({ navigation }) => ({
+      headerTitle: headerLogo,
       title: 'Complete',
       header: null
     })
