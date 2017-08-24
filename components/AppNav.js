@@ -12,7 +12,7 @@ import { Icon } from 'react-native-elements'
 import { StackNavigator, DrawerNavigator } from 'react-navigation'
 import App from './App'
 
-const headerLogo = <Image style={{width: 200, height: 60, alignSelf: 'center', marginRight: 50}} source={require('../public/images/ec-logo.png')} />
+const headerLogo = <Image style={{width: 200, height: 60, alignSelf: 'center', marginRight: 50}} source={require('../public/images/eclogo.png')} />
 
 const CameraIcon = ({ navigate }) => {
   if (Platform.OS === 'ios') {
@@ -56,7 +56,7 @@ const WelcomeStack = StackNavigator({
 const AddNewCorpseStack = StackNavigator({
   UserHomeScreen: { screen: UserHome,
     navigationOptions: ({ navigation }) => ({
-      headerTitle: <Image style={{width: 200, height: 60, alignSelf: 'center'}} source={require('../public/images/ec-logo.png')} />,
+      headerTitle: <Image style={{width: 200, height: 60, alignSelf: 'center'}} source={require('../public/images/eclogo.png')} />,
       title: 'Gallery',
       headerLeft: <DrawerIcon {...navigation} />,
       headerRight: <CameraIcon {...navigation} />
