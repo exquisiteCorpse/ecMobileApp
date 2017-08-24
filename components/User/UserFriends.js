@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { fetchFriends, getPhoto, postNewPhoto, makeNewCorpe, makeNewAssign, updateStatusAssignments, getUserLoggedIn } from '../../store'
 import { StyleSheet, Text, ScrollView, View, Image, TouchableOpacity } from 'react-native'
 import styles from '../Style/FriendsListStyles'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 class UserFriends extends Component {
   componentDidMount () {
@@ -11,22 +12,36 @@ class UserFriends extends Component {
 
   render () {
     const { friends, singlePhoto, dbUser } = this.props
-    return (
-      <ScrollView style={{backgroundColor: 'white'}}>
-        <View style={{alignItems: 'center'}}>
-          <Text style={styles.header}>{`Select a friend to play next! Choose wisely...`}</Text>
-          {friends && friends.map(friend => {
-            return (
-              <TouchableOpacity key={friend.id}
-                onPress={() => this.props.postPhoto(singlePhoto, friend.id, dbUser.id)}>
-                <Text style={styles.list} >
-                  {friend.username}
-                </Text>
-              </TouchableOpacity>)
-          })}
+    if (!friends.length) {
+      return (
+        <View style={{alignContent: 'center', backgroundColor: 'white', 'alignItems': 'center'}}>
+          <Text style={styles.header}>{`Until we integrate the addFriend component...`}<Icon name='wrench' size={25} /></Text>
+          <TouchableOpacity
+            onPress={() => this.props.postPhoto(singlePhoto, dbUser.id, dbUser.id)}>
+            <Text style={styles.list} >
+              {dbUser.username}
+            </Text>
+          </TouchableOpacity>
         </View>
-      </ScrollView>
-    )
+      )
+    } else {
+      return (
+        <ScrollView style={{ backgroundColor: 'white' }}>
+          <View style={{ alignItems: 'center' }}>
+            <Text style={styles.header}>{`Select a friend to play next! Choose wisely...`}</Text>
+            {friends && friends.map(friend => {
+              return (
+                <TouchableOpacity key={friend.id}
+                  onPress={() => this.props.postPhoto(singlePhoto, friend.id, dbUser.id)}>
+                  <Text style={styles.list} >
+                    {friend.username}
+                  </Text>
+                </TouchableOpacity>)
+            })}
+          </View>
+        </ScrollView>
+      )
+    }
   }
 }
 
