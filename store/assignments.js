@@ -8,6 +8,7 @@ import axios from 'axios'
 const GET_ASSIGNMENTS = 'GET_ASSIGNMENTS'
 const UPDATE_ASSIGNMENTS = 'UPDATE_ASSIGNMENTS'
 const MAKE_ASSIGN = 'MAKE_ASSIGN'
+const DROP_ASSIGN = 'DROP_ASSIGN'
 
 /* ------------   ACTION CREATORS     ------------------ */
 
@@ -20,6 +21,10 @@ const updateAssignments = (assignment) => {
 }
 const makeAssign = (assign) => {
   return { type: MAKE_ASSIGN, assign }
+}
+
+const dropAssign = (assign) => {
+  return { type: DROP_ASSIGN, assign }
 }
 
 /* ------------       THUNK CREATORS     ------------------ */
@@ -48,6 +53,9 @@ export const makeNewAssign = (assign) =>
       })
       .catch(err => console.log(err))
 
+export const dropAssignment = (assign) =>
+  dispatch =>
+    dispatch(dropAssign(assign))
 /* ------------       REDUCERS     ------------------ */
 
 export default function (state = [], action) {
@@ -64,6 +72,17 @@ export default function (state = [], action) {
       })
     case MAKE_ASSIGN:
       return state.concat(action.assign)
+    case DROP_ASSIGN:
+      return state.map((assignment) => {
+        if (assignment.id === action.assign.id) {
+          return Object.assign({}, assignment, action.assign)
+        } else {
+          return assignment
+        }
+      })
+      // return state.filter((assignment) => {
+      //   return action.assign.id !== assignment.id
+      // })
     default:
       return state
   }
