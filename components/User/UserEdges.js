@@ -6,19 +6,18 @@ import { fetchAssignments, fetchCorpses, getUserLoggedIn } from '../../store'
 import { imageUrl } from '../../store/url'
 import Orientation from 'react-native-orientation'
 
-/* -----------------    COMPONENT     ------------------ */
 
 class UserEdges extends Component {
-  componentDidMount() {
+
+  componentDidMount () {
     this.props.fetchData()
     Orientation.unlockAllOrientations()
   }
 
-  render() {
+  render () {
     const { assignments, corpses, dbUser } = this.props
-    const navigate = this.props.navigation.navigate
+    const { navigate } = this.props.navigation
     let cell = ''
-    //this is crazy
     if (!(assignments.length &&
       corpses.length &&
       assignments.filter(assignment => assignment.assigneeId === dbUser.id && assignment.complete === false).length)
@@ -31,16 +30,9 @@ class UserEdges extends Component {
             assignments
               .filter(assignment => assignment.assigneeId === dbUser.id && assignment.complete === false)
               .map(assignment => {
-                if (assignment.cell === 'middle') {
-                  cell = 'top'
-                }
-                if (assignment.cell === 'bottom') {
-                  cell = 'middle'
-                }
-
-                const corpse = corpses.find((corpse) => {
-                  return corpse.id === assignment.corpseId
-                })
+                if (assignment.cell === 'middle') cell = 'top'
+                if (assignment.cell === 'bottom') cell = 'middle'
+                const corpse = corpses.find(corpse => corpse.id === assignment.corpseId)
 
                 return (
                   <View key={assignment.id} style={styles.edge}>
@@ -65,8 +57,6 @@ class UserEdges extends Component {
     )
   }
 }
-
-/* -----------------    CONTAINER     ------------------ */
 
 const mapStateToProps = (state) => {
   return {

@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-
-//import Login from './Login'
 import { View, Text, Image } from 'react-native'
 import Login from './Button/LoginButton'
-
 import styles from './Style/AppWelcomeStyles'
 import Orientation from 'react-native-orientation'
 
@@ -20,7 +17,6 @@ export default class App extends Component {
           <Login />
         </View>
       </Image>
-
     )
   }
 }

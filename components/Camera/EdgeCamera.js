@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AppRegistry, StyleSheet, Text, View, Image } from 'react-native'
+import { Text, View, Image } from 'react-native'
 import { putPhoto } from '../../store'
 import Camera from 'react-native-camera'
 import {connect} from 'react-redux'
@@ -7,6 +7,7 @@ import Orientation from 'react-native-orientation'
 import { imageUrl } from '../../store/url'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import ImageResizer from 'react-native-image-resizer'
+import styles from '../Style/EdgeCameraStyles'
 
 class EdgeCamera extends Component {
   componentDidMount () {
@@ -38,7 +39,6 @@ class EdgeCamera extends Component {
   }
 }
 
-const mapStateToProps = null
 const mapDispatchToProps = (dispatch, ownProps) => ({
   takePicture (camera) {
     camera.capture()
@@ -52,35 +52,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(EdgeCamera)
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row'
-  },
-  preview: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center'
-  },
-  edge: {
-    position: 'absolute',
-    flexDirection: 'row',
-    top: 0,
-    right: 0,
-    left: 0,
-    height: 40,
-    justifyContent: 'space-between'
-  },
-  camblock: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    position: 'absolute',
-    flexDirection: 'row',
-    bottom: 0,
-    right: 0,
-    left: 0,
-    height: 155,
-    justifyContent: 'space-between'
-  }
-})
+export default connect(null, mapDispatchToProps)(EdgeCamera)

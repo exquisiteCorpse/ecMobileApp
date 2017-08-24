@@ -4,8 +4,8 @@ import { View, Text } from 'react-native'
 import {connect} from 'react-redux'
 import { fetchUser, fetchFindOrCreateUser, releaseUserDB, releaseUserFB } from '../../store'
 
-
 class Login extends Component {
+
   componentDidMount () {
     this.props.loggedIn()
   }

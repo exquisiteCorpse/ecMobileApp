@@ -1,5 +1,4 @@
 /* -----------------    IMPORTS     ------------------ */
-import { apiUrl } from './url'
 import axios from 'axios'
 
 /* -----------------    ACTION TYPES     ------------------ */

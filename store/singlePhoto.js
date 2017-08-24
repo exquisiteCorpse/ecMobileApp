@@ -1,9 +1,6 @@
 
-/* -----------------    IMPORTS     ------------------ */
-import { apiUrl } from './url'
-import axios from 'axios'
-
 /* -----------------    ACTION TYPES     ------------------ */
+
 const GET_PHOTO = 'GET_PHOTO'
 const PUT_PHOTO = 'PUT_PHOTO'
 
@@ -17,7 +14,6 @@ export const getPhoto = () => {
   return { type: GET_PHOTO }
 }
 
-/* ------------       THUNK CREATORS     ------------------ */
 /* ------------       REDUCERS     ------------------ */
 
 export default function (state = {}, action) {

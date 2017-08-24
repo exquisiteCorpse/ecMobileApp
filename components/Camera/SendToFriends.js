@@ -14,6 +14,7 @@ class SendToFriends extends Component {
       corpseTitle: ''
     }
   }
+
   componentDidMount () {
     this.props.fetchPhoto()
     Orientation.unlockAllOrientations()
@@ -27,15 +28,18 @@ class SendToFriends extends Component {
 
     // Nav based on assignment
     if (assignment) {
-      // source = this.props.singlePhoto.path
-      if (assignment.cell === 'bottom') {
-        displayStage = <CompleteCorpse navigation={this.props.navigation} navigate={navigate} corpseInfo={assignment} cell={assignment.cell} stack={stack}/>
-      } else {
-        displayStage = <UserFriends navigate={navigate} corpseInfo={assignment} cell={assignment.cell} stack={stack}/>
-
-      }
+      (assignment.cell === 'bottom')
+        ? displayStage = <CompleteCorpse navigation={this.props.navigation} navigate={navigate} corpseInfo={assignment} cell={assignment.cell} stack={stack}/>
+        : displayStage = <UserFriends navigate={navigate} corpseInfo={assignment} cell= {assignment.cell} stack={stack}/>
     } else {
       // Title shows if you its new
+      if (this.state.corpseTitle.length) {
+        displayStage = <UserFriends
+          navigate={navigate}
+          corpseTitle={this.state.corpseTitle}
+          cell={cell}
+          stack={stack} />
+      }
       displayTitle =
         <TextInput
           style={styles.input}
@@ -49,9 +53,6 @@ class SendToFriends extends Component {
           }}
           maxLength={15}
         />
-      if (this.state.corpseTitle.length) {
-        displayStage = <UserFriends navigate={navigate} corpseTitle={this.state.corpseTitle} cell={cell} stack={stack}/>
-      }
     }
 
     return (

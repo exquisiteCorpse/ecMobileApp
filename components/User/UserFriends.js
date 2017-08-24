@@ -37,7 +37,6 @@ class UserFriends extends Component {
   }
 }
 
-
 const mapStateToProps = (state) => {
   return {
     friends: state.friends,
