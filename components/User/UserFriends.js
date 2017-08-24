@@ -14,15 +14,17 @@ class UserFriends extends Component {
     const { friends, singlePhoto, dbUser } = this.props
     if (!friends.length) {
       return (
-        <View style={{alignContent: 'center', backgroundColor: 'white', 'alignItems': 'center'}}>
-          <Text style={styles.header}>{`Until we integrate the addFriend component...`}<Icon name='wrench' size={25} /></Text>
-          <TouchableOpacity
-            onPress={() => this.props.postPhoto(singlePhoto, dbUser.id, dbUser.id)}>
-            <Text style={styles.list} >
-              {dbUser.username}
-            </Text>
-          </TouchableOpacity>
-        </View>
+        <ScrollView style={{ backgroundColor: 'white' }}>
+          <View style={{ alignItems: 'center' }}>
+            <Text style={styles.header}>{`Until we integrate the addFriend component...`}<Icon name='wrench' size={25} /></Text>
+            <TouchableOpacity
+              onPress={() => this.props.postPhoto(singlePhoto, dbUser.id, dbUser.id)}>
+              <Text style={styles.list} >
+                {dbUser.username}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
       )
     } else {
       return (
@@ -63,11 +65,11 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       title: ownProps.corpseTitle
     }
     if (ownProps.corpseInfo) {
-      const corpseInfo = ownProps.corpseInfo.assignment
+      const corpseInfo = ownProps.corpseInfo
       const body = {
         corpseId: corpseInfo.corpseId,
         userId: corpseInfo.assigneeId,
-        cell: corpseInfo.cell
+        cell: ownProps.cell
       }
 
       dispatch(postNewPhoto(photoData, body))
@@ -113,8 +115,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
             })
         })
     }
-    ownProps.navigate('ConfirmationScreen')
+    ownProps.navigate('ConfirmationScreen', {stack: ownProps.stack})
   }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserFriends)
+
