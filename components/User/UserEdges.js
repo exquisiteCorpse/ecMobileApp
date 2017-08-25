@@ -6,7 +6,6 @@ import { fetchAssignments, fetchCorpses, getUserLoggedIn } from '../../store'
 import { imageUrl } from '../../store/url'
 import Orientation from 'react-native-orientation'
 
-
 class UserEdges extends Component {
 
   componentDidMount () {
@@ -21,7 +20,7 @@ class UserEdges extends Component {
     if (!(assignments.length &&
       corpses.length &&
       assignments.filter(assignment => assignment.assigneeId === dbUser.id && assignment.complete === false).length)
-    ) { return <Text style={styles.titleNoEdge}>You Have No Edges</Text> }
+    ) { return <Text style={styles.titleNoEdge}>Check Back Soon ...</Text> }
 
     return (
       <ScrollView style={{ backgroundColor: 'white' }}>
