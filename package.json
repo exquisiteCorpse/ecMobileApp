@@ -22,7 +22,7 @@
     "react-native-fbsdk": "^0.6.1",
     "react-native-fs": "^2.5.1",
     "react-native-image-resizer": "^1.0.0",
-    "react-native-orientation": "^3.0.0",
+    "react-native-orientation": "https://github.com/exquisiteCorpse/react-native-orientation",
     "react-native-safari-view": "^2.0.0",
     "react-native-vector-icons": "^4.3.0",
     "react-navigation": "^1.0.0-beta.11",
