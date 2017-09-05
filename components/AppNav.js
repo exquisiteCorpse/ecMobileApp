@@ -8,6 +8,7 @@ import Confirmation from './Camera/Confirmation'
 import UserHome from './User/UserHome'
 import CompleteCorpse from './User/CompleteCorpse'
 import UserEdges from './User/UserEdges'
+import EditFriends from './User/EditFriends'
 import { Icon } from 'react-native-elements'
 import { StackNavigator, DrawerNavigator } from 'react-navigation'
 import App from './App'
@@ -127,6 +128,11 @@ const AppNav = DrawerNavigator({
   UserEdges: { screen: AllEdgesStack,
     navigationOptions: {
       title: 'Edges'
+    }
+  },
+  EditFriends: { screen: EditFriends,
+    navigationOptions: {
+      title: 'Friends'
     }
   }
 })
