@@ -1,33 +1,32 @@
-
 /* -----------------    IMPORTS     ------------------ */
 import { apiUrl } from './url'
 import axios from 'axios'
 
 /* -----------------    ACTION TYPES     ------------------ */
 
-const GET_FRIENDS = 'GET_FRIENDS'
+const GET_USERS = 'GET_USERS'
 
 /* ------------   ACTION CREATORS     ------------------ */
 
-const getFriends = (friends) => {
-  return { type: GET_FRIENDS, friends }
+const getUsers = (users) => {
+  return { type: GET_USERS, users }
 }
 
 /* ------------       THUNK CREATORS     ------------------ */
 
-export const fetchFriends = (userId) =>
+export const fetchUsers = () =>
   dispatch =>
-    axios.get(`${apiUrl}/friends/${userId}`)
+    axios.get(`${apiUrl}/users/`)
       .then(res =>
-        dispatch(getFriends(res.data)))
+        dispatch(getUsers(res.data)))
       .catch(err => console.log(err))
 
 /* ------------       REDUCERS     ------------------ */
 
 export default function (state = [], action) {
   switch (action.type) {
-    case GET_FRIENDS:
-      return action.friends
+    case GET_USERS:
+      return action.users
     default:
       return state
   }
